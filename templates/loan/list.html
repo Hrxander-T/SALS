@@ -80,6 +80,10 @@
                                         <a href="{% url 'reject_loan' loan.id %}" class="btn btn-sm btn-danger" title="Reject">
                                             <i class="bi bi-x-lg"></i>
                                         </a>
+                                    {% elif loan.status == 'Approved' %}
+                                        <a href="{% url 'record_repayment_by_officer' loan.id %}" class="btn btn-sm btn-primary" title="Record Repayment">
+                                            <i class="bi bi-cash-stack"></i> Repay
+                                        </a>
                                     {% else %}
                                         <span class="text-muted">-</span>
                                     {% endif %}

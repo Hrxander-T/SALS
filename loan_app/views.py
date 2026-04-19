@@ -47,6 +47,136 @@ class LoanApprovalPDF(FPDF):
         self.cell(0, 10, f"Page {self.page_no()}", border=False, align="C")
 
 
+class RepaymentPDF(FPDF):
+    def header(self):
+        self.set_font("Helvetica", "B", 14)
+        self.cell(0, 10, "Smart Agricultural Loan System", border=False, align="C")
+        self.ln(5)
+        self.set_font("Helvetica", "", 10)
+        self.cell(0, 8, "Agricultural Bank of Bangladesh", border=False, align="C")
+        self.ln(12)
+
+    def footer(self):
+        self.set_y(-20)
+        self.set_font("Helvetica", "I", 8)
+        self.cell(0, 10, f"Page {self.page_no()}", border=False, align="C")
+
+
+def generate_repayment_pdf(repayment):
+    pdf = RepaymentPDF()
+    pdf.add_page()
+
+    loan = repayment.loan
+    farmer = loan.farmer
+
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.cell(0, 8, "PAYMENT RECEIPT", border=False, align="C")
+    pdf.ln(15)
+
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.cell(60, 8, "Receipt No:", border=0)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 8, str(repayment.id), border=0)
+    pdf.ln(8)
+
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.cell(60, 8, "Date:", border=0)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 8, repayment.payment_date.strftime("%B %d, %Y %I:%M %p"), border=0)
+    pdf.ln(12)
+
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.cell(60, 8, "Farmer Name:", border=0)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 8, farmer.get_full_name() or farmer.username, border=0)
+    pdf.ln(6)
+
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.cell(60, 8, "Loan ID:", border=0)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 8, str(loan.id), border=0)
+    pdf.ln(6)
+
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.cell(60, 8, "Loan Type:", border=0)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 8, loan.loan_type.name, border=0)
+    pdf.ln(10)
+
+    pdf.set_line_width(0.5)
+    pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+    pdf.ln(5)
+
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.cell(60, 8, "Amount Paid:", border=0)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 8, f"BDT {float(repayment.amount_paid):,.2f}", border=0)
+    pdf.ln(6)
+
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(60, 8, "Remaining Balance:", border=0)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 8, f"BDT {float(repayment.remaining_balance):,.2f}", border=0)
+    pdf.ln(10)
+
+    total_paid = sum(loan.repayments.values_list("amount_paid", flat=True))
+    pdf.set_font("Helvetica", "", 9)
+    pdf.cell(60, 8, "Total Paid So Far:", border=0)
+    pdf.set_font("Helvetica", "", 9)
+    pdf.cell(0, 8, f"BDT {float(total_paid):,.2f}", border=0)
+    pdf.ln(15)
+
+    if repayment.notes:
+        pdf.set_font("Helvetica", "B", 9)
+        pdf.cell(0, 8, "Notes:", border=0)
+        pdf.ln(6)
+        pdf.set_font("Helvetica", "", 9)
+        pdf.multi_cell(0, 6, repayment.notes)
+
+    return pdf
+
+
+def generate_repayment_history_pdf(repayments, total_repaid):
+    pdf = RepaymentPDF()
+    pdf.add_page()
+
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.cell(0, 8, "REPAYMENT HISTORY", border=False, align="C")
+    pdf.ln(10)
+
+    if repayments:
+        first = repayments[0]
+        farmer = first.loan.farmer
+        pdf.set_font("Helvetica", "", 9)
+        pdf.cell(60, 6, "Farmer:", border=0)
+        pdf.cell(0, 6, farmer.get_full_name() or farmer.username, border=0)
+        pdf.ln(6)
+        pdf.cell(60, 6, "Total Repaid:", border=0)
+        pdf.cell(0, 6, f"BDT {float(total_repaid):,.2f}", border=0)
+        pdf.ln(10)
+
+    pdf.set_font("Helvetica", "B", 8)
+    pdf.cell(15, 8, "ID", border=1)
+    pdf.cell(20, 8, "Loan", border=1)
+    pdf.cell(40, 8, "Type", border=1)
+    pdf.cell(35, 8, "Amount", border=1)
+    pdf.cell(35, 8, "Remaining", border=1)
+    pdf.cell(35, 8, "Date", border=1)
+    pdf.ln(8)
+
+    pdf.set_font("Helvetica", "", 8)
+    for r in repayments:
+        pdf.cell(15, 6, str(r.id), border=1)
+        pdf.cell(20, 6, str(r.loan.id), border=1)
+        pdf.cell(40, 6, r.loan.loan_type.name[:18], border=1)
+        pdf.cell(35, 6, f"{float(r.amount_paid):,.0f}", border=1)
+        pdf.cell(35, 6, f"{float(r.remaining_balance):,.0f}", border=1)
+        pdf.cell(35, 6, r.payment_date.strftime("%Y-%m-%d"), border=1)
+        pdf.ln(6)
+
+    return pdf
+
+
 def generate_loan_approval_pdf(loan):
     pdf = LoanApprovalPDF()
     pdf.add_page()
@@ -571,6 +701,45 @@ def loan_download_pdf(request, pk):
 
 
 @login_required
+def repayment_download_pdf(request, pk):
+    try:
+        repayment = Repayment.objects.select_related('loan', 'loan__farmer', 'loan__loan_type').get(pk=pk)
+    except Repayment.DoesNotExist:
+        messages.error(request, "Repayment not found.")
+        return redirect("repayment_history")
+
+    is_owner = repayment.loan.farmer == request.user
+    is_staff = request.user.is_staff or request.user.role in ["Bank Officer", "Admin"]
+    if not is_owner and not is_staff:
+        messages.error(request, "You do not have permission to download this receipt.")
+        return redirect("repayment_history")
+
+    pdf = generate_repayment_pdf(repayment)
+
+    buffer = BytesIO()
+    pdf.output(buffer)
+    buffer.seek(0)
+    response = HttpResponse(buffer.getvalue(), content_type="application/pdf")
+    response["Content-Disposition"] = f'attachment; filename="repayment_{pk}.pdf"'
+    return response
+
+
+@login_required
+def repayment_history_download_pdf(request):
+    repayments = Repayment.objects.filter(loan__farmer=request.user).order_by("-payment_date")
+    total_repaid = repayments.aggregate(Sum("amount_paid"))["amount_paid__sum"] or 0
+
+    pdf = generate_repayment_history_pdf(repayments, total_repaid)
+
+    buffer = BytesIO()
+    pdf.output(buffer)
+    buffer.seek(0)
+    response = HttpResponse(buffer.getvalue(), content_type="application/pdf")
+    response["Content-Disposition"] = 'attachment; filename="repayment_history.pdf"'
+    return response
+
+
+@login_required
 def approve_loan(request, pk):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
         messages.error(request, "You do not have permission to approve loans.")
@@ -596,6 +765,128 @@ def reject_loan(request, pk):
     application.save()
     messages.success(request, f"Loan application #{pk} rejected!")
     return redirect("loan_list")
+
+
+@login_required
+def repayment_list(request):
+    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+        messages.error(request, "You do not have permission to view repayments.")
+        return redirect("home")
+
+    repayments = Repayment.objects.select_related("loan__farmer", "loan__loan_type").order_by("-payment_date")
+    status_filter = request.GET.get("status")
+    if status_filter:
+        repayments = repayments.filter(status=status_filter)
+
+    paginator = Paginator(repayments, 20)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(
+        request,
+        "repayment/pending_list.html",
+        {"page_obj": page_obj, "status_filter": status_filter},
+    )
+
+
+@login_required
+def approve_repayment(request, pk):
+    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+        messages.error(request, "You do not have permission to approve repayments.")
+        return redirect("home")
+
+    repayment = get_object_or_404(Repayment, pk=pk)
+    if repayment.status != "Pending":
+        messages.warning(request, "This repayment has already been processed.")
+        return redirect("repayment_list")
+
+    repayment.status = "Approved"
+    repayment.approved_by = request.user
+    repayment.approved_at = timezone.now()
+    repayment.save()
+    messages.success(request, f"Repayment #{pk} approved!")
+    return redirect("repayment_list")
+
+
+@login_required
+def reject_repayment(request, pk):
+    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+        messages.error(request, "You do not have permission to reject repayments.")
+        return redirect("home")
+
+    repayment = get_object_or_404(Repayment, pk=pk)
+    if repayment.status != "Pending":
+        messages.warning(request, "This repayment has already been processed.")
+        return redirect("repayment_list")
+
+    repayment.status = "Rejected"
+    repayment.approved_by = request.user
+    repayment.approved_at = timezone.now()
+    repayment.save()
+    messages.success(request, f"Repayment #{pk} rejected!")
+    return redirect("repayment_list")
+
+
+@login_required
+def record_repayment_by_officer(request, loan_id):
+    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+        messages.error(request, "You do not have permission to record repayments.")
+        return redirect("home")
+
+    loan = get_object_or_404(LoanApplication, pk=loan_id)
+
+    if loan.status != "Approved":
+        messages.error(request, "Only approved loans can have repayments.")
+        return redirect("loan_detail", pk=loan_id)
+
+    repayments = loan.repayments.all()
+    total_paid = repayments.aggregate(Sum("amount_paid"))["amount_paid__sum"] or 0
+    remaining = float(loan.amount) - float(total_paid)
+
+    if remaining <= 0:
+        messages.info(request, "This loan has been fully repaid.")
+        return redirect("loan_detail", pk=loan_id)
+
+    if request.method == "POST":
+        form = RepaymentForm(request.POST, loan=loan)
+        if form.is_valid():
+            repayment = form.save(commit=False)
+            repayment.loan = loan
+            repayment.remaining_balance = remaining - float(repayment.amount_paid)
+            repayment.status = "Approved"
+            repayment.approved_by = request.user
+            repayment.approved_at = timezone.now()
+            repayment.save()
+            messages.success(request, "Repayment recorded and approved successfully!")
+            return redirect("repayment_list")
+    else:
+        form = RepaymentForm(loan=loan)
+
+    return render(
+        request,
+        "repayment/form.html",
+        {"form": form, "loan": loan, "remaining": remaining, "is_officer": True},
+    )
+
+
+@login_required
+def farmer_repayment_history(request):
+    if request.user.role != "Farmer":
+        messages.error(request, "Farmer access only.")
+        return redirect("home")
+
+    repayments = Repayment.objects.filter(
+        loan__farmer=request.user
+    ).order_by("-payment_date")
+    paginator = Paginator(repayments, 15)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    total_repaid = repayments.aggregate(Sum("amount_paid"))["amount_paid__sum"] or 0
+    return render(
+        request,
+        "repayment/history.html",
+        {"page_obj": page_obj, "total_repaid": total_repaid},
+    )
 
 
 @login_required
@@ -642,7 +933,7 @@ def make_repayment(request, loan_id):
             repayment.remaining_balance = remaining - float(repayment.amount_paid)
             repayment.save()
             messages.success(request, "Repayment recorded successfully!")
-            return redirect("loan_history")
+            return redirect("repayment_download_pdf", pk=repayment.id)
     else:
         form = RepaymentForm(loan=loan)
 

@@ -69,7 +69,13 @@ urlpatterns = [
     path("loan/<int:pk>/reject/", views.reject_loan, name="reject_loan"),
     path("loans/", views.loan_list, name="loan_list"),
     path("loan/<int:loan_id>/repayment/", views.make_repayment, name="make_repayment"),
+    path("loan/<int:loan_id>/record-repayment/", views.record_repayment_by_officer, name="record_repayment_by_officer"),
     path("repayments/", views.repayment_history, name="repayment_history"),
+    path("repayments/pdf/", views.repayment_history_download_pdf, name="repayment_history_download_pdf"),
+    path("repayment/<int:pk>/pdf/", views.repayment_download_pdf, name="repayment_download_pdf"),
+    path("repayment/pending/", views.repayment_list, name="repayment_list"),
+    path("repayment/<int:pk>/approve/", views.approve_repayment, name="approve_repayment"),
+    path("repayment/<int:pk>/reject/", views.reject_repayment, name="reject_repayment"),
     path("farmers/", views.farmer_list, name="farmer_list"),
     path("nid/verify/<int:user_id>/", views.verify_nid, name="verify_nid"),
     path(

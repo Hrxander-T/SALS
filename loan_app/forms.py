@@ -232,9 +232,10 @@ class RepaymentForm(forms.ModelForm):
     def clean_amount_paid(self):
         amount = self.cleaned_data["amount_paid"]
         if self.loan:
-            remaining = float(self.loan.amount) - sum(
+            total_paid = float(sum(
                 self.loan.repayments.values_list("amount_paid", flat=True)
-            )
+            ))
+            remaining = float(self.loan.amount) - total_paid
             if amount > remaining:
                 raise forms.ValidationError(
                     f"Amount cannot exceed remaining balance of ৳{remaining:.2f}"

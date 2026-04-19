@@ -233,23 +233,36 @@ def calculate_emi(principal, interest_rate, duration_months):
 
 
 class Repayment(models.Model):
+    STATUS_CHOICES = [
+        ("Pending", "Pending"),
+        ("Approved", "Approved"),
+        ("Rejected", "Rejected"),
+    ]
+
     loan = models.ForeignKey(
         LoanApplication, on_delete=models.CASCADE, related_name="repayments"
     )
     amount_paid = models.DecimalField(max_digits=12, decimal_places=2)
     payment_date = models.DateTimeField(auto_now_add=True)
     remaining_balance = models.DecimalField(max_digits=12, decimal_places=2)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Pending")
+    approved_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="approved_repayments"
+    )
+    approved_at = models.DateTimeField(null=True, blank=True)
     notes = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"Repayment #{self.id} - Loan #{self.loan.id}"
 
     def save(self, *args, **kwargs):
-        total_paid = sum(
-            self.loan.repayments.exclude(pk=self.pk).values_list(
-                "amount_paid", flat=True
-            )
+        from decimal import Decimal
+
+        repayments = self.loan.repayments.exclude(pk=self.pk).values_list(
+            "amount_paid", flat=True
         )
-        total_paid += self.amount_paid
-        self.remaining_balance = float(self.loan.amount) - total_paid
+        total_paid = sum(repayments) + self.amount_paid
+        total_paid = Decimal(str(total_paid))
+        loan_amount = Decimal(str(self.loan.amount))
+        self.remaining_balance = loan_amount - total_paid
         super().save(*args, **kwargs)

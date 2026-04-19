@@ -101,11 +101,11 @@ class LoanApplicationAdmin(admin.ModelAdmin):
 
 @admin.register(Repayment)
 class RepaymentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'loan_link', 'amount_paid', 'remaining_balance', 'payment_date']
-    list_filter = ['payment_date', 'loan__status']
+    list_display = ['id', 'loan_link', 'amount_paid', 'remaining_balance', 'payment_date', 'status']
+    list_filter = ['status', 'payment_date', 'loan__status']
     search_fields = ['loan__id', 'loan__farmer__username', 'loan__farmer__email', 'notes']
     readonly_fields = ['payment_date', 'remaining_balance']
-    fields = ['loan', 'amount_paid', 'payment_date', 'remaining_balance', 'notes']
+    fields = ['loan', 'amount_paid', 'payment_date', 'remaining_balance', 'status', 'approved_by', 'approved_at', 'notes']
     ordering = ['-payment_date']
     date_hierarchy = 'payment_date'
 

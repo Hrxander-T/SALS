@@ -71,11 +71,6 @@
                                     <a href="{% url 'loan_detail' loan.id %}" class="btn btn-sm btn-outline-primary">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                    {% if loan.status == 'Approved' %}
-                                    <a href="{% url 'make_repayment' loan.id %}" class="btn btn-sm btn-success">
-                                        <i class="bi bi-cash"></i>
-                                    </a>
-                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
