@@ -84,6 +84,10 @@ gunicorn sals_project.wsgi:application --bind 0.0.0.0:8000
 python manage.py collectstatic
 ```
 
+### Geneerate Secret key
+```bash 
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
 ### Environment Variables
 
 | Variable | Description | Default |

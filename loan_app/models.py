@@ -1,5 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import os
+
+# Cloudinary with fallback
+CLOUDINARY_CONFIGURED = all([
+    os.getenv('CLOUDINARY_CLOUD_NAME'),
+    os.getenv('CLOUDINARY_API_KEY'),
+    os.getenv('CLOUDINARY_API_SECRET'),
+])
+
+if CLOUDINARY_CONFIGURED:
+    from cloudinary.models import CloudinaryField
+else:
+    # Fallback: CloudinaryField behaves like ImageField/FileField locally
+    class CloudinaryField(models.FileField):
+        def __init__(self, *args, **kwargs):
+            kwargs.pop('resource_type', None)
+            super().__init__(*args, **kwargs)
 
 
 class User(AbstractUser):
@@ -14,22 +31,32 @@ class User(AbstractUser):
         default=False, help_text="For Bank Officers - requires admin approval"
     )
     phone_number = models.CharField(max_length=20, blank=True)
-    profile_picture = models.ImageField(
-        upload_to="profile_pictures/", blank=True, null=True
+
+    # ✅ Changed from ImageField to CloudinaryField
+    profile_picture = CloudinaryField(
+        'profile_picture',
+        resource_type='image',
+        blank=True,
+        null=True,
     )
     is_verified = models.BooleanField(default=False)
-    nid_card_front = models.FileField(
-        upload_to="nid_cards/",
+
+    # ✅ Changed from FileField to CloudinaryField
+    nid_card_front = CloudinaryField(
+        'nid_card_front',
+        resource_type='auto',
         blank=True,
         null=True,
         help_text="Upload NID card front side",
     )
-    nid_card_back = models.FileField(
-        upload_to="nid_cards/",
+    nid_card_back = CloudinaryField(
+        'nid_card_back',
+        resource_type='auto',
         blank=True,
         null=True,
         help_text="Upload NID card back side",
     )
+
     nid_verified = models.BooleanField(
         default=False, help_text="Whether NID has been verified by bank officer"
     )
@@ -77,9 +104,15 @@ class FarmerProfile(models.Model):
     annual_income = models.DecimalField(
         max_digits=12, decimal_places=2, help_text="Annual income in BDT"
     )
-    land_documents = models.FileField(
-        upload_to="farmer_documents/", blank=True, null=True
+
+    # ✅ Changed from FileField to CloudinaryField
+    land_documents = CloudinaryField(
+        'land_documents',
+        resource_type='auto',
+        blank=True,
+        null=True,
     )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -166,7 +199,6 @@ class LoanApplication(models.Model):
 
             score = 0
 
-            # POOR FARMER PRIORITY - Lower income = Higher score (max 35 pts)
             if income < 15000:
                 score += 35
             elif income < 30000:
@@ -176,7 +208,6 @@ class LoanApplication(models.Model):
             else:
                 score += 5
 
-            # SMALL LAND PRIORITY - Smaller land = Higher score (max 30 pts)
             if land_size < 5:
                 score += 30
             elif land_size < 20:
@@ -186,7 +217,6 @@ class LoanApplication(models.Model):
             else:
                 score += 5
 
-            # LOWER LOAN AMOUNT RELATIVE TO INCOME = Higher score (max 25 pts)
             loan_to_income_ratio = float(self.amount) / income
             if loan_to_income_ratio <= 0.5:
                 score += 25
@@ -197,13 +227,12 @@ class LoanApplication(models.Model):
             else:
                 score += 0
 
-            # PREVIOUS GOOD REPAYMENT HISTORY BONUS (max 10 pts)
             previous_loans = LoanApplication.objects.filter(
                 farmer=self.farmer, status="Approved"
             ).exclude(id=self.id)
             if previous_loans.exists():
                 fully_repaid = all(
-                    loan.repayments.exists() and 
+                    loan.repayments.exists() and
                     loan.repayments.order_by('-payment_date').first().remaining_balance <= 0
                     for loan in previous_loans
                 )
@@ -247,7 +276,8 @@ class Repayment(models.Model):
     remaining_balance = models.DecimalField(max_digits=12, decimal_places=2)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Pending")
     approved_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="approved_repayments"
+        User, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name="approved_repayments"
     )
     approved_at = models.DateTimeField(null=True, blank=True)
     notes = models.TextField(blank=True, null=True)
@@ -257,7 +287,6 @@ class Repayment(models.Model):
 
     def save(self, *args, **kwargs):
         from decimal import Decimal
-
         repayments = self.loan.repayments.exclude(pk=self.pk).values_list(
             "amount_paid", flat=True
         )

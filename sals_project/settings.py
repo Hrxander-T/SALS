@@ -83,14 +83,19 @@ WSGI_APPLICATION = "sals_project.wsgi.application"
 
 
 #  Switched to PostgreSQL via DATABASE_URL, falls back to SQLite locally
+# ✅ Fixed - explicitly falls back to SQLite when DATABASE_URL is missing or empty
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
+
 DATABASES = {
     "default": dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
         conn_health_checks=True,
-    )
+    ) if DATABASE_URL else {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
