@@ -1,4 +1,6 @@
 from django.urls import path
+from django.views.generic import RedirectView
+from django.templatetags.static import static
 from django.contrib.auth import views as auth_views
 from . import views
 
@@ -10,6 +12,10 @@ urlpatterns = [
     path("login/", views.user_login, name="login"),
     path("logout/", views.user_logout, name="logout"),
     path("profile/", views.profile, name="profile"),
+    path(
+        "favicon.ico",
+        RedirectView.as_view(url=static("favicon.ico"), permanent=True),
+    ),
     path(
         "password_change/",
         auth_views.PasswordChangeView.as_view(
