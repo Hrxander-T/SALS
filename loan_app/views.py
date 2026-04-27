@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -1165,3 +1168,13 @@ def farmer_register(request):
         return JsonResponse(
             {"success": False, "message": f"Registration failed: {str(e)}"}, status=500
         )
+
+def test_email(request):
+    send_mail(
+        "Test Email",
+        "Hello from Django",
+        settings.EMAIL_HOST_USER,
+        ["your_personal_email@gmail.com"],  # change this
+        fail_silently=False,
+    )
+    return HttpResponse("Email sent")
