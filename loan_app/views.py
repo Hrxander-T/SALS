@@ -1178,3 +1178,11 @@ def test_email(request):
         fail_silently=False,
     )
     return HttpResponse("Email sent")
+
+def debug_db(request):
+    fields = [f.name for f in FarmerProfile._meta.get_fields()]
+    sample = list(FarmerProfile.objects.values().first() or {})
+    return JsonResponse({
+        'fields': fields,
+        'sample_data': sample,
+    })
