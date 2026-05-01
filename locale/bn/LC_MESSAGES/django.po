@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-05-01 12:54+0000\n"
+"PO-Revision-Date: 2026-05-01 18:00+0600\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: loan_app/views.py:450
+msgid "Registration successful!"
+msgstr "নিবন্ধন সফল হয়েছে!"
+
+#: loan_app/views.py:464
+#, python-format
+msgid "Welcome back, %s!"
+msgstr "আবার স্বাগতম, %s!"
+
+#: loan_app/views.py:467
+msgid "Invalid username or password."
+msgstr "ব্যবহারকারীর নাম বা পাসওয়ার্ড সঠিক নয়।"
+
+#: loan_app/views.py:473
+msgid "You have been logged out."
+msgstr "আপনি সফলভাবে লগ আউট হয়েছেন।"
+
+#: loan_app/views.py:483
+msgid "Profile updated successfully!"
+msgstr "প্রোফাইল সফলভাবে হালনাগাদ হয়েছে!"
+
+#: loan_app/views.py:522
+msgid "Please complete your farmer profile."
+msgstr "অনুগ্রহ করে আপনার কৃষক প্রোফাইল সম্পূর্ণ করুন।"
+
+#: loan_app/views.py:532
+msgid "You do not have permission to view this profile."
+msgstr "এই প্রোফাইল দেখার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:549
+msgid "You already have a profile."
+msgstr "আপনার ইতোমধ্যে একটি প্রোফাইল রয়েছে।"
+
+#: loan_app/views.py:558
+msgid "Farmer profile created successfully!"
+msgstr "কৃষক প্রোফাইল সফলভাবে তৈরি হয়েছে!"
+
+#: loan_app/views.py:577
+msgid "Farmer profile updated successfully!"
+msgstr "কৃষক প্রোফাইল সফলভাবে হালনাগাদ হয়েছে!"
+
+#: loan_app/views.py:591 loan_app/views.py:611
+msgid "Please complete your farmer profile first."
+msgstr "অনুগ্রহ করে প্রথমে আপনার কৃষক প্রোফাইল সম্পূর্ণ করুন।"
+
+#: loan_app/views.py:600
+msgid "Document uploaded successfully!"
+msgstr "দলিল সফলভাবে আপলোড হয়েছে!"
+
+#: loan_app/views.py:602
+msgid "Please select a file to upload."
+msgstr "আপলোড করার জন্য একটি ফাইল নির্বাচন করুন।"
+
+#: loan_app/views.py:615
+msgid "You already have a loan application."
+msgstr "আপনার ইতোমধ্যে একটি ঋণের আবেদন রয়েছে।"
+
+#: loan_app/views.py:694
+msgid "Only approved loans can download the approval letter."
+msgstr "শুধুমাত্র অনুমোদিত ঋণের জন্য অনুমোদনপত্র ডাউনলোড করা যাবে।"
+
+#: loan_app/views.py:712
+msgid "Repayment not found."
+msgstr "পরিশোধের তথ্য পাওয়া যায়নি।"
+
+#: loan_app/views.py:718
+msgid "You do not have permission to download this receipt."
+msgstr "এই রসিদ ডাউনলোড করার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:749
+msgid "You do not have permission to approve loans."
+msgstr "ঋণ অনুমোদনের অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:756
+#, python-format
+msgid "Loan application #%s approved!"
+msgstr "ঋণের আবেদন #%s অনুমোদিত হয়েছে!"
+
+#: loan_app/views.py:763
+msgid "You do not have permission to reject loans."
+msgstr "ঋণ বাতিল করার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:770
+#, python-format
+msgid "Loan application #%s rejected!"
+msgstr "ঋণের আবেদন #%s বাতিল করা হয়েছে!"
+
+#: loan_app/views.py:777
+msgid "You do not have permission to view repayments."
+msgstr "পরিশোধের তথ্য দেখার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:799
+msgid "You do not have permission to approve repayments."
+msgstr "পরিশোধ অনুমোদনের অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:804 loan_app/views.py:823
+msgid "This repayment has already been processed."
+msgstr "এই পরিশোধ ইতোমধ্যে প্রক্রিয়াকৃত হয়েছে।"
+
+#: loan_app/views.py:811
+#, python-format
+msgid "Repayment #%s approved!"
+msgstr "পরিশোধ #%s অনুমোদিত হয়েছে!"
+
+#: loan_app/views.py:818
+msgid "You do not have permission to reject repayments."
+msgstr "পরিশোধ বাতিল করার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:830
+#, python-format
+msgid "Repayment #%s rejected!"
+msgstr "পরিশোধ #%s বাতিল করা হয়েছে!"
+
+#: loan_app/views.py:837
+msgid "You do not have permission to record repayments."
+msgstr "পরিশোধ নথিভুক্ত করার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:843 loan_app/views.py:921
+msgid "Only approved loans can have repayments."
+msgstr "শুধুমাত্র অনুমোদিত ঋণের পরিশোধ গ্রহণ করা যাবে।"
+
+#: loan_app/views.py:851 loan_app/views.py:929
+msgid "This loan has been fully repaid."
+msgstr "এই ঋণ সম্পূর্ণ পরিশোধ করা হয়েছে।"
+
+#: loan_app/views.py:864
+msgid "Repayment recorded and approved successfully!"
+msgstr "পরিশোধ সফলভাবে নথিভুক্ত ও অনুমোদিত হয়েছে!"
+
+#: loan_app/views.py:879
+msgid "Farmer access only."
+msgstr "শুধুমাত্র কৃষকদের জন্য প্রবেশাধিকার।"
+
+#: loan_app/views.py:939
+msgid "Repayment recorded successfully!"
+msgstr "পরিশোধ সফলভাবে নথিভুক্ত হয়েছে!"
+
+#: loan_app/views.py:970
+msgid "You do not have permission to view farmers."
+msgstr "কৃষকদের তথ্য দেখার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:987
+msgid "Only farmers can upload NID cards."
+msgstr "শুধুমাত্র কৃষকরাই এনআইডি কার্ড আপলোড করতে পারবেন।"
+
+#: loan_app/views.py:994
+msgid "NID card uploaded successfully!"
+msgstr "এনআইডি কার্ড সফলভাবে আপলোড হয়েছে!"
+
+#: loan_app/views.py:1004
+msgid "You do not have permission to verify NID."
+msgstr "এনআইডি যাচাই করার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:1037
+msgid "You do not have permission to view this page."
+msgstr "এই পৃষ্ঠা দেখার অনুমতি আপনার নেই।"
+
+#: sals_project/settings.py:28
+msgid "English"
+msgstr "ইংরেজি"
+
+#: sals_project/settings.py:29
+msgid "Bengali"
+msgstr "বাংলা"

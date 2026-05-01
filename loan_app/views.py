@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
@@ -446,7 +447,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, "Registration successful!")
+            messages.success(request, _("Registration successful!"))
             return redirect_after_login(user)
     else:
         form = UserRegistrationForm()
@@ -460,16 +461,16 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, f"Welcome back, {user.username}!")
+            messages.success(request, _("Welcome back, %s!") % user.username)
             return redirect_after_login(user)
         else:
-            messages.error(request, "Invalid username or password.")
+            messages.error(request, _("Invalid username or password."))
     return render(request, "registration/login.html")
 
 
 def user_logout(request):
     logout(request)
-    messages.info(request, "You have been logged out.")
+    messages.info(request, _("You have been logged out."))
     return redirect("login")
 
 
@@ -479,7 +480,7 @@ def profile(request):
         form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, "Profile updated successfully!")
+            messages.success(request, _("Profile updated successfully!"))
             return redirect("profile")
     else:
         form = UserUpdateForm(instance=request.user)
@@ -518,7 +519,7 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
 def farmer_profile(request):
     profile = getattr(request.user, "farmer_profile", None)
     if not profile:
-        messages.warning(request, "Please complete your farmer profile.")
+        messages.warning(request, _("Please complete your farmer profile."))
         return redirect("farmer_profile_create")
     return render(
         request, "farmer/profile_view.html", {"profile": profile, "farmer": None}
@@ -528,7 +529,7 @@ def farmer_profile(request):
 @login_required
 def farmer_profile_view(request, user_id):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to view this profile.")
+        messages.error(request, _("You do not have permission to view this profile."))
         return redirect("home")
 
     farmer = get_object_or_404(User, id=user_id, role="Farmer")
@@ -545,7 +546,7 @@ def farmer_profile_view(request, user_id):
 @login_required
 def farmer_profile_create(request):
     if hasattr(request.user, "farmer_profile"):
-        messages.info(request, "You already have a profile.")
+        messages.info(request, _("You already have a profile."))
         return redirect("farmer_profile")
 
     if request.method == "POST":
@@ -554,7 +555,7 @@ def farmer_profile_create(request):
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            messages.success(request, "Farmer profile created successfully!")
+            messages.success(request, _("Farmer profile created successfully!"))
             return redirect("farmer_profile")
     else:
         form = FarmerProfileForm()
@@ -573,7 +574,7 @@ def farmer_profile_update(request):
         form = FarmerProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, "Farmer profile updated successfully!")
+            messages.success(request, _("Farmer profile updated successfully!"))
             return redirect("farmer_profile")
     else:
         form = FarmerProfileForm(instance=profile)
@@ -587,7 +588,7 @@ def farmer_profile_update(request):
 @login_required
 def upload_document(request):
     if not hasattr(request.user, "farmer_profile"):
-        messages.warning(request, "Please complete your farmer profile first.")
+        messages.warning(request, _("Please complete your farmer profile first."))
         return redirect("farmer_profile_create")
 
     profile = request.user.farmer_profile
@@ -596,9 +597,9 @@ def upload_document(request):
         if "land_documents" in request.FILES:
             profile.land_documents = request.FILES["land_documents"]
             profile.save()
-            messages.success(request, "Document uploaded successfully!")
+            messages.success(request, _("Document uploaded successfully!"))
         else:
-            messages.error(request, "Please select a file to upload.")
+            messages.error(request, _("Please select a file to upload."))
         return redirect("farmer_profile")
 
     return render(request, "farmer/upload_document.html", {"profile": profile})
@@ -607,11 +608,11 @@ def upload_document(request):
 @login_required
 def loan_apply(request):
     if not hasattr(request.user, "farmer_profile"):
-        messages.warning(request, "Please complete your farmer profile first.")
+        messages.warning(request, _("Please complete your farmer profile first."))
         return redirect("farmer_profile_create")
 
     if hasattr(request.user, "loan_application"):
-        messages.warning(request, "You already have a loan application.")
+        messages.warning(request, _("You already have a loan application."))
         return redirect("loan_history")
 
     if request.method == "POST":
@@ -690,7 +691,7 @@ def loan_download_pdf(request, pk):
     application = get_object_or_404(LoanApplication, pk=pk, farmer=request.user)
 
     if application.status != "Approved":
-        messages.warning(request, "Only approved loans can download the approval letter.")
+        messages.warning(request, _("Only approved loans can download the approval letter."))
         return redirect("loan_detail", pk=pk)
 
     pdf = generate_loan_approval_pdf(application)
@@ -708,13 +709,13 @@ def repayment_download_pdf(request, pk):
     try:
         repayment = Repayment.objects.select_related('loan', 'loan__farmer', 'loan__loan_type').get(pk=pk)
     except Repayment.DoesNotExist:
-        messages.error(request, "Repayment not found.")
+        messages.error(request, _("Repayment not found."))
         return redirect("repayment_history")
 
     is_owner = repayment.loan.farmer == request.user
     is_staff = request.user.is_staff or request.user.role in ["Bank Officer", "Admin"]
     if not is_owner and not is_staff:
-        messages.error(request, "You do not have permission to download this receipt.")
+        messages.error(request, _("You do not have permission to download this receipt."))
         return redirect("repayment_history")
 
     pdf = generate_repayment_pdf(repayment)
@@ -745,35 +746,35 @@ def repayment_history_download_pdf(request):
 @login_required
 def approve_loan(request, pk):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to approve loans.")
+        messages.error(request, _("You do not have permission to approve loans."))
         return redirect("home")
 
     application = get_object_or_404(LoanApplication, pk=pk)
     application.risk_score = application.calculate_risk_score()
     application.status = "Approved"
     application.save()
-    messages.success(request, f"Loan application #{pk} approved!")
+    messages.success(request, _("Loan application #%s approved!") % pk)
     return redirect("loan_list")
 
 
 @login_required
 def reject_loan(request, pk):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to reject loans.")
+        messages.error(request, _("You do not have permission to reject loans."))
         return redirect("home")
 
     application = get_object_or_404(LoanApplication, pk=pk)
     application.risk_score = application.calculate_risk_score()
     application.status = "Rejected"
     application.save()
-    messages.success(request, f"Loan application #{pk} rejected!")
+    messages.success(request, _("Loan application #%s rejected!") % pk)
     return redirect("loan_list")
 
 
 @login_required
 def repayment_list(request):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to view repayments.")
+        messages.error(request, _("You do not have permission to view repayments."))
         return redirect("home")
 
     repayments = Repayment.objects.select_related("loan__farmer", "loan__loan_type").order_by("-payment_date")
@@ -795,51 +796,51 @@ def repayment_list(request):
 @login_required
 def approve_repayment(request, pk):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to approve repayments.")
+        messages.error(request, _("You do not have permission to approve repayments."))
         return redirect("home")
 
     repayment = get_object_or_404(Repayment, pk=pk)
     if repayment.status != "Pending":
-        messages.warning(request, "This repayment has already been processed.")
+        messages.warning(request, _("This repayment has already been processed."))
         return redirect("repayment_list")
 
     repayment.status = "Approved"
     repayment.approved_by = request.user
     repayment.approved_at = timezone.now()
     repayment.save()
-    messages.success(request, f"Repayment #{pk} approved!")
+    messages.success(request, _("Repayment #%s approved!") % pk)
     return redirect("repayment_list")
 
 
 @login_required
 def reject_repayment(request, pk):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to reject repayments.")
+        messages.error(request, _("You do not have permission to reject repayments."))
         return redirect("home")
 
     repayment = get_object_or_404(Repayment, pk=pk)
     if repayment.status != "Pending":
-        messages.warning(request, "This repayment has already been processed.")
+        messages.warning(request, _("This repayment has already been processed."))
         return redirect("repayment_list")
 
     repayment.status = "Rejected"
     repayment.approved_by = request.user
     repayment.approved_at = timezone.now()
     repayment.save()
-    messages.success(request, f"Repayment #{pk} rejected!")
+    messages.success(request, _("Repayment #%s rejected!") % pk)
     return redirect("repayment_list")
 
 
 @login_required
 def record_repayment_by_officer(request, loan_id):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to record repayments.")
+        messages.error(request, _("You do not have permission to record repayments."))
         return redirect("home")
 
     loan = get_object_or_404(LoanApplication, pk=loan_id)
 
     if loan.status != "Approved":
-        messages.error(request, "Only approved loans can have repayments.")
+        messages.error(request, _("Only approved loans can have repayments."))
         return redirect("loan_detail", pk=loan_id)
 
     repayments = loan.repayments.all()
@@ -847,7 +848,7 @@ def record_repayment_by_officer(request, loan_id):
     remaining = float(loan.amount) - float(total_paid)
 
     if remaining <= 0:
-        messages.info(request, "This loan has been fully repaid.")
+        messages.info(request, _("This loan has been fully repaid."))
         return redirect("loan_detail", pk=loan_id)
 
     if request.method == "POST":
@@ -860,7 +861,7 @@ def record_repayment_by_officer(request, loan_id):
             repayment.approved_by = request.user
             repayment.approved_at = timezone.now()
             repayment.save()
-            messages.success(request, "Repayment recorded and approved successfully!")
+            messages.success(request, _("Repayment recorded and approved successfully!"))
             return redirect("repayment_list")
     else:
         form = RepaymentForm(loan=loan)
@@ -875,7 +876,7 @@ def record_repayment_by_officer(request, loan_id):
 @login_required
 def farmer_repayment_history(request):
     if request.user.role != "Farmer":
-        messages.error(request, "Farmer access only.")
+        messages.error(request, _("Farmer access only."))
         return redirect("home")
 
     repayments = Repayment.objects.filter(
@@ -917,7 +918,7 @@ def make_repayment(request, loan_id):
     loan = get_object_or_404(LoanApplication, pk=loan_id, farmer=request.user)
 
     if loan.status != "Approved":
-        messages.error(request, "Only approved loans can have repayments.")
+        messages.error(request, _("Only approved loans can have repayments."))
         return redirect("loan_history")
 
     repayments = loan.repayments.all()
@@ -925,7 +926,7 @@ def make_repayment(request, loan_id):
     remaining = float(loan.amount) - float(total_paid)
 
     if remaining <= 0:
-        messages.info(request, "This loan has been fully repaid.")
+        messages.info(request, _("This loan has been fully repaid."))
         return redirect("loan_history")
 
     if request.method == "POST":
@@ -935,7 +936,7 @@ def make_repayment(request, loan_id):
             repayment.loan = loan
             repayment.remaining_balance = remaining - float(repayment.amount_paid)
             repayment.save()
-            messages.success(request, "Repayment recorded successfully!")
+            messages.success(request, _("Repayment recorded successfully!"))
             return redirect("repayment_download_pdf", pk=repayment.id)
     else:
         form = RepaymentForm(loan=loan)
@@ -966,7 +967,7 @@ def repayment_history(request):
 @login_required
 def farmer_list(request):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to view farmers.")
+        messages.error(request, _("You do not have permission to view farmers."))
         return redirect("home")
 
     farmers = (
@@ -983,14 +984,14 @@ def farmer_list(request):
 @login_required
 def upload_nid(request):
     if request.user.role != "Farmer":
-        messages.error(request, "Only farmers can upload NID cards.")
+        messages.error(request, _("Only farmers can upload NID cards."))
         return redirect("home")
 
     if request.method == "POST":
         form = NIDUploadForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, "NID card uploaded successfully!")
+            messages.success(request, _("NID card uploaded successfully!"))
             return redirect("farmer_profile")
     else:
         form = NIDUploadForm(instance=request.user)
@@ -1000,7 +1001,7 @@ def upload_nid(request):
 @login_required
 def verify_nid(request, user_id):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to verify NID.")
+        messages.error(request, _("You do not have permission to verify NID."))
         return redirect("home")
 
     farmer = get_object_or_404(User, id=user_id, role="Farmer")
@@ -1033,7 +1034,7 @@ def verify_nid(request, user_id):
 @login_required
 def nid_verification_list(request):
     if not (request.user.is_staff or request.user.role == "Bank Officer"):
-        messages.error(request, "You do not have permission to view this page.")
+        messages.error(request, _("You do not have permission to view this page."))
         return redirect("home")
 
     farmers = (

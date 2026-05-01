@@ -6,6 +6,7 @@ import os
 import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
+from django.utils.translation import gettext_lazy as _
 
 load_dotenv()
 
@@ -23,6 +24,12 @@ ALLOWED_HOSTS = [
 
 ALLOWED_HOSTS = [h for h in ALLOWED_HOSTS if h]
 
+LANGUAGES = [
+    ('en', _('English')),
+    ('bn', _('Bengali')),
+]
+USE_I18N = True
+LOCALE_PATHS = [BASE_DIR / 'locale']
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -33,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'cloudinary_storage',  
     'cloudinary',  
+    'rosetta',
     "loan_app",
 ]
 
@@ -40,6 +48,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",  
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'django.middleware.locale.LocaleMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
