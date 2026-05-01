@@ -32,7 +32,7 @@ class User(AbstractUser):
     )
     phone_number = models.CharField(max_length=20, blank=True)
 
-    # ✅ Changed from ImageField to CloudinaryField
+    # Changed from ImageField to CloudinaryField
     profile_picture = CloudinaryField(
         'profile_picture',
         resource_type='image',
@@ -41,7 +41,7 @@ class User(AbstractUser):
     )
     is_verified = models.BooleanField(default=False)
 
-    # ✅ Changed from FileField to CloudinaryField
+    #  Changed from FileField to CloudinaryField
     nid_card_front = CloudinaryField(
         'nid_card_front',
         resource_type='auto',

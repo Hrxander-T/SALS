@@ -83,7 +83,7 @@ WSGI_APPLICATION = "sals_project.wsgi.application"
 
 
 #  Switched to PostgreSQL via DATABASE_URL, falls back to SQLite locally
-# ✅ Fixed - explicitly falls back to SQLite when DATABASE_URL is missing or empty
+# Fixed - explicitly falls back to SQLite when DATABASE_URL is missing or empty
 DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
 
 DATABASES = {
@@ -119,7 +119,9 @@ STATICFILES_DIRS = [STATIC_DIR] if STATIC_DIR.exists() else []
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-MEDIA_URL = "/media/"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

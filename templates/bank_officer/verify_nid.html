@@ -26,12 +26,12 @@
             </div>
             <div class="card-body p-4">
                 {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    {% endfor %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                {% endfor %}
                 {% endif %}
 
                 <div class="row mb-4">
@@ -52,7 +52,8 @@
                 {% if farmer.nid_verified %}
                 <div class="alert alert-success">
                     <i class="bi bi-check-circle me-2"></i>
-                    <strong>This NID has been verified</strong> by {{ farmer.nid_verified_by.username }} on {{ farmer.nid_verified_at|date:"F d, Y h:i A" }}
+                    <strong>This NID has been verified</strong> by {{ farmer.nid_verified_by.username }} on {{
+                    farmer.nid_verified_at|date:"F d, Y h:i A" }}
                 </div>
                 {% endif %}
 
@@ -64,23 +65,25 @@
                         <div class="col-md-6 mb-3">
                             <label class="form-label text-muted">Front Side</label>
                             <div class="border rounded p-3 bg-light">
-                                {% with farmer.nid_card_front.name as file_name %}
-                                    {% if file_name|lower|slice:"-4:" == '.pdf' %}
-                                        <div class="text-center">
-                                            <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 3rem;"></i>
-                                            <p class="mt-2 mb-0">{{ file_name }}</p>
-                                            <a href="{{ farmer.nid_card_front.url }}" target="_blank" class="btn btn-primary btn-sm mt-2">
-                                                <i class="bi bi-download me-1"></i>View/Download
-                                            </a>
-                                        </div>
-                                    {% else %}
-                                        <div class="text-center">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#nidFrontModal">
-                                                <img src="{{ farmer.nid_card_front.url }}" alt="NID Card Front" class="img-fluid rounded" style="max-height: 300px; cursor: pointer;">
-                                            </a>
-                                            <p class="mt-2 mb-0 text-muted">Click to zoom</p>
-                                        </div>
-                                    {% endif %}
+                                {% with farmer.nid_card_front.url as file_url %}
+                                {% if '.pdf' in file_url or '/raw/' in file_url %}
+                                <div class="text-center">
+                                    <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 3rem;"></i>
+                                    <p class="mt-2 mb-0">{{ file_name }}</p>
+                                    <a href="{{ farmer.nid_card_front.url }}" target="_blank"
+                                        class="btn btn-primary btn-sm mt-2">
+                                        <i class="bi bi-download me-1"></i>View/Download
+                                    </a>
+                                </div>
+                                {% else %}
+                                <div class="text-center">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#nidFrontModal">
+                                        <img src="{{ farmer.nid_card_front.url }}" alt="NID Card Front"
+                                            class="img-fluid rounded" style="max-height: 300px; cursor: pointer;">
+                                    </a>
+                                    <p class="mt-2 mb-0 text-muted">Click to zoom</p>
+                                </div>
+                                {% endif %}
                                 {% endwith %}
                             </div>
                         </div>
@@ -90,23 +93,25 @@
                         <div class="col-md-6 mb-3">
                             <label class="form-label text-muted">Back Side</label>
                             <div class="border rounded p-3 bg-light">
-                                {% with farmer.nid_card_back.name as file_name %}
-                                    {% if file_name|lower|slice:"-4:" == '.pdf' %}
-                                        <div class="text-center">
-                                            <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 3rem;"></i>
-                                            <p class="mt-2 mb-0">{{ file_name }}</p>
-                                            <a href="{{ farmer.nid_card_back.url }}" target="_blank" class="btn btn-primary btn-sm mt-2">
-                                                <i class="bi bi-download me-1"></i>View/Download
-                                            </a>
-                                        </div>
-                                    {% else %}
-                                        <div class="text-center">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#nidBackModal">
-                                                <img src="{{ farmer.nid_card_back.url }}" alt="NID Card Back" class="img-fluid rounded" style="max-height: 300px; cursor: pointer;">
-                                            </a>
-                                            <p class="mt-2 mb-0 text-muted">Click to zoom</p>
-                                        </div>
-                                    {% endif %}
+                                {% with farmer.nid_card_back.url as file_url %}
+                                {% if '.pdf' in file_url or '/raw/' in file_url %}
+                                <div class="text-center">
+                                    <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 3rem;"></i>
+                                    <p class="mt-2 mb-0">{{ file_name }}</p>
+                                    <a href="{{ farmer.nid_card_back.url }}" target="_blank"
+                                        class="btn btn-primary btn-sm mt-2">
+                                        <i class="bi bi-download me-1"></i>View/Download
+                                    </a>
+                                </div>
+                                {% else %}
+                                <div class="text-center">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#nidBackModal">
+                                        <img src="{{ farmer.nid_card_back.url }}" alt="NID Card Back"
+                                            class="img-fluid rounded" style="max-height: 300px; cursor: pointer;">
+                                    </a>
+                                    <p class="mt-2 mb-0 text-muted">Click to zoom</p>
+                                </div>
+                                {% endif %}
                                 {% endwith %}
                             </div>
                         </div>
@@ -117,7 +122,8 @@
                 {% if not farmer.nid_verified %}
                 <div class="alert alert-warning">
                     <i class="bi bi-exclamation-triangle me-2"></i>
-                    <strong>Please verify the NID carefully.</strong> Check that the information on the NID matches the farmer's profile details.
+                    <strong>Please verify the NID carefully.</strong> Check that the information on the NID matches the
+                    farmer's profile details.
                 </div>
                 {% endif %}
 
@@ -141,30 +147,32 @@
                     </div>
 
                     {% if farmer.nid_card_front %}
-                        {% if not farmer.nid_verified %}
-                        <form method="post" class="d-inline">
-                            {% csrf_token %}
-                            <input type="hidden" name="action" value="verify">
-                            <button type="submit" class="btn btn-success">
-                                <i class="bi bi-check-circle me-1"></i>Verify NID (action=verify)
-                            </button>
-                        </form>
-                        <form method="post" class="d-inline">
-                            {% csrf_token %}
-                            <input type="hidden" name="action" value="reject">
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to reject this NID? The farmer will need to upload a new one.');">
-                                <i class="bi bi-x-circle me-1"></i>Reject NID
-                            </button>
-                        </form>
-                        {% else %}
-                        <form method="post" class="d-inline">
-                            {% csrf_token %}
-                            <input type="hidden" name="action" value="reject">
-                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to revoke verification? The farmer will need to upload a new NID.');">
-                                <i class="bi bi-arrow-counterclockwise me-1"></i>Revoke Verification
-                            </button>
-                        </form>
-                        {% endif %}
+                    {% if not farmer.nid_verified %}
+                    <form method="post" class="d-inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="verify">
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-check-circle me-1"></i>Verify NID (action=verify)
+                        </button>
+                    </form>
+                    <form method="post" class="d-inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="reject">
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Are you sure you want to reject this NID? The farmer will need to upload a new one.');">
+                            <i class="bi bi-x-circle me-1"></i>Reject NID
+                        </button>
+                    </form>
+                    {% else %}
+                    <form method="post" class="d-inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="reject">
+                        <button type="submit" class="btn btn-outline-danger"
+                            onclick="return confirm('Are you sure you want to revoke verification? The farmer will need to upload a new NID.');">
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>Revoke Verification
+                        </button>
+                    </form>
+                    {% endif %}
                     {% endif %}
                 </div>
             </div>
