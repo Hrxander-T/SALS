@@ -1,4 +1,5 @@
 {% extends 'landing_base.html' %}
+{% load i18n %}
 
 {% block title %}Register - Smart Agricultural Loan System{% endblock %}
 
@@ -12,36 +13,38 @@
         box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
         overflow: hidden;
     }
-    
+
     .auth-card .card-header {
         background: linear-gradient(135deg, var(--deep-forest) 0%, var(--primary-dark) 100%);
         padding: 36px 24px;
         border-radius: 0 !important;
     }
-    
+
     .auth-card .card-header h3 {
         font-weight: 700;
         font-size: 1.6rem;
         margin-bottom: 8px;
     }
-    
+
     .auth-card .card-body {
         padding: 44px;
     }
-    
-    .form-control, .form-select {
+
+    .form-control,
+    .form-select {
         border-radius: 14px;
         padding: 16px 18px;
         border: 2px solid #e9ecef;
         background: white;
         transition: all 0.3s ease;
     }
-    
-    .form-control:focus, .form-select:focus {
+
+    .form-control:focus,
+    .form-select:focus {
         border-color: var(--primary);
         box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.15);
     }
-    
+
     .form-label-custom {
         font-weight: 600;
         color: var(--text-primary);
@@ -50,7 +53,7 @@
         align-items: center;
         gap: 8px;
     }
-    
+
     .btn-auth {
         border-radius: 14px;
         padding: 16px;
@@ -58,49 +61,49 @@
         font-size: 1.1rem;
         transition: all 0.3s ease;
     }
-    
+
     .btn-auth:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 30px rgba(46, 125, 50, 0.35);
     }
-    
+
     .divider {
         display: flex;
         align-items: center;
         text-align: center;
         margin: 28px 0;
     }
-    
+
     .divider::before,
     .divider::after {
         content: '';
         flex: 1;
         border-bottom: 1px solid #e9ecef;
     }
-    
+
     .divider span {
         padding: 0 16px;
         color: var(--text-muted);
         font-size: 0.9rem;
     }
-    
+
     .auth-link {
         color: var(--primary);
         font-weight: 600;
         text-decoration: none;
         transition: all 0.2s ease;
     }
-    
+
     .auth-link:hover {
         color: var(--primary-dark);
         text-decoration: underline;
     }
-    
+
     /* Password toggle */
     .password-toggle {
         position: relative;
     }
-    
+
     .password-toggle .toggle-icon {
         position: absolute;
         right: 16px;
@@ -110,15 +113,15 @@
         color: var(--text-muted);
         transition: color 0.3s ease;
     }
-    
+
     .password-toggle .toggle-icon:hover {
         color: var(--primary);
     }
-    
+
     .password-toggle .form-control {
         padding-right: 48px;
     }
-    
+
     /* Error text */
     .text-danger-custom {
         color: var(--danger);
@@ -136,21 +139,21 @@
                 <div class="mb-3">
                     <i class="bi bi-flower1 fs-1 text-white"></i>
                 </div>
-                <h3 class="text-white">Create Account</h3>
-                <p class="mb-0 text-white-80">Join our agricultural community</p>
+                <h3 class="text-white">{% trans "Create Account" %}</h3>
+                <p class="mb-0 text-white-80">{% trans "Join our agricultural community" %}</p>
             </div>
             <div class="card-body">
                 {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} alert-custom fade-in mb-4" role="alert">
-                            <i class="bi 
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-custom fade-in mb-4" role="alert">
+                    <i class="bi 
                                 {% if message.tags == 'success' %}bi-check-circle-fill
                                 {% elif message.tags == 'error' %}bi-x-circle-fill
                                 {% elif message.tags == 'warning' %}bi-exclamation-triangle-fill
                                 {% else %}bi-info-circle-fill{% endif %} me-2"></i>
-                            {{ message }}
-                        </div>
-                    {% endfor %}
+                    {{ message }}
+                </div>
+                {% endfor %}
                 {% endif %}
 
                 <form method="post">
@@ -158,80 +161,76 @@
                     <div class="row g-4">
                         <div class="col-md-6">
                             <label for="id_username" class="form-label-custom">
-                                <i class="bi bi-person"></i>Username
-                            </label>
+                                <i class="bi bi-person"></i>{% trans "Username" %}</label>
                             {{ form.username }}
                             {% if form.username.errors %}
-                                <div class="text-danger-custom">
-                                    {% for error in form.username.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="text-danger-custom">
+                                {% for error in form.username.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                         </div>
                         <div class="col-md-6">
                             <label for="id_email" class="form-label-custom">
-                                <i class="bi bi-envelope"></i>Email Address
-                            </label>
+                                <i class="bi bi-envelope"></i>{% trans "Email Address" %}</label>
                             {{ form.email }}
                             {% if form.email.errors %}
-                                <div class="text-danger-custom">
-                                    {% for error in form.email.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="text-danger-custom">
+                                {% for error in form.email.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                         </div>
                     </div>
-                    
+
                     <div class="row g-4 mt-2">
                         <div class="col-md-6">
                             <label for="id_password1" class="form-label-custom">
-                                <i class="bi bi-key"></i>Password
-                            </label>
+                                <i class="bi bi-key"></i>{% trans "Password" %}</label>
                             <div class="password-toggle">
                                 {{ form.password1 }}
-                                <i class="bi bi-eye-slash toggle-icon" onclick="togglePassword(this, 'id_password1')"></i>
+                                <i class="bi bi-eye-slash toggle-icon"
+                                    onclick="togglePassword(this, 'id_password1')"></i>
                             </div>
                             {% if form.password1.errors %}
-                                <div class="text-danger-custom">
-                                    {% for error in form.password1.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="text-danger-custom">
+                                {% for error in form.password1.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                         </div>
                         <div class="col-md-6">
                             <label for="id_password2" class="form-label-custom">
-                                <i class="bi bi-key-fill"></i>Confirm Password
-                            </label>
+                                <i class="bi bi-key-fill"></i>{% trans "Confirm Password" %}</label>
                             <div class="password-toggle">
                                 {{ form.password2 }}
-                                <i class="bi bi-eye-slash toggle-icon" onclick="togglePassword(this, 'id_password2')"></i>
+                                <i class="bi bi-eye-slash toggle-icon"
+                                    onclick="togglePassword(this, 'id_password2')"></i>
                             </div>
                             {% if form.password2.errors %}
-                                <div class="text-danger-custom">
-                                    {% for error in form.password2.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="text-danger-custom">
+                                {% for error in form.password2.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                         </div>
                     </div>
-                    
+
                     <div class="row g-4 mt-2">
                         <div class="col-md-6">
                             <label for="id_role" class="form-label-custom">
-                                <i class="bi bi-person-badge"></i>Role
-                            </label>
+                                <i class="bi bi-person-badge"></i>{% trans "Role" %}</label>
                             {{ form.role }}
                             {% if form.role.errors %}
-                                <div class="text-danger-custom">
-                                    {% for error in form.role.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="text-danger-custom">
+                                {% for error in form.role.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                         </div>
                         <div class="col-md-6">
                             <label for="id_phone_number" class="form-label-custom">
-                                <i class="bi bi-phone"></i>Phone Number (Optional)
-                            </label>
+                                <i class="bi bi-phone"></i>{% trans "Phone Number (Optional)" %}</label>
                             {{ form.phone_number }}
                             {% if form.phone_number.errors %}
-                                <div class="text-danger-custom">
-                                    {% for error in form.phone_number.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="text-danger-custom">
+                                {% for error in form.phone_number.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                         </div>
                     </div>
@@ -239,34 +238,31 @@
                     <div class="row g-4 mt-2">
                         <div class="col-md-12">
                             <label for="id_nid_number" class="form-label-custom">
-                                <i class="bi bi-credit-card-2-front"></i>NID Number (Optional)
-                            </label>
+                                <i class="bi bi-credit-card-2-front"></i>{% trans "NID Number (Optional)" %}</label>
                             {{ form.nid_number }}
                             {% if form.nid_number.errors %}
-                                <div class="text-danger-custom">
-                                    {% for error in form.nid_number.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="text-danger-custom">
+                                {% for error in form.nid_number.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
-                            <div class="form-text">Enter your National ID number for account verification</div>
+                            <div class="form-text">{% trans "Enter your National ID number for account verification" %}
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="d-grid mt-4">
                         <button type="submit" class="btn btn-primary-custom btn-auth">
-                            <i class="bi bi-person-plus me-2"></i>Create Account
-                        </button>
+                            <i class="bi bi-person-plus me-2"></i>{% trans "Create Account" %}</button>
                     </div>
                 </form>
 
                 <div class="divider">
-                    <span>already have an account?</span>
+                    <span>{% trans "already have an account?" %}</span>
                 </div>
 
                 <div class="text-center">
-                    <p class="mb-0">Sign in instead 
-                        <a href="{% url 'login' %}" class="auth-link">
-                            <i class="bi bi-box-arrow-in-right me-1"></i>Sign In
-                        </a>
+                    <p class="mb-0">{% trans "Sign in instead" %}<a href="{% url 'login' %}" class="auth-link">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>{% trans "Sign In" %}</a>
                     </p>
                 </div>
             </div>
@@ -275,15 +271,15 @@
 </div>
 
 <script>
-function togglePassword(icon, inputId) {
-    const input = document.getElementById(inputId);
-    if (input.type === 'password') {
-        input.type = 'text';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-    } else {
-        input.type = 'password';
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
+    function togglePassword(icon, inputId) {
+        const input = document.getElementById(inputId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('bi-eye-slash', 'bi-eye');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('bi-eye', 'bi-eye-slash');
+        }
     }
-}
 </script>
 {% endblock %}

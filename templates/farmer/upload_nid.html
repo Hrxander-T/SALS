@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Upload NID Card - Smart Agricultural Loan System{% endblock %}
 
@@ -263,8 +264,8 @@
             <div class="card-header d-flex align-items-center">
                 <i class="bi bi-person-badge fs-4 me-3"></i>
                 <div>
-                    <h4 class="mb-0">Upload NID Card</h4>
-                    <small class="opacity-75">Verify your identity</small>
+                    <h4 class="mb-0">{% trans "Upload NID Card" %}</h4>
+                    <small class="opacity-75">{% trans "Verify your identity" %}</small>
                 </div>
             </div>
             <div class="card-body">
@@ -287,8 +288,8 @@
                         <i class="bi bi-shield-check"></i>
                     </div>
                     <div>
-                        <h6>Important</h6>
-                        <p>Please upload clear images or PDFs of both sides of your National ID card. This helps verify your identity for loan applications.</p>
+                        <h6>{% trans "Important" %}</h6>
+                        <p>{% trans "Please upload clear images or PDFs of both sides of your National ID card. This helps verify your identity for loan applications." %}</p>
                     </div>
                 </div>
 
@@ -297,14 +298,14 @@
                 <div class="alert alert-success d-flex align-items-center mb-4">
                     <i class="bi bi-check-circle-fill me-2 fs-5"></i>
                     <div>
-                        <strong>Your NID is verified!</strong> You can now apply for loans.
+                        <strong>{% trans "Your NID is verified!" %}</strong> You can now apply for loans.
                     </div>
                 </div>
                 {% elif user.nid_card_front %}
                 <div class="alert alert-warning d-flex align-items-center mb-4">
                     <i class="bi bi-hourglass-split me-2 fs-5"></i>
                     <div>
-                        <strong>Your NID is pending verification.</strong> Please wait for a bank officer to verify your documents.
+                        <strong>{% trans "Your NID is pending verification." %}</strong> Please wait for a bank officer to verify your documents.
                     </div>
                 </div>
                 {% endif %}
@@ -313,7 +314,7 @@
                 {% if user.nid_card_front or user.nid_card_back %}
                 <div class="warning-box mb-4">
                     <i class="bi bi-exclamation-triangle"></i>
-                    <span>You have already uploaded NID cards. Uploading new ones will replace the existing ones.</span>
+                    <span>{% trans "You have already uploaded NID cards. Uploading new ones will replace the existing ones." %}</span>
                 </div>
                 {% endif %}
 
@@ -323,17 +324,16 @@
                     <!-- Front Side Upload -->
                     <div class="mb-4">
                         <label class="form-label-custom fw-bold mb-3">
-                            <i class="bi bi-card-heading me-2"></i>NID Card Front Side (Image or PDF)
-                        </label>
+                            <i class="bi bi-card-heading me-2"></i>{% trans "NID Card Front Side (Image or PDF)" %}</label>
                         <div class="file-upload-area" id="upload-front">
                             <input type="file" id="id_nid_card_front" name="nid_card_front" accept=".jpg,.jpeg,.png,.pdf" onchange="handleFileSelect(this, 'front')">
                             <div class="upload-icon">
                                 <i class="bi bi-cloud-arrow-up"></i>
                             </div>
                             <div class="upload-text">
-                                <h5>Drop your file here or click to browse</h5>
-                                <p>Upload front side of your NID card</p>
-                                <div class="file-types">Accepted: JPG, JPEG, PNG, PDF (Max 10MB)</div>
+                                <h5>{% trans "Drop your file here or click to browse" %}</h5>
+                                <p>{% trans "Upload front side of your NID card" %}</p>
+                                <div class="file-types">{% trans "Accepted: JPG, JPEG, PNG, PDF (Max 10MB)" %}</div>
                             </div>
                         </div>
                         <div class="file-preview" id="preview-front">
@@ -358,17 +358,16 @@
                     <!-- Back Side Upload -->
                     <div class="mb-4">
                         <label class="form-label-custom fw-bold mb-3">
-                            <i class="bi bi-card-text me-2"></i>NID Card Back Side (Image or PDF)
-                        </label>
+                            <i class="bi bi-card-text me-2"></i>{% trans "NID Card Back Side (Image or PDF)" %}</label>
                         <div class="file-upload-area" id="upload-back">
                             <input type="file" id="id_nid_card_back" name="nid_card_back" accept=".jpg,.jpeg,.png,.pdf" onchange="handleFileSelect(this, 'back')">
                             <div class="upload-icon">
                                 <i class="bi bi-cloud-arrow-up"></i>
                             </div>
                             <div class="upload-text">
-                                <h5>Drop your file here or click to browse</h5>
-                                <p>Upload back side of your NID card</p>
-                                <div class="file-types">Accepted: JPG, JPEG, PNG, PDF (Max 10MB)</div>
+                                <h5>{% trans "Drop your file here or click to browse" %}</h5>
+                                <p>{% trans "Upload back side of your NID card" %}</p>
+                                <div class="file-types">{% trans "Accepted: JPG, JPEG, PNG, PDF (Max 10MB)" %}</div>
                             </div>
                         </div>
                         <div class="file-preview" id="preview-back">
@@ -393,11 +392,9 @@
                     <!-- Action Buttons -->
                     <div class="d-flex justify-content-between pt-3">
                         <a href="{% url 'farmer_profile' %}" class="btn btn-secondary btn-cancel">
-                            <i class="bi bi-arrow-left me-2"></i>Cancel
-                        </a>
+                            <i class="bi bi-arrow-left me-2"></i>{% trans "Cancel" %}</a>
                         <button type="submit" class="btn btn-primary-custom btn-upload">
-                            <i class="bi bi-upload me-2"></i>Upload NID
-                        </button>
+                            <i class="bi bi-upload me-2"></i>{% trans "Upload NID" %}</button>
                     </div>
                 </form>
             </div>
@@ -430,7 +427,7 @@ function handleFileSelect(input, side) {
     
     // Update upload area
     uploadArea.querySelector('.upload-icon i').className = 'bi bi-check-circle-fill text-success';
-    uploadArea.querySelector('h5').textContent = 'File selected!';
+    uploadArea.querySelector('h5').textContent = '{% trans "File selected!" %}';
     uploadArea.querySelector('p').textContent = file.name;
 }
 
@@ -444,8 +441,8 @@ function removeFile(side) {
     
     // Reset upload area
     uploadArea.querySelector('.upload-icon i').className = 'bi bi-cloud-arrow-up';
-    uploadArea.querySelector('h5').textContent = 'Drop your file here or click to browse';
-    uploadArea.querySelector('p').textContent = side === 'front' ? 'Upload front side of your NID card' : 'Upload back side of your NID card';
+    uploadArea.querySelector('h5').textContent = '{ %trans "Drop your file here or click to browse" %}';
+    uploadArea.querySelector('p').textContent = side === 'front' ? '{ % trans "Upload front side of your NID card" % }' : '{ % trans "Upload back side of your NID card" %}';
 }
 
 // Drag and drop

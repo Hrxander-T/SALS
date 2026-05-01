@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}NID Verification - Smart Agricultural Loan System{% endblock %}
 
 {% block content %}
 <div class="row mb-4">
     <div class="col-12">
-        <h3 class="fw-bold"><i class="bi bi-person-badge me-2"></i>NID Verification</h3>
-        <p class="text-muted">Review and verify farmers' NID cards</p>
+        <h3 class="fw-bold"><i class="bi bi-person-badge me-2"></i>{% trans "NID Verification" %}</h3>
+        <p class="text-muted">{% trans "Review and verify farmers' NID cards" %}</p>
     </div>
 </div>
 
@@ -14,7 +15,7 @@
     <div class="col-md-4">
         <div class="card shadow-sm">
             <div class="card-body text-center">
-                <h5 class="text-muted">Total with NID</h5>
+                <h5 class="text-muted">{% trans "Total with NID" %}</h5>
                 <h2 class="mb-0">{{ total_farmers_with_nid }}</h2>
             </div>
         </div>
@@ -22,7 +23,7 @@
     <div class="col-md-4">
         <div class="card shadow-sm">
             <div class="card-body text-center">
-                <h5 class="text-success">Verified</h5>
+                <h5 class="text-success">{% trans "Verified" %}</h5>
                 <h2 class="mb-0 text-success">{{ verified_count }}</h2>
             </div>
         </div>
@@ -30,7 +31,7 @@
     <div class="col-md-4">
         <div class="card shadow-sm">
             <div class="card-body text-center">
-                <h5 class="text-warning">Pending</h5>
+                <h5 class="text-warning">{% trans "Pending" %}</h5>
                 <h2 class="mb-0 text-warning">{{ pending_count }}</h2>
             </div>
         </div>
@@ -44,11 +45,9 @@
                 All
             </a>
             <a href="{% url 'nid_verification_list' %}?nid_status=pending" class="btn {% if nid_filter == 'pending' %}btn-warning{% else %}btn-outline-warning{% endif %}">
-                <i class="bi bi-clock me-1"></i>Pending
-            </a>
+                <i class="bi bi-clock me-1"></i>{% trans "Pending" %}</a>
             <a href="{% url 'nid_verification_list' %}?nid_status=verified" class="btn {% if nid_filter == 'verified' %}btn-success{% else %}btn-outline-success{% endif %}">
-                <i class="bi bi-check-circle me-1"></i>Verified
-            </a>
+                <i class="bi bi-check-circle me-1"></i>{% trans "Verified" %}</a>
         </div>
     </div>
 </div>
@@ -61,12 +60,12 @@
                     <table class="table table-hover mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th>Username</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>NID Status</th>
-                                <th>Verified By</th>
-                                <th>Actions</th>
+                                <th>{% trans "Username" %}</th>
+                                <th>{% trans "Name" %}</th>
+                                <th>{% trans "Email" %}</th>
+                                <th>{% trans "NID Status" %}</th>
+                                <th>{% trans "Verified By" %}</th>
+                                <th>{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,9 +76,9 @@
                                 <td>{{ farmer.email }}</td>
                                 <td>
                                     {% if farmer.nid_verified %}
-                                        <span class="badge bg-success">Verified</span>
+                                        <span class="badge bg-success">{% trans "Verified" %}</span>
                                     {% else %}
-                                        <span class="badge bg-warning text-dark">Pending</span>
+                                        <span class="badge bg-warning text-dark">{% trans "Pending" %}</span>
                                     {% endif %}
                                 </td>
                                 <td>
@@ -121,7 +120,7 @@
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if nid_filter %}&nid_status={{ nid_filter }}{% endif %}">Previous</a>
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if nid_filter %}&nid_status={{ nid_filter }}{% endif %}">{% trans "Previous" %}</a>
                 </li>
                 {% endif %}
                 <li class="page-item active">
@@ -129,7 +128,7 @@
                 </li>
                 {% if page_obj.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if nid_filter %}&nid_status={{ nid_filter }}{% endif %}">Next</a>
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if nid_filter %}&nid_status={{ nid_filter }}{% endif %}">{% trans "Next" %}</a>
                 </li>
                 {% endif %}
             </ul>

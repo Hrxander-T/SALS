@@ -1,24 +1,27 @@
+{% load i18n %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Smart Agricultural Loan System - Empowering Farmers with Easy Access to Credit">
     <title>{% block title %}Smart Agricultural Loan System{% endblock %}</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts - Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    
+
     <style>
         :root {
             --primary: #2e7d32;
@@ -32,17 +35,17 @@
             --warm-cream: #faf8f5;
             --deep-forest: #1a3a1a;
         }
-        
+
         * {
             font-family: 'Poppins', sans-serif;
         }
-        
+
         body {
             background: linear-gradient(135deg, var(--warm-cream) 0%, #f0f4f0 50%, var(--secondary-light) 100%);
             min-height: 100vh;
             color: var(--text-primary);
         }
-        
+
         /* Navbar Styles */
         .navbar-custom {
             background: linear-gradient(135deg, var(--deep-forest), var(--primary-dark)) !important;
@@ -51,12 +54,12 @@
             padding: 16px 0;
             transition: all 0.3s ease;
         }
-        
+
         .navbar-custom.navbar-scrolled {
             padding: 10px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
-        
+
         .navbar-brand {
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -65,11 +68,11 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         .navbar-brand i {
             font-size: 1.6rem;
         }
-        
+
         .nav-link {
             transition: all 0.3s ease;
             border-radius: 10px;
@@ -77,7 +80,7 @@
             font-weight: 500;
             position: relative;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -90,16 +93,53 @@
             transform: translateX(-50%);
             border-radius: 2px;
         }
-        
+
         .nav-link:hover::after,
         .nav-link.active::after {
             width: 60%;
         }
-        
+
         .nav-link:hover {
             background: rgba(255, 255, 255, 0.15);
         }
-        
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 4px 6px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        .lang-divider {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+        }
+
         .btn-register {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
@@ -108,26 +148,26 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .btn-register:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(46, 125, 50, 0.35);
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         }
-        
+
         /* Footer Styles */
         .footer-custom {
             background: linear-gradient(135deg, var(--deep-forest), var(--primary-dark));
             color: white;
             padding: 48px 0 24px;
         }
-        
+
         .footer-custom h5 {
             color: white;
             font-weight: 600;
             margin-bottom: 16px;
         }
-        
+
         .footer-custom a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
@@ -135,34 +175,35 @@
             display: block;
             padding: 4px 0;
         }
-        
+
         .footer-custom a:hover {
             color: white;
             padding-left: 8px;
         }
-        
+
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 24px;
             margin-top: 32px;
         }
-        
+
         /* Animations */
         .fade-in-up {
             animation: fadeInUp 0.6s ease forwards;
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         /* Loading Spinner */
         .spinner-wrapper {
             position: fixed;
@@ -179,12 +220,12 @@
             visibility: hidden;
             transition: all 0.3s ease;
         }
-        
+
         .spinner-wrapper.active {
             opacity: 1;
             visibility: visible;
         }
-        
+
         .spinner-custom {
             width: 50px;
             height: 50px;
@@ -193,13 +234,16 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
     {% block extra_css %}{% endblock %}
 </head>
+
 <body>
     <!-- Loading Spinner -->
     <div class="spinner-wrapper">
@@ -211,29 +255,40 @@
         <div class="container">
             <a class="navbar-brand" href="/">
                 <i class="bi bi-flower1"></i>
-                <span>SmartAgri Loan</span>
+                <span>{% trans "SmartAgri Loan" %}</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
+
+                    <!-- Language switcher -->
+                    <li class="nav-item ms-lg-2">
+                        <div class="lang-switcher">
+                            <a href="/en/" class="lang-btn {% if LANGUAGE_CODE != 'bn' %}active{% endif %}">EN</a>
+                            <span class="lang-divider">|</span>
+                            <a href="/bn/" class="lang-btn {% if LANGUAGE_CODE == 'bn' %}active{% endif %}">বাং</a>
+                        </div>
+                    </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/">{% trans "Home" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
+                        <a class="nav-link" href="#features">{% trans "Features" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#about">{% trans "About" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+                        <a class="nav-link" href="{% url 'login' %}">{% trans "Sign In" %}</a>
                     </li>
                     <li class="nav-item ms-lg-3">
                         <a class="nav-link btn btn-register text-white" href="{% url 'register' %}">
-                            <i class="bi bi-person-plus me-1"></i>Register
-                        </a>
+                            <i class="bi bi-person-plus me-1"></i>{% trans "Register" %}</a>
                     </li>
                 </ul>
             </div>
@@ -250,8 +305,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5><i class="bi bi-flower1 me-2"></i>SmartAgri Loan</h5>
-                    <p class="text-white-80">Empowering farmers with easy access to credit for agricultural growth and development.</p>
+                    <h5><i class="bi bi-flower1 me-2"></i>{% trans "SmartAgri Loan" %}</h5>
+                    <p class="text-white-80">{% trans "Empowering farmers with easy access to credit for agricultural
+                        growth and development." %}</p>
                     <div class="d-flex gap-3">
                         <a href="#"><i class="bi bi-facebook fs-5"></i></a>
                         <a href="#"><i class="bi bi-twitter-x fs-5"></i></a>
@@ -260,24 +316,24 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h5>Quick Links</h5>
-                    <a href="/">Home</a>
-                    <a href="#features">Features</a>
-                    <a href="#about">About Us</a>
-                    <a href="{% url 'register' %}">Register</a>
+                    <h5>{% trans "Quick Links" %}</h5>
+                    <a href="/">{% trans "Home" %}</a>
+                    <a href="#features">{% trans "Features" %}</a>
+                    <a href="#about">{% trans "About Us" %}</a>
+                    <a href="{% url 'register' %}">{% trans "Register" %}</a>
                 </div>
                 <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-                    <h5>Services</h5>
-                    <a href="#">Crop Loan</a>
-                    <a href="#">Equipment Loan</a>
-                    <a href="#">Livestock Loan</a>
-                    <a href="#">Storage Loan</a>
+                    <h5>{% trans "Services" %}</h5>
+                    <a href="#">{% trans "Crop Loan" %}</a>
+                    <a href="#">{% trans "Equipment Loan" %}</a>
+                    <a href="#">{% trans "Livestock Loan" %}</a>
+                    <a href="#">{% trans "Storage Loan" %}</a>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <h5>Contact</h5>
+                    <h5>{% trans "Contact" %}</h5>
                     <a href="tel:+8801234567890"><i class="bi bi-phone me-2"></i>+880 123 456 7890</a>
                     <a href="mailto:info@smartagri.com"><i class="bi bi-envelope me-2"></i>info@smartagri.com</a>
-                    <a href="#"><i class="bi bi-geo-alt me-2"></i>Dhaka, Bangladesh</a>
+                    <a href="#"><i class="bi bi-geo-alt me-2"></i>{% trans "Dhaka, Bangladesh" %}</a>
                 </div>
             </div>
             <div class="footer-bottom text-center">
@@ -288,10 +344,11 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Custom JS -->
     <script src="{% static 'js/custom.js' %}"></script>
-    
+
     {% block extra_js %}{% endblock %}
 </body>
+
 </html>

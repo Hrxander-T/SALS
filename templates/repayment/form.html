@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Make Repayment - Smart Agricultural Loan System{% endblock %}
 
@@ -7,7 +8,7 @@
     <div class="col-md-8 mx-auto">
         <div class="card shadow">
             <div class="card-header py-3">
-                <h4 class="mb-0"><i class="bi bi-cash-stack me-2"></i>Make Repayment</h4>
+                <h4 class="mb-0"><i class="bi bi-cash-stack me-2"></i>{% trans "Make Repayment" %}</h4>
             </div>
             <div class="card-body p-4">
                 {% if messages %}
@@ -20,15 +21,15 @@
                 {% endif %}
 
                 <div class="alert alert-info mb-4">
-                    <h5>Loan Summary</h5>
+                    <h5>{% trans "Loan Summary" %}</h5>
                     <div class="row">
                         <div class="col-md-6">
-                            <p class="mb-1"><strong>Loan Amount:</strong> ৳{{ loan.amount|floatformat:2 }}</p>
-                            <p class="mb-1"><strong>Monthly EMI:</strong> ৳{{ loan.emi|floatformat:2 }}</p>
+                            <p class="mb-1"><strong>{% trans "Loan Amount:" %}</strong> ৳{{ loan.amount|floatformat:2 }}</p>
+                            <p class="mb-1"><strong>{% trans "Monthly EMI:" %}</strong> ৳{{ loan.emi|floatformat:2 }}</p>
                         </div>
                         <div class="col-md-6">
-                            <p class="mb-1"><strong>Duration:</strong> {{ loan.duration_months }} months</p>
-                            <p class="mb-0"><strong>Remaining Balance:</strong> <span class="text-danger">৳{{ remaining|floatformat:2 }}</span></p>
+                            <p class="mb-1"><strong>{% trans "Duration:" %}</strong> {{ loan.duration_months }} months</p>
+                            <p class="mb-0"><strong>{% trans "Remaining Balance:" %}</strong> <span class="text-danger">৳{{ remaining|floatformat:2 }}</span></p>
                         </div>
                     </div>
                 </div>
@@ -36,7 +37,7 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="id_amount_paid" class="form-label">Payment Amount (BDT) *</label>
+                        <label for="id_amount_paid" class="form-label">{% trans "Payment Amount (BDT) *" %}</label>
                         {{ form.amount_paid }}
                         <div class="form-text">Maximum: ৳{{ remaining|floatformat:2 }}</div>
                         {% if form.amount_paid.errors %}
@@ -45,7 +46,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="id_notes" class="form-label">Notes (Optional)</label>
+                        <label for="id_notes" class="form-label">{% trans "Notes (Optional)" %}</label>
                         {{ form.notes }}
                         {% if form.notes.errors %}
                             <div class="text-danger small">{{ form.notes.errors }}</div>
@@ -54,9 +55,8 @@
 
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-success">
-                            <i class="bi bi-check-lg me-1"></i>Record Payment
-                        </button>
-                        <a href="{% url 'loan_history' %}" class="btn btn-secondary">Cancel</a>
+                            <i class="bi bi-check-lg me-1"></i>{% trans "Record Payment" %}</button>
+                        <a href="{% url 'loan_history' %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
                     </div>
                 </form>
             </div>

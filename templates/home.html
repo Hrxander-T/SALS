@@ -1,4 +1,5 @@
 {% extends 'landing_base.html' %}
+{% load i18n %}
 
 {% block title %}Welcome - Smart Agricultural Loan System{% endblock %}
 
@@ -12,7 +13,7 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     .hero-section::before {
         content: '';
         position: absolute;
@@ -20,10 +21,10 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
         animation: rotate 25s linear infinite;
     }
-    
+
     .hero-section::after {
         content: '';
         position: absolute;
@@ -33,12 +34,17 @@
         height: 100px;
         background: linear-gradient(to top, var(--bg-primary), transparent);
     }
-    
+
     @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
     }
-    
+
     .hero-section h1 {
         font-weight: 700;
         font-size: 3.8rem;
@@ -48,7 +54,7 @@
         background-clip: text;
         margin-bottom: 20px;
     }
-    
+
     .hero-section .lead {
         font-size: 1.35rem;
         opacity: 0.92;
@@ -56,14 +62,14 @@
         margin: 0 auto 40px;
         line-height: 1.7;
     }
-    
+
     .hero-buttons {
         display: flex;
         gap: 16px;
         justify-content: center;
         flex-wrap: wrap;
     }
-    
+
     .btn-hero {
         border-radius: 14px;
         padding: 16px 40px;
@@ -73,7 +79,7 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     .btn-hero::before {
         content: '';
         position: absolute;
@@ -81,39 +87,39 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
         transition: left 0.5s ease;
     }
-    
+
     .btn-hero:hover::before {
         left: 100%;
     }
-    
+
     .btn-hero-primary {
         background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
         border: none;
         color: white;
         box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
     }
-    
+
     .btn-hero-primary:hover {
         transform: translateY(-4px);
         box-shadow: 0 15px 35px rgba(76, 175, 80, 0.5);
         background: linear-gradient(135deg, #43a047 0%, #4caf50 100%);
     }
-    
+
     .btn-hero-outline {
         background: transparent;
         border: 2px solid rgba(255, 255, 255, 0.7);
         color: white;
     }
-    
+
     .btn-hero-outline:hover {
         background: rgba(255, 255, 255, 0.15);
         border-color: white;
         transform: translateY(-4px);
     }
-    
+
     /* Stats Section */
     .stats-section {
         background: var(--bg-primary);
@@ -122,7 +128,7 @@
         position: relative;
         z-index: 10;
     }
-    
+
     .stat-card-mini {
         background: white;
         border-radius: 20px;
@@ -131,12 +137,12 @@
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         transition: all 0.4s ease;
     }
-    
+
     .stat-card-mini:hover {
         transform: translateY(-8px);
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     }
-    
+
     .stat-card-mini .icon {
         width: 70px;
         height: 70px;
@@ -149,45 +155,45 @@
         font-size: 1.8rem;
         color: var(--primary);
     }
-    
+
     .stat-card-mini h3 {
         font-size: 2.2rem;
         font-weight: 700;
         color: var(--primary);
         margin-bottom: 5px;
     }
-    
+
     .stat-card-mini p {
         color: var(--text-secondary);
         margin-bottom: 0;
         font-weight: 500;
     }
-    
+
     /* Features Section */
     .features-section {
         padding: 100px 0;
         background: var(--bg-primary);
     }
-    
+
     .section-title {
         text-align: center;
         margin-bottom: 60px;
     }
-    
+
     .section-title h2 {
         font-size: 2.5rem;
         font-weight: 700;
         color: var(--text-primary);
         margin-bottom: 15px;
     }
-    
+
     .section-title p {
         font-size: 1.1rem;
         color: var(--text-secondary);
         max-width: 600px;
         margin: 0 auto;
     }
-    
+
     .feature-card {
         border: none;
         border-radius: 24px;
@@ -198,7 +204,7 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     .feature-card::before {
         content: '';
         position: absolute;
@@ -211,16 +217,16 @@
         transform-origin: left;
         transition: transform 0.5s ease;
     }
-    
+
     .feature-card:hover {
         transform: translateY(-12px);
         box-shadow: 0 25px 60px rgba(46, 125, 50, 0.2);
     }
-    
+
     .feature-card:hover::before {
         transform: scaleX(1);
     }
-    
+
     .feature-icon {
         width: 90px;
         height: 90px;
@@ -232,7 +238,7 @@
         margin: 0 auto 25px;
         transition: all 0.4s ease;
     }
-    
+
     .feature-icon i {
         font-size: 2.5rem;
         background: linear-gradient(135deg, var(--primary-dark), var(--primary));
@@ -240,44 +246,44 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
-    
+
     .feature-card:hover .feature-icon {
         transform: scale(1.1) rotate(5deg);
         background: linear-gradient(135deg, var(--primary-dark), var(--primary));
     }
-    
+
     .feature-card:hover .feature-icon i {
         -webkit-text-fill-color: white;
         background: white;
         -webkit-background-clip: text;
         background-clip: text;
     }
-    
+
     .feature-card h4 {
         font-size: 1.35rem;
         font-weight: 600;
         margin-bottom: 12px;
         color: var(--text-primary);
     }
-    
+
     .feature-card p {
         color: var(--text-secondary);
         line-height: 1.7;
         margin-bottom: 0;
     }
-    
+
     /* How It Works */
     .how-it-works {
         padding: 100px 0;
         background: linear-gradient(180deg, var(--bg-primary) 0%, #f0f4f0 100%);
     }
-    
+
     .step-card {
         text-align: center;
         padding: 30px;
         position: relative;
     }
-    
+
     .step-number {
         width: 60px;
         height: 60px;
@@ -292,17 +298,17 @@
         margin: 0 auto 20px;
         box-shadow: 0 8px 25px rgba(46, 125, 50, 0.35);
     }
-    
+
     .step-card h4 {
         font-weight: 600;
         margin-bottom: 10px;
     }
-    
+
     .step-card p {
         color: var(--text-secondary);
         margin-bottom: 0;
     }
-    
+
     /* CTA Section */
     .cta-section {
         background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
@@ -310,7 +316,7 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     .cta-section::before {
         content: '';
         position: absolute;
@@ -318,22 +324,22 @@
         right: -20%;
         width: 60%;
         height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     }
-    
+
     .cta-section h2 {
         font-size: 2.5rem;
         font-weight: 700;
         color: white;
         margin-bottom: 20px;
     }
-    
+
     .cta-section p {
         font-size: 1.15rem;
         color: rgba(255, 255, 255, 0.9);
         margin-bottom: 30px;
     }
-    
+
     .btn-cta {
         background: white;
         color: var(--primary);
@@ -343,47 +349,47 @@
         font-size: 1.1rem;
         transition: all 0.4s ease;
     }
-    
+
     .btn-cta:hover {
         transform: translateY(-4px);
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         background: #f5f5f5;
         color: var(--primary-dark);
     }
-    
+
     /* Responsive */
     @media (max-width: 992px) {
         .hero-section h1 {
             font-size: 2.8rem;
         }
-        
+
         .stats-section {
             margin-top: 0;
             padding: 40px 0;
         }
-        
+
         .stat-card-mini {
             margin-bottom: 20px;
         }
     }
-    
+
     @media (max-width: 768px) {
         .hero-section {
             padding: 80px 0 60px;
         }
-        
+
         .hero-section h1 {
             font-size: 2.2rem;
         }
-        
+
         .hero-section .lead {
             font-size: 1.1rem;
         }
-        
+
         .section-title h2 {
             font-size: 2rem;
         }
-        
+
         .features-section,
         .how-it-works,
         .cta-section {
@@ -399,15 +405,15 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 text-center">
-                <h1 class="fade-in-up">Smart Agricultural<br>Loan System</h1>
-                <p class="lead fade-in-up" style="animation-delay: 0.2s;">Empowering farmers with easy access to credit for agricultural growth and sustainable development. Simple process, quick approval, trusted service.</p>
+                <h1 class="fade-in-up">{% trans "Smart Agricultural" %}<br>{% trans "Loan System" %}</h1>
+                <p class="lead fade-in-up" style="animation-delay: 0.2s;">{% trans "Empowering farmers with easy access
+                    to credit for agricultural growth and sustainable development. Simple process, quick approval,
+                    trusted service." %}</p>
                 <div class="hero-buttons fade-in-up" style="animation-delay: 0.4s;">
                     <a href="{% url 'login' %}" class="btn btn-hero btn-hero-primary">
-                        <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
-                    </a>
+                        <i class="bi bi-box-arrow-in-right me-2"></i>{% trans "Sign In" %}</a>
                     <a href="{% url 'register' %}" class="btn btn-hero btn-hero-outline">
-                        <i class="bi bi-person-plus me-2"></i>Register Now
-                    </a>
+                        <i class="bi bi-person-plus me-2"></i>{% trans "Register Now" %}</a>
                 </div>
             </div>
         </div>
@@ -422,28 +428,28 @@
                 <div class="stat-card-mini">
                     <div class="icon"><i class="bi bi-people"></i></div>
                     <h3 data-counter="5000">5,000+</h3>
-                    <p>Farmers Served</p>
+                    <p>{% trans "Farmers Served" %}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="stat-card-mini">
                     <div class="icon"><i class="bi bi-currency-dollar"></i></div>
                     <h3 data-counter="500">৳500M+</h3>
-                    <p>Loans Disbursed</p>
+                    <p>{% trans "Loans Disbursed" %}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="stat-card-mini">
                     <div class="icon"><i class="bi bi-check-circle"></i></div>
                     <h3 data-counter="98">98%</h3>
-                    <p>Approval Rate</p>
+                    <p>{% trans "Approval Rate" %}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="stat-card-mini">
                     <div class="icon"><i class="bi bi-star"></i></div>
                     <h3 data-counter="4.9">4.9</h3>
-                    <p>User Rating</p>
+                    <p>{% trans "User Rating" %}</p>
                 </div>
             </div>
         </div>
@@ -454,8 +460,8 @@
 <section class="features-section" id="features">
     <div class="container">
         <div class="section-title">
-            <h2>Our Features</h2>
-            <p>Everything you need to manage your agricultural loans efficiently</p>
+            <h2>{% trans "Our Features" %}</h2>
+            <p>{% trans "Everything you need to manage your agricultural loans efficiently" %}</p>
         </div>
         <div class="row g-4">
             <div class="col-md-4">
@@ -463,8 +469,9 @@
                     <div class="feature-icon">
                         <i class="bi bi-file-earmark-text"></i>
                     </div>
-                    <h4>Easy Applications</h4>
-                    <p>Apply for loans with our simple, step-by-step process. Complete your application in minutes with our user-friendly interface.</p>
+                    <h4>{% trans "Easy Applications" %}</h4>
+                    <p>{% trans "Apply for loans with our simple, step-by-step process. Complete your application in
+                        minutes with our user-friendly interface." %}</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -472,8 +479,9 @@
                     <div class="feature-icon">
                         <i class="bi bi-speedometer2"></i>
                     </div>
-                    <h4>Quick Approval</h4>
-                    <p>Get fast approval on your loan applications. Our streamlined process ensures quick decision-making and disbursement.</p>
+                    <h4>{% trans "Quick Approval" %}</h4>
+                    <p>{% trans "Get fast approval on your loan applications. Our streamlined process ensures quick
+                        decision-making and disbursement." %}</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -481,8 +489,9 @@
                     <div class="feature-icon">
                         <i class="bi bi-graph-up-arrow"></i>
                     </div>
-                    <h4>Real-time Tracking</h4>
-                    <p>Monitor your loan status and repayment history in real-time through your personalized dashboard.</p>
+                    <h4>{% trans "Real-time Tracking" %}</h4>
+                    <p>{% trans "Monitor your loan status and repayment history in real-time through your personalized
+                        dashboard." %}</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -490,8 +499,9 @@
                     <div class="feature-icon">
                         <i class="bi bi-shield-check"></i>
                     </div>
-                    <h4>Secure & Reliable</h4>
-                    <p>Your data is protected with enterprise-grade security. We prioritize your privacy and data safety.</p>
+                    <h4>{% trans "Secure & Reliable" %}</h4>
+                    <p>{% trans "Your data is protected with enterprise-grade security. We prioritize your privacy and
+                        data safety." %}</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -499,8 +509,9 @@
                     <div class="feature-icon">
                         <i class="bi bi-calendar-check"></i>
                     </div>
-                    <h4>Flexible Repayment</h4>
-                    <p>Choose from flexible repayment options that suit your agricultural cycle and cash flow.</p>
+                    <h4>{% trans "Flexible Repayment" %}</h4>
+                    <p>{% trans "Choose from flexible repayment options that suit your agricultural cycle and cash
+                        flow." %}</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -508,8 +519,8 @@
                     <div class="feature-icon">
                         <i class="bi bi-headset"></i>
                     </div>
-                    <h4>24/7 Support</h4>
-                    <p>Get assistance whenever you need it with our dedicated customer support team.</p>
+                    <h4>{% trans "24/7 Support" %}</h4>
+                    <p>{% trans "Get assistance whenever you need it with our dedicated customer support team." %}</p>
                 </div>
             </div>
         </div>
@@ -520,36 +531,36 @@
 <section class="how-it-works" id="about">
     <div class="container">
         <div class="section-title">
-            <h2>How It Works</h2>
-            <p>Get your agricultural loan in four simple steps</p>
+            <h2>{% trans "How It Works" %}</h2>
+            <p>{% trans "Get your agricultural loan in four simple steps" %}</p>
         </div>
         <div class="row g-4">
             <div class="col-md-3 col-6">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <h4>Register</h4>
-                    <p>Create your account and complete your farmer profile</p>
+                    <h4>{% trans "Register" %}</h4>
+                    <p>{% trans "Create your account and complete your farmer profile" %}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <h4>Verify NID</h4>
-                    <p>Upload your National ID for verification</p>
+                    <h4>{% trans "Verify NID" %}</h4>
+                    <p>{% trans "Upload your National ID for verification" %}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <h4>Apply</h4>
-                    <p>Submit your loan application with required details</p>
+                    <h4>{% trans "Apply" %}</h4>
+                    <p>{% trans "Submit your loan application with required details" %}</p>
                 </div>
             </div>
             <div class="col-md-3 col-6">
                 <div class="step-card">
                     <div class="step-number">4</div>
-                    <h4>Receive Funds</h4>
-                    <p>Get approved and receive funds directly</p>
+                    <h4>{% trans "Receive Funds" %}</h4>
+                    <p>{% trans "Get approved and receive funds directly" %}</p>
                 </div>
             </div>
         </div>
@@ -561,11 +572,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h2>Ready to Grow Your Farm?</h2>
-                <p>Join thousands of farmers who have improved their livelihoods with our agricultural loan system. Start your journey today.</p>
+                <h2>{% trans "Ready to Grow Your Farm?" %}</h2>
+                <p>{% trans "Join thousands of farmers who have improved their livelihoods with our agricultural loan
+                    system. Start your journey today." %}</p>
                 <a href="{% url 'register' %}" class="btn btn-cta">
-                    <i class="bi bi-rocket-takeoff me-2"></i>Get Started Now
-                </a>
+                    <i class="bi bi-rocket-takeoff me-2"></i>{% trans "Get Started Now" %}</a>
             </div>
         </div>
     </div>

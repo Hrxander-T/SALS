@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-01 13:35+0000\n"
+"POT-Creation-Date: 2026-05-01 21:46+0000\n"
 "PO-Revision-Date: 2026-05-01 18:00+0600\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -181,63 +180,1326 @@ msgstr "ইংরেজি"
 msgid "Bengali"
 msgstr "বাংলা"
 
-#: templates/base.html:11
-msgid "Smart Agricultural Loan System"
-msgstr "স্মার্ট কৃষি ঋণ ব্যবস্থা"
-
-#: templates/base.html:316
-msgid "SmartAgri Loan"
-msgstr "স্মার্টএগ্রি ঋণ"
-
-#: templates/base.html:350
-msgid "Profile"
-msgstr "প্রোফাইল"
-
-#: templates/base.html:358
-msgid "Logout"
-msgstr "লগআউট"
-
-#: templates/base.html:379
-msgid "Dashboard"
-msgstr "ড্যাশবোর্ড"
-
-#: templates/base.html:387
-msgid "Loans"
-msgstr "ঋণসমূহ"
-
-#: templates/base.html:393
-msgid "Apply for Loan"
-msgstr "ঋণের জন্য আবেদন করুন"
-
-#: templates/base.html:399
-msgid "My Loans"
-msgstr "আমার ঋণসমূহ"
-
-#: templates/base.html:405
-#: templates/base.html:437
-msgid "Repayments"
-msgstr "কিস্তি পরিশোধ"
-
-#: templates/base.html:411
-msgid "My Profile"
-msgstr "আমার প্রোফাইল"
-
-#: templates/base.html:417
-msgid "Upload NID"
-msgstr "এনআইডি আপলোড করুন"
-
-#: templates/base.html:425
-msgid "Loan Applications"
-msgstr "ঋণের আবেদনসমূহ"
-
-#: templates/base.html:431
+#: templates/bank_officer/farmer_list.html:9 templates/base.html:445
+#: templates_backup/base.html:431
 msgid "Farmers"
 msgstr "কৃষকগণ"
 
-#: templates/base.html:443
+#: templates/bank_officer/farmer_list.html:10
+msgid "List of all registered farmers"
+msgstr "সকল নিবন্ধিত কৃষকদের তালিকা"
+
+#: templates/bank_officer/farmer_list.html:22
+#: templates/bank_officer/nid_verification_list.html:63
+#: templates/farmer/profile_view.html:30 templates/registration/login.html:164
+#: templates/registration/profile.html:172
+#: templates/registration/register.html:164
+msgid "Username"
+msgstr "ব্যবহারকারীর নাম"
+
+#: templates/bank_officer/farmer_list.html:23
+#: templates/bank_officer/nid_verification_list.html:64
+msgid "Name"
+msgstr "নাম"
+
+#: templates/bank_officer/farmer_list.html:24
+#: templates/bank_officer/nid_verification_list.html:65
+#: templates/bank_officer/verify_nid.html:47
+#: templates/farmer/profile_view.html:34
+msgid "Email"
+msgstr "ইমেইল"
+
+#: templates/bank_officer/farmer_list.html:25
+msgid "Phone"
+msgstr "ফোন"
+
+#: templates/bank_officer/farmer_list.html:26
+#: templates/bank_officer/nid_verification_list.html:68
+#: templates/loan/history.html:38 templates/loan/list.html:41
+#: templates/repayment/history.html:52 templates/repayment/pending_list.html:50
+msgid "Actions"
+msgstr "কার্যক্রম"
+
+#: templates/bank_officer/farmer_list.html:44
+msgid "No farmers found."
+msgstr "কোনো কৃষক পাওয়া যায়নি।"
+
+#: templates/bank_officer/farmer_list.html:62
+#: templates/bank_officer/nid_verification_list.html:123
+#: templates/loan/history.html:86 templates/loan/history.html:90
+#: templates/loan/list.html:103 templates/loan/list.html:107
+#: templates/repayment/history.html:90 templates/repayment/history.html:94
+#: templates/repayment/pending_list.html:97
+#: templates/repayment/pending_list.html:101
+msgid "Previous"
+msgstr "পূর্ববর্তী"
+
+#: templates/bank_officer/farmer_list.html:70
+#: templates/bank_officer/nid_verification_list.html:131
+#: templates/loan/history.html:108 templates/loan/history.html:112
+#: templates/loan/list.html:125 templates/loan/list.html:129
+#: templates/repayment/history.html:112 templates/repayment/history.html:116
+#: templates/repayment/pending_list.html:119
+#: templates/repayment/pending_list.html:123
+msgid "Next"
+msgstr "পরবর্তী"
+
+#: templates/bank_officer/nid_verification_list.html:9
+#: templates/bank_officer/verify_nid.html:12
+#: templates/bank_officer/verify_nid.html:23 templates/base.html:457
+#: templates/dashboard/bank_officer.html:142 templates_backup/base.html:443
 msgid "NID Verification"
 msgstr "এনআইডি যাচাই"
 
-#: templates/base.html:464
+#: templates/bank_officer/nid_verification_list.html:10
+msgid "Review and verify farmers' NID cards"
+msgstr "কৃষকদের এনআইডি কার্ড পর্যালোচনা ও যাচাই করুন"
+
+#: templates/bank_officer/nid_verification_list.html:18
+msgid "Total with NID"
+msgstr "মোট এনআইডিসহ"
+
+#: templates/bank_officer/nid_verification_list.html:26
+#: templates/bank_officer/nid_verification_list.html:50
+#: templates/bank_officer/nid_verification_list.html:79
+msgid "Verified"
+msgstr "যাচাইকৃত"
+
+#: templates/bank_officer/nid_verification_list.html:34
+#: templates/bank_officer/nid_verification_list.html:48
+#: templates/bank_officer/nid_verification_list.html:81
+#: templates/dashboard/bank_officer.html:185
+#: templates/dashboard/farmer.html:220 templates/loan/detail.html:56
+#: templates/loan/history.html:57 templates/loan/list.html:13
+#: templates/loan/list.html:63 templates/repayment/pending_list.html:30
+#: templates/repayment/pending_list.html:65
+msgid "Pending"
+msgstr "অপেক্ষমাণ"
+
+#: templates/bank_officer/nid_verification_list.html:66
+msgid "NID Status"
+msgstr "এনআইডি অবস্থা"
+
+#: templates/bank_officer/nid_verification_list.html:67
+msgid "Verified By"
+msgstr "যাচাইকারী"
+
+#: templates/bank_officer/verify_nid.html:11 templates/base.html:393
+#: templates_backup/base.html:379
+msgid "Dashboard"
+msgstr "ড্যাশবোর্ড"
+
+#: templates/bank_officer/verify_nid.html:41
+msgid "Farmer Username"
+msgstr "কৃষকের ব্যবহারকারীর নাম"
+
+#: templates/bank_officer/verify_nid.html:56
+msgid "This NID has been verified"
+msgstr "এই এনআইডি যাচাই করা হয়েছে"
+
+#: templates/bank_officer/verify_nid.html:63
+msgid "NID Card Documents"
+msgstr "এনআইডি কার্ডের দলিলসমূহ"
+
+#: templates/bank_officer/verify_nid.html:67
+msgid "Front Side"
+msgstr "সামনের দিক"
+
+#: templates/bank_officer/verify_nid.html:76
+#: templates/bank_officer/verify_nid.html:103
+msgid "View/Download"
+msgstr "দেখুন/ডাউনলোড করুন"
+
+#: templates/bank_officer/verify_nid.html:84
+#: templates/bank_officer/verify_nid.html:111
+msgid "Click to zoom"
+msgstr "জুম করতে ক্লিক করুন"
+
+#: templates/bank_officer/verify_nid.html:94
+msgid "Back Side"
+msgstr "পিছনের দিক"
+
+#: templates/bank_officer/verify_nid.html:124
+msgid "Please verify the NID carefully."
+msgstr "অনুগ্রহ করে এনআইডিটি সাবধানে যাচাই করুন।"
+
+#: templates/bank_officer/verify_nid.html:141
+#: templates/registration/password_change_done.html:16
+msgid "Back to Profile"
+msgstr "প্রোফাইলে ফিরুন"
+
+#: templates/bank_officer/verify_nid.html:143
+msgid "Back to List"
+msgstr "তালিকায় ফিরুন"
+
+#: templates/bank_officer/verify_nid.html:152
+msgid "Verify NID (action=verify)"
+msgstr "এনআইডি যাচাই করুন (action=verify)"
+
+#: templates/bank_officer/verify_nid.html:159
+msgid "Reject NID"
+msgstr "এনআইডি প্রত্যাখ্যান করুন"
+
+#: templates/bank_officer/verify_nid.html:167
+msgid "Revoke Verification"
+msgstr "যাচাই বাতিল করুন"
+
+#: templates/bank_officer/verify_nid.html:178
+msgid "Farmer Profile for Reference"
+msgstr "রেফারেন্সের জন্য কৃষক প্রোফাইল"
+
+#: templates/bank_officer/verify_nid.html:183
+msgid "Name:"
+msgstr "নাম:"
+
+#: templates/bank_officer/verify_nid.html:184
+msgid "Phone:"
+msgstr "ফোন:"
+
+#: templates/bank_officer/verify_nid.html:187
+msgid "Land Size:"
+msgstr "জমির আকার:"
+
+#: templates/bank_officer/verify_nid.html:188
+msgid "Location:"
+msgstr "অবস্থান:"
+
+#: templates/bank_officer/verify_nid.html:192
+msgid "View Full Profile"
+msgstr "সম্পূর্ণ প্রোফাইল দেখুন"
+
+#: templates/bank_officer/verify_nid.html:204
+#: templates/farmer/profile_view.html:177
+msgid "NID Card Front Side"
+msgstr "এনআইডি কার্ডের সামনের দিক"
+
+#: templates/bank_officer/verify_nid.html:220
+#: templates/farmer/profile_view.html:193
+msgid "NID Card Back Side"
+msgstr "এনআইডি কার্ডের পিছনের দিক"
+
+#: templates/base.html:11 templates_backup/base.html:11
+msgid "Smart Agricultural Loan System"
+msgstr "স্মার্ট কৃষি ঋণ ব্যবস্থা"
+
+#: templates/base.html:317 templates/landing_base.html:258
+#: templates/landing_base.html:308 templates_backup/base.html:316
+msgid "SmartAgri Loan"
+msgstr "স্মার্টএগ্রি ঋণ"
+
+#: templates/base.html:362 templates_backup/base.html:350
+msgid "Profile"
+msgstr "প্রোফাইল"
+
+#: templates/base.html:372 templates/dashboard/pending_approval.html:128
+#: templates_backup/base.html:358
+msgid "Logout"
+msgstr "লগআউট"
+
+#: templates/base.html:401 templates_backup/base.html:387
+msgid "Loans"
+msgstr "ঋণসমূহ"
+
+#: templates/base.html:407 templates/loan/apply.html:173
+#: templates_backup/base.html:393
+msgid "Apply for Loan"
+msgstr "ঋণের জন্য আবেদন করুন"
+
+#: templates/base.html:413 templates/dashboard/farmer.html:202
+#: templates_backup/base.html:399
+msgid "My Loans"
+msgstr "আমার ঋণসমূহ"
+
+#: templates/base.html:419 templates/base.html:451
+#: templates_backup/base.html:405 templates_backup/base.html:437
+msgid "Repayments"
+msgstr "কিস্তি পরিশোধ"
+
+#: templates/base.html:425 templates/registration/profile.html:126
+#: templates_backup/base.html:411
+msgid "My Profile"
+msgstr "আমার প্রোফাইল"
+
+#: templates/base.html:431 templates/farmer/upload_nid.html:397
+#: templates_backup/base.html:417
+msgid "Upload NID"
+msgstr "এনআইডি আপলোড করুন"
+
+#: templates/base.html:439 templates/loan/list.html:11
+#: templates_backup/base.html:425
+msgid "Loan Applications"
+msgstr "ঋণের আবেদনসমূহ"
+
+#: templates/base.html:478 templates_backup/base.html:464
 msgid "Smart Agricultural Loan System. All Rights Reserved."
 msgstr "স্মার্ট কৃষি ঋণ ব্যবস্থা। সর্বস্বত্ব সংরক্ষিত।"
+
+#: templates/dashboard/admin.html:52
+msgid "Admin Dashboard"
+msgstr "অ্যাডমিন ড্যাশবোর্ড"
+
+#: templates/dashboard/admin.html:53
+msgid "Welcome back! Here's an overview of your loan system."
+msgstr "আবার স্বাগতম! এখানে আপনার ঋণ ব্যবস্থার একটি সংক্ষিপ্ত বিবরণ রয়েছে।"
+
+#: templates/dashboard/admin.html:63 templates/dashboard/bank_officer.html:55
+msgid "Total Farmers"
+msgstr "মোট কৃষক"
+
+#: templates/dashboard/admin.html:78 templates/dashboard/bank_officer.html:70
+msgid "Total Loans"
+msgstr "মোট ঋণ"
+
+#: templates/dashboard/admin.html:93 templates/dashboard/bank_officer.html:85
+msgid "Approved Loans"
+msgstr "অনুমোদিত ঋণ"
+
+#: templates/dashboard/admin.html:108 templates/dashboard/bank_officer.html:100
+msgid "Pending Loans"
+msgstr "অপেক্ষমাণ ঋণ"
+
+#: templates/dashboard/admin.html:126 templates/dashboard/bank_officer.html:118
+#: templates/dashboard/farmer.html:229 templates/dashboard/farmer.html:293
+msgid "Total Disbursed"
+msgstr "মোট বিতরণকৃত"
+
+#: templates/dashboard/admin.html:141 templates/dashboard/farmer.html:242
+#: templates/dashboard/farmer.html:297 templates/repayment/history.html:32
+msgid "Total Repaid"
+msgstr "মোট পরিশোধিত"
+
+#: templates/dashboard/admin.html:156
+msgid "Rejected Loans"
+msgstr "প্রত্যাখ্যাত ঋণ"
+
+#: templates/dashboard/admin.html:171
+msgid "Recovery Rate"
+msgstr "পুনরুদ্ধারের হার"
+
+#: templates/dashboard/admin.html:191
+msgid "Loans by Status"
+msgstr "অবস্থা অনুযায়ী ঋণ"
+
+#: templates/dashboard/admin.html:203 templates/dashboard/farmer.html:276
+msgid "Loans by Type"
+msgstr "ধরন অনুযায়ী ঋণ"
+
+#: templates/dashboard/admin.html:218 templates/dashboard/bank_officer.html:153
+#: templates/dashboard/farmer.html:316
+msgid "Recent Loan Applications"
+msgstr "সাম্প্রতিক ঋণের আবেদনসমূহ"
+
+#: templates/dashboard/admin.html:225 templates/dashboard/bank_officer.html:161
+#: templates/loan/list.html:34 templates/repayment/pending_list.html:42
+msgid "Farmer"
+msgstr "কৃষক"
+
+#: templates/dashboard/admin.html:226 templates/dashboard/bank_officer.html:162
+msgid "Type"
+msgstr "ধরন"
+
+#: templates/dashboard/admin.html:227 templates/dashboard/admin.html:265
+#: templates/dashboard/bank_officer.html:163
+#: templates/dashboard/farmer.html:328 templates/loan/history.html:32
+#: templates/loan/list.html:36 templates/repayment/pending_list.html:45
+msgid "Amount"
+msgstr "পরিমাণ"
+
+#: templates/dashboard/admin.html:228 templates/dashboard/bank_officer.html:166
+#: templates/dashboard/farmer.html:331 templates/loan/detail.html:33
+#: templates/loan/history.html:36 templates/loan/list.html:39
+#: templates/repayment/history.html:49 templates/repayment/pending_list.html:48
+msgid "Status"
+msgstr "অবস্থা"
+
+#: templates/dashboard/admin.html:257
+msgid "Recent Repayments"
+msgstr "সাম্প্রতিক পরিশোধসমূহ"
+
+#: templates/dashboard/admin.html:264 templates/repayment/history.html:45
+#: templates/repayment/pending_list.html:43
+msgid "Loan ID"
+msgstr "ঋণ আইডি"
+
+#: templates/dashboard/admin.html:266
+msgid "Balance"
+msgstr "ব্যালেন্স"
+
+#: templates/dashboard/admin.html:267 templates/dashboard/farmer.html:332
+#: templates/loan/history.html:37 templates/loan/list.html:40
+#: templates/repayment/pending_list.html:47
+msgid "Date"
+msgstr "তারিখ"
+
+#: templates/dashboard/bank_officer.html:44
+msgid "Bank Officer Dashboard"
+msgstr "ব্যাংক কর্মকর্তার ড্যাশবোর্ড"
+
+#: templates/dashboard/bank_officer.html:45
+msgid "Welcome back! Here's your loan overview."
+msgstr "আবার স্বাগতম! এখানে আপনার ঋণের সংক্ষিপ্ত বিবরণ রয়েছে।"
+
+#: templates/dashboard/bank_officer.html:131
+#: templates/dashboard/farmer.html:250
+msgid "Quick Actions"
+msgstr "দ্রুত কার্যক্রম"
+
+#: templates/dashboard/bank_officer.html:136
+msgid "View All Loan Applications"
+msgstr "সকল ঋণের আবেদন দেখুন"
+
+#: templates/dashboard/bank_officer.html:138
+msgid "Review Pending Loans"
+msgstr "অপেক্ষমাণ ঋণ পর্যালোচনা করুন"
+
+#: templates/dashboard/bank_officer.html:140
+msgid "Review Repayments"
+msgstr "পরিশোধসমূহ পর্যালোচনা করুন"
+
+#: templates/dashboard/bank_officer.html:160
+#: templates/dashboard/farmer.html:326 templates/loan/history.html:30
+#: templates/loan/list.html:33 templates/repayment/history.html:44
+#: templates/repayment/pending_list.html:41
+msgid "ID"
+msgstr "আইডি"
+
+#: templates/dashboard/bank_officer.html:164
+#: templates/dashboard/farmer.html:329 templates/loan/detail.html:82
+#: templates/loan/history.html:33 templates/loan/list.html:37
+msgid "Duration"
+msgstr "মেয়াদ"
+
+#: templates/dashboard/bank_officer.html:165 templates/loan/detail.html:47
+#: templates/loan/history.html:35 templates/loan/list.html:38
+msgid "Risk Score"
+msgstr "ঝুঁকির স্কোর"
+
+#: templates/dashboard/farmer.html:175
+msgid "Farmer Dashboard"
+msgstr "কৃষক ড্যাশবোর্ড"
+
+#: templates/dashboard/farmer.html:176
+msgid "Welcome back,"
+msgstr "আবার স্বাগতম,"
+
+#: templates/dashboard/farmer.html:186
+msgid "Complete Your Profile"
+msgstr "আপনার প্রোফাইল সম্পূর্ণ করুন"
+
+#: templates/dashboard/farmer.html:187
+msgid "Please complete your farmer profile to apply for loans."
+msgstr "ঋণের জন্য আবেদন করতে অনুগ্রহ করে আপনার কৃষক প্রোফাইল সম্পূর্ণ করুন।"
+
+#: templates/dashboard/farmer.html:190
+msgid "Create Profile"
+msgstr "প্রোফাইল তৈরি করুন"
+
+#: templates/dashboard/farmer.html:211 templates/loan/list.html:14
+#: templates/repayment/pending_list.html:31
+#: templates/repayment/pending_list.html:67
+msgid "Approved"
+msgstr "অনুমোদিত"
+
+#: templates/dashboard/farmer.html:255 templates/loan/history.html:13
+msgid "Apply for New Loan"
+msgstr "নতুন ঋণের জন্য আবেদন করুন"
+
+#: templates/dashboard/farmer.html:257
+msgid "View My Loans"
+msgstr "আমার ঋণসমূহ দেখুন"
+
+#: templates/dashboard/farmer.html:259 templates/repayment/history.html:11
+msgid "Repayment History"
+msgstr "পরিশোধের ইতিহাস"
+
+#: templates/dashboard/farmer.html:261
+msgid "View My Profile"
+msgstr "আমার প্রোফাইল দেখুন"
+
+#: templates/dashboard/farmer.html:263
+msgid "Upload Document"
+msgstr "দলিল আপলোড করুন"
+
+#: templates/dashboard/farmer.html:288
+msgid "Payment Summary"
+msgstr "পরিশোধের সারসংক্ষেপ"
+
+#: templates/dashboard/farmer.html:301 templates/repayment/pending_list.html:46
+msgid "Remaining"
+msgstr "অবশিষ্ট"
+
+#: templates/dashboard/farmer.html:327 templates/loan/detail.html:67
+#: templates/loan/history.html:31 templates/loan/list.html:35
+#: templates/repayment/history.html:46 templates/repayment/pending_list.html:44
+msgid "Loan Type"
+msgstr "ঋণের ধরন"
+
+#: templates/dashboard/farmer.html:330 templates/loan/history.html:34
+msgid "EMI"
+msgstr "ইএমআই"
+
+#: templates/dashboard/pending_approval.html:7
+msgid "Pending Approval - Smart Agricultural Loan System"
+msgstr "অনুমোদন অপেক্ষমাণ - স্মার্ট কৃষি ঋণ ব্যবস্থা"
+
+#: templates/dashboard/pending_approval.html:116
+msgid "Account Pending Approval"
+msgstr "অ্যাকাউন্ট অনুমোদন অপেক্ষমাণ"
+
+#: templates/dashboard/pending_approval.html:119
+msgid ""
+"Your farmer account is pending approval by a bank officer. You will be able "
+"to apply for loans once your account is verified."
+msgstr ""
+"আপনার কৃষক অ্যাকাউন্ট একজন ব্যাংক কর্মকর্তার অনুমোদনের অপেক্ষায় আছে। আপনার অ্যাকাউন্ট "
+"যাচাই হলে আপনি ঋণের জন্য আবেদন করতে পারবেন।"
+
+#: templates/dashboard/pending_approval.html:132
+msgid ""
+"Your bank officer account is pending approval by the admin. Please contact "
+"the administrator for access."
+msgstr ""
+"আপনার ব্যাংক কর্মকর্তার অ্যাকাউন্ট অ্যাডমিনের অনুমোদনের অপেক্ষায় আছে। অ্যাক্সেসের জন্য "
+"অনুগ্রহ করে প্রশাসকের সাথে যোগাযোগ করুন।"
+
+#: templates/farmer/profile_form.html:27
+msgid "Land Size (Acres) *"
+msgstr "জমির আকার (একর) *"
+
+#: templates/farmer/profile_form.html:34
+msgid "Crop Type *"
+msgstr "ফসলের ধরন *"
+
+#: templates/farmer/profile_form.html:43
+msgid "Farm Location *"
+msgstr "খামারের অবস্থান *"
+
+#: templates/farmer/profile_form.html:52
+msgid "Annual Income (BDT) *"
+msgstr "বার্ষিক আয় (টাকা) *"
+
+#: templates/farmer/profile_form.html:59 templates/farmer/profile_view.html:65
+#: templates/farmer/profile_view.html:209
+msgid "Land Documents"
+msgstr "জমির দলিলসমূহ"
+
+#: templates/farmer/profile_form.html:64
+msgid "Upload proof of land ownership (PDF, JPG, PNG)"
+msgstr "জমির মালিকানার প্রমাণ আপলোড করুন (PDF, JPG, PNG)"
+
+#: templates/farmer/profile_form.html:69
+msgid "Save Profile"
+msgstr "প্রোফাইল সংরক্ষণ করুন"
+
+#: templates/farmer/profile_form.html:70
+#: templates/farmer/upload_document.html:50
+#: templates/farmer/upload_nid.html:395 templates/loan/apply.html:279
+#: templates/registration/password_change.html:52
+#: templates/registration/profile.html:211 templates/repayment/form.html:59
+msgid "Cancel"
+msgstr "বাতিল করুন"
+
+#: templates/farmer/profile_view.html:15
+msgid "Edit Profile"
+msgstr "প্রোফাইল সম্পাদনা করুন"
+
+#: templates/farmer/profile_view.html:43
+msgid "Land Size (Acres)"
+msgstr "জমির আকার (একর)"
+
+#: templates/farmer/profile_view.html:47
+msgid "Crop Type"
+msgstr "ফসলের ধরন"
+
+#: templates/farmer/profile_view.html:54
+msgid "Location"
+msgstr "অবস্থান"
+
+#: templates/farmer/profile_view.html:58
+msgid "Annual Income (BDT)"
+msgstr "বার্ষিক আয় (টাকা)"
+
+#: templates/farmer/profile_view.html:68
+msgid "Uploaded"
+msgstr "আপলোডকৃত"
+
+#: templates/farmer/profile_view.html:70
+msgid "No document uploaded"
+msgstr "কোনো দলিল আপলোড করা হয়নি"
+
+#: templates/farmer/profile_view.html:79
+msgid "View/Download PDF"
+msgstr "PDF দেখুন/ডাউনলোড করুন"
+
+#: templates/farmer/profile_view.html:83
+msgid "View Document"
+msgstr "দলিল দেখুন"
+
+#: templates/farmer/profile_view.html:90
+msgid "Profile Created"
+msgstr "প্রোফাইল তৈরির তারিখ"
+
+#: templates/farmer/profile_view.html:99
+msgid "NID Card Status"
+msgstr "এনআইডি কার্ডের অবস্থা"
+
+#: templates/farmer/profile_view.html:110
+msgid "Awaiting bank officer verification"
+msgstr "ব্যাংক কর্মকর্তার যাচাইয়ের অপেক্ষায়"
+
+#: templates/farmer/profile_view.html:113
+msgid "Not Uploaded"
+msgstr "আপলোড করা হয়নি"
+
+#: templates/farmer/profile_view.html:122
+msgid "NID Front"
+msgstr "এনআইডির সামনের দিক"
+
+#: templates/farmer/profile_view.html:127
+#: templates/farmer/profile_view.html:144
+msgid "View PDF"
+msgstr "PDF দেখুন"
+
+#: templates/farmer/profile_view.html:138
+msgid "NID Back"
+msgstr "এনআইডির পিছনের দিক"
+
+#: templates/farmer/profile_view.html:153
+msgid "No back side uploaded"
+msgstr "পিছনের দিক আপলোড করা হয়নি"
+
+#: templates/farmer/profile_view.html:163
+msgid "NID not verified."
+msgstr "এনআইডি যাচাই করা হয়নি।"
+
+#: templates/farmer/upload_document.html:11
+msgid "Upload Land Documents"
+msgstr "জমির দলিল আপলোড করুন"
+
+#: templates/farmer/upload_document.html:25
+msgid "Current Document"
+msgstr "বর্তমান দলিল"
+
+#: templates/farmer/upload_document.html:42
+msgid "Select Document"
+msgstr "দলিল নির্বাচন করুন"
+
+#: templates/farmer/upload_document.html:45
+msgid "Accepted formats: PDF, JPG, PNG (Max 10MB)"
+msgstr "গ্রহণযোগ্য ফরম্যাট: PDF, JPG, PNG (সর্বোচ্চ ১০ এমবি)"
+
+#: templates/farmer/upload_document.html:49
+msgid "Upload"
+msgstr "আপলোড করুন"
+
+#: templates/farmer/upload_nid.html:267
+msgid "Upload NID Card"
+msgstr "এনআইডি কার্ড আপলোড করুন"
+
+#: templates/farmer/upload_nid.html:268
+msgid "Verify your identity"
+msgstr "আপনার পরিচয় যাচাই করুন"
+
+#: templates/farmer/upload_nid.html:291
+msgid "Important"
+msgstr "গুরুত্বপূর্ণ"
+
+#: templates/farmer/upload_nid.html:292
+msgid ""
+"Please upload clear images or PDFs of both sides of your National ID card. "
+"This helps verify your identity for loan applications."
+msgstr ""
+"অনুগ্রহ করে আপনার জাতীয় পরিচয়পত্রের উভয় দিকের স্পষ্ট ছবি বা PDF আপলোড করুন। এটি "
+"ঋণের আবেদনের জন্য আপনার পরিচয় যাচাই করতে সাহায্য করে।"
+
+#: templates/farmer/upload_nid.html:301
+msgid "Your NID is verified!"
+msgstr "আপনার এনআইডি যাচাই করা হয়েছে!"
+
+#: templates/farmer/upload_nid.html:308
+msgid "Your NID is pending verification."
+msgstr "আপনার এনআইডি যাচাইয়ের অপেক্ষায় আছে।"
+
+#: templates/farmer/upload_nid.html:317
+msgid ""
+"You have already uploaded NID cards. Uploading new ones will replace the "
+"existing ones."
+msgstr ""
+"আপনি ইতোমধ্যে এনআইডি কার্ড আপলোড করেছেন। নতুন আপলোড করলে পুরানোটি প্রতিস্থাপিত হবে।"
+
+#: templates/farmer/upload_nid.html:327
+msgid "NID Card Front Side (Image or PDF)"
+msgstr "এনআইডি কার্ডের সামনের দিক (ছবি বা PDF)"
+
+#: templates/farmer/upload_nid.html:334 templates/farmer/upload_nid.html:368
+msgid "Drop your file here or click to browse"
+msgstr "এখানে ফাইলটি ড্রপ করুন বা ব্রাউজ করতে ক্লিক করুন"
+
+#: templates/farmer/upload_nid.html:335
+msgid "Upload front side of your NID card"
+msgstr "আপনার এনআইডি কার্ডের সামনের দিক আপলোড করুন"
+
+#: templates/farmer/upload_nid.html:336 templates/farmer/upload_nid.html:370
+msgid "Accepted: JPG, JPEG, PNG, PDF (Max 10MB)"
+msgstr "গ্রহণযোগ্য: JPG, JPEG, PNG, PDF (সর্বোচ্চ ১০ এমবি)"
+
+#: templates/farmer/upload_nid.html:361
+msgid "NID Card Back Side (Image or PDF)"
+msgstr "এনআইডি কার্ডের পিছনের দিক (ছবি বা PDF)"
+
+#: templates/farmer/upload_nid.html:369
+msgid "Upload back side of your NID card"
+msgstr "আপনার এনআইডি কার্ডের পিছনের দিক আপলোড করুন"
+
+#: templates/farmer/upload_nid.html:430
+msgid "File selected!"
+msgstr "ফাইল নির্বাচিত!"
+
+#: templates/home.html:408
+msgid "Smart Agricultural"
+msgstr "স্মার্ট কৃষি"
+
+#: templates/home.html:408
+msgid "Loan System"
+msgstr "ঋণ ব্যবস্থা"
+
+#: templates/home.html:414 templates/landing_base.html:287
+#: templates/registration/login.html:181
+#: templates/registration/register.html:265
+msgid "Sign In"
+msgstr "সাইন ইন করুন"
+
+#: templates/home.html:416
+msgid "Register Now"
+msgstr "এখনই নিবন্ধন করুন"
+
+#: templates/home.html:431
+msgid "Farmers Served"
+msgstr "সেবাপ্রাপ্ত কৃষক"
+
+#: templates/home.html:438
+msgid "Loans Disbursed"
+msgstr "বিতরণকৃত ঋণ"
+
+#: templates/home.html:445
+msgid "Approval Rate"
+msgstr "অনুমোদনের হার"
+
+#: templates/home.html:452
+msgid "User Rating"
+msgstr "ব্যবহারকারীর রেটিং"
+
+#: templates/home.html:463
+msgid "Our Features"
+msgstr "আমাদের বৈশিষ্ট্যসমূহ"
+
+#: templates/home.html:464
+msgid "Everything you need to manage your agricultural loans efficiently"
+msgstr "আপনার কৃষি ঋণ দক্ষতার সাথে পরিচালনার জন্য প্রয়োজনীয় সবকিছু"
+
+#: templates/home.html:472
+msgid "Easy Applications"
+msgstr "সহজ আবেদন"
+
+#: templates/home.html:482
+msgid "Quick Approval"
+msgstr "দ্রুত অনুমোদন"
+
+#: templates/home.html:492
+msgid "Real-time Tracking"
+msgstr "রিয়েল-টাইম ট্র্যাকিং"
+
+#: templates/home.html:502
+msgid "Secure & Reliable"
+msgstr "নিরাপদ ও নির্ভরযোগ্য"
+
+#: templates/home.html:512
+msgid "Flexible Repayment"
+msgstr "নমনীয় পরিশোধ"
+
+#: templates/home.html:522
+msgid "24/7 Support"
+msgstr "২৪/৭ সহায়তা"
+
+#: templates/home.html:523
+msgid ""
+"Get assistance whenever you need it with our dedicated customer support team."
+msgstr "আমাদের নিবেদিত গ্রাহক সহায়তা দলের সাহায্যে যেকোনো সময় সহায়তা পান।"
+
+#: templates/home.html:534
+msgid "How It Works"
+msgstr "এটি কীভাবে কাজ করে"
+
+#: templates/home.html:535
+msgid "Get your agricultural loan in four simple steps"
+msgstr "চারটি সহজ ধাপে আপনার কৃষি ঋণ পান"
+
+#: templates/home.html:541 templates/landing_base.html:291
+#: templates/landing_base.html:323
+msgid "Register"
+msgstr "নিবন্ধন করুন"
+
+#: templates/home.html:542
+msgid "Create your account and complete your farmer profile"
+msgstr "আপনার অ্যাকাউন্ট তৈরি করুন এবং কৃষক প্রোফাইল সম্পূর্ণ করুন"
+
+#: templates/home.html:548
+msgid "Verify NID"
+msgstr "এনআইডি যাচাই করুন"
+
+#: templates/home.html:549
+msgid "Upload your National ID for verification"
+msgstr "যাচাইয়ের জন্য আপনার জাতীয় পরিচয়পত্র আপলোড করুন"
+
+#: templates/home.html:555
+msgid "Apply"
+msgstr "আবেদন করুন"
+
+#: templates/home.html:556
+msgid "Submit your loan application with required details"
+msgstr "প্রয়োজনীয় তথ্যসহ আপনার ঋণের আবেদন জমা দিন"
+
+#: templates/home.html:562
+msgid "Receive Funds"
+msgstr "অর্থ গ্রহণ করুন"
+
+#: templates/home.html:563
+msgid "Get approved and receive funds directly"
+msgstr "অনুমোদন পান এবং সরাসরি অর্থ গ্রহণ করুন"
+
+#: templates/home.html:575
+msgid "Ready to Grow Your Farm?"
+msgstr "আপনার খামার বাড়াতে প্রস্তুত?"
+
+#: templates/home.html:579
+msgid "Get Started Now"
+msgstr "এখনই শুরু করুন"
+
+#: templates/landing_base.html:278 templates/landing_base.html:320
+msgid "Home"
+msgstr "হোম"
+
+#: templates/landing_base.html:281 templates/landing_base.html:321
+msgid "Features"
+msgstr "বৈশিষ্ট্যসমূহ"
+
+#: templates/landing_base.html:284
+msgid "About"
+msgstr "সম্পর্কে"
+
+#: templates/landing_base.html:319
+msgid "Quick Links"
+msgstr "দ্রুত লিংক"
+
+#: templates/landing_base.html:322
+msgid "About Us"
+msgstr "আমাদের সম্পর্কে"
+
+#: templates/landing_base.html:326
+msgid "Services"
+msgstr "সেবাসমূহ"
+
+#: templates/landing_base.html:327
+msgid "Crop Loan"
+msgstr "ফসল ঋণ"
+
+#: templates/landing_base.html:328
+msgid "Equipment Loan"
+msgstr "সরঞ্জাম ঋণ"
+
+#: templates/landing_base.html:329
+msgid "Livestock Loan"
+msgstr "পশুসম্পদ ঋণ"
+
+#: templates/landing_base.html:330
+msgid "Storage Loan"
+msgstr "গুদামজাত ঋণ"
+
+#: templates/landing_base.html:333
+msgid "Contact"
+msgstr "যোগাযোগ"
+
+#: templates/landing_base.html:336
+msgid "Dhaka, Bangladesh"
+msgstr "ঢাকা, বাংলাদেশ"
+
+#: templates/loan/apply.html:174
+msgid "Fill in the details below to apply"
+msgstr "আবেদন করতে নিচের তথ্য পূরণ করুন"
+
+#: templates/loan/apply.html:201
+msgid "NID Card Status:"
+msgstr "এনআইডি কার্ডের অবস্থা:"
+
+#: templates/loan/apply.html:225
+msgid "Loan Type *"
+msgstr "ঋণের ধরন *"
+
+#: templates/loan/apply.html:227
+msgid "Select loan type"
+msgstr "ঋণের ধরন নির্বাচন করুন"
+
+#: templates/loan/apply.html:244
+msgid "Loan Amount (BDT) *"
+msgstr "ঋণের পরিমাণ (টাকা) *"
+
+#: templates/loan/apply.html:246
+msgid "Maximum:"
+msgstr "সর্বোচ্চ:"
+
+#: templates/loan/apply.html:255
+msgid "Duration (Months) *"
+msgstr "মেয়াদ (মাস) *"
+
+#: templates/loan/apply.html:267
+msgid "EMI Preview"
+msgstr "ইএমআই প্রিভিউ"
+
+#: templates/loan/apply.html:269
+msgid "Estimated Monthly EMI"
+msgstr "আনুমানিক মাসিক ইএমআই"
+
+#: templates/loan/apply.html:278
+msgid "Submit Application"
+msgstr "আবেদন জমা দিন"
+
+#: templates/loan/detail.html:15 templates/repayment/history.html:14
+msgid "Download PDF"
+msgstr "PDF ডাউনলোড করুন"
+
+#: templates/loan/detail.html:17
+msgid "Back to History"
+msgstr "ইতিহাসে ফিরুন"
+
+#: templates/loan/detail.html:71
+msgid "Interest Rate"
+msgstr "সুদের হার"
+
+#: templates/loan/detail.html:78
+msgid "Loan Amount"
+msgstr "ঋণের পরিমাণ"
+
+#: templates/loan/detail.html:89
+msgid "Monthly EMI"
+msgstr "মাসিক ইএমআই"
+
+#: templates/loan/detail.html:93
+msgid "Total Repayment"
+msgstr "মোট পরিশোধযোগ্য"
+
+#: templates/loan/detail.html:102
+msgid "Applied On"
+msgstr "আবেদনের তারিখ"
+
+#: templates/loan/detail.html:106
+msgid "Last Updated"
+msgstr "সর্বশেষ আপডেট"
+
+#: templates/loan/history.html:11
+msgid "My Loan Applications"
+msgstr "আমার ঋণের আবেদনসমূহ"
+
+#: templates/loan/history.html:122
+msgid "No loan applications yet."
+msgstr "এখনো কোনো ঋণের আবেদন নেই।"
+
+#: templates/loan/history.html:123
+msgid "Apply for Your First Loan"
+msgstr "আপনার প্রথম ঋণের জন্য আবেদন করুন"
+
+#: templates/loan/list.html:15 templates/repayment/pending_list.html:32
+#: templates/repayment/pending_list.html:69
+msgid "Rejected"
+msgstr "প্রত্যাখ্যাত"
+
+#: templates/loan/list.html:139
+msgid "No loan applications found."
+msgstr "কোনো ঋণের আবেদন পাওয়া যায়নি।"
+
+#: templates/registration/login.html:142
+msgid "Welcome Back"
+msgstr "আবার স্বাগতম"
+
+#: templates/registration/login.html:143
+msgid "Sign in to your account"
+msgstr "আপনার অ্যাকাউন্টে সাইন ইন করুন"
+
+#: templates/registration/login.html:166
+msgid "Enter your username"
+msgstr "আপনার ব্যবহারকারীর নাম লিখুন"
+
+#: templates/registration/login.html:171
+#: templates/registration/register.html:187
+msgid "Password"
+msgstr "পাসওয়ার্ড"
+
+#: templates/registration/login.html:174
+msgid "Enter your password"
+msgstr "আপনার পাসওয়ার্ড লিখুন"
+
+#: templates/registration/login.html:187
+msgid "Forgot your password?"
+msgstr "পাসওয়ার্ড ভুলে গেছেন?"
+
+#: templates/registration/login.html:191
+msgid "or"
+msgstr "অথবা"
+
+#: templates/registration/login.html:195
+msgid "Don't have an account?"
+msgstr "অ্যাকাউন্ট নেই?"
+
+#: templates/registration/login.html:197
+msgid "Create one"
+msgstr "একটি তৈরি করুন"
+
+#: templates/registration/password_change.html:11
+#: templates/registration/password_change.html:51
+#: templates/registration/profile.html:224
+msgid "Change Password"
+msgstr "পাসওয়ার্ড পরিবর্তন করুন"
+
+#: templates/registration/password_change.html:39
+msgid "Current Password"
+msgstr "বর্তমান পাসওয়ার্ড"
+
+#: templates/registration/password_change.html:43
+#: templates/registration/password_reset_confirm.html:28
+msgid "New Password"
+msgstr "নতুন পাসওয়ার্ড"
+
+#: templates/registration/password_change.html:47
+#: templates/registration/password_reset_confirm.html:32
+msgid "Confirm New Password"
+msgstr "নতুন পাসওয়ার্ড নিশ্চিত করুন"
+
+#: templates/registration/password_change_done.html:14
+msgid "Password Changed Successfully"
+msgstr "পাসওয়ার্ড সফলভাবে পরিবর্তন হয়েছে"
+
+#: templates/registration/password_change_done.html:15
+msgid ""
+"Your password has been updated. Please use your new password when logging in."
+msgstr ""
+"আপনার পাসওয়ার্ড আপডেট হয়েছে। লগ ইন করার সময় অনুগ্রহ করে নতুন পাসওয়ার্ড ব্যবহার করুন।"
+
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Reset Complete"
+msgstr "পাসওয়ার্ড রিসেট সম্পন্ন"
+
+#: templates/registration/password_reset_complete.html:17
+msgid "Your password has been set!"
+msgstr "আপনার পাসওয়ার্ড সেট করা হয়েছে!"
+
+#: templates/registration/password_reset_complete.html:18
+msgid "You may go ahead and log in now."
+msgstr "আপনি এখন লগ ইন করতে পারেন।"
+
+#: templates/registration/password_reset_complete.html:19
+msgid "Log In"
+msgstr "লগ ইন"
+
+#: templates/registration/password_reset_confirm.html:11
+msgid "Set New Password"
+msgstr "নতুন পাসওয়ার্ড সেট করুন"
+
+#: templates/registration/password_reset_confirm.html:24
+msgid "Please enter your new password twice to verify you typed it correctly."
+msgstr "সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।"
+"সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।অনুগ্রহ করে আপনার "
+"নতুন পাসওয়ার্ড সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে দুবার লিখুন।"
+
+#: templates/registration/password_reset_confirm.html:36
+msgid "Change My Password"
+msgstr "আমার পাসওয়ার্ড পরিবর্তন করুন"
+
+#: templates/registration/password_reset_confirm.html:41
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"পাসওয়ার্ড রিসেট লিংকটি অবৈধ, সম্ভবত এটি ইতোমধ্যে ব্যবহৃত হয়েছে। অনুগ্রহ করে নতুন "
+"পাসওয়ার্ড রিসেটের জন্য অনুরোধ করুন।"
+
+#: templates/registration/password_reset_confirm.html:44
+msgid "Request New Reset Link"
+msgstr "নতুন রিসেট লিংকের জন্য অনুরোধ করুন"
+
+#: templates/registration/password_reset_done.html:11
+msgid "Check Your Email"
+msgstr "আপনার ইমেইল চেক করুন"
+
+#: templates/registration/password_reset_done.html:17
+msgid ""
+"We've emailed you instructions for setting your password. You should receive "
+"them shortly."
+msgstr ""
+"আপনার পাসওয়ার্ড সেট করার নির্দেশনা ইমেইলে পাঠানো হয়েছে। আপনি শীঘ্রই তা পাবেন।"
+
+#: templates/registration/password_reset_done.html:18
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"যদি ইমেইল না পান, অনুগ্রহ করে নিশ্চিত করুন যে আপনি নিবন্ধনের সময় ব্যবহৃত ঠিকানাটি "
+"দিয়েছেন এবং স্প্যাম ফোল্ডার চেক করুন।"
+
+#: templates/registration/password_reset_done.html:19
+#: templates/registration/password_reset_form.html:38
+msgid "Back to Login"
+msgstr "লগইনে ফিরুন"
+
+#: templates/registration/password_reset_email.html:3
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:5
+msgid "Please go to the following page and choose a new password:"
+msgstr "নিচের পেজে যান এবং নতুন পাসওয়ার্ড বেছে নিন:"
+
+#: templates/registration/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr "আপনার ব্যবহারকারীর নাম, যদি ভুলে গিয়ে থাকেন:"
+
+#: templates/registration/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr "আমাদের সাইট ব্যবহার করার জন্য ধন্যবাদ!"
+
+#: templates/registration/password_reset_email.html:12
+msgid "The"
+msgstr "দল:"
+
+#: templates/registration/password_reset_email.html:12
+msgid "team"
+msgstr "টিম"
+
+#: templates/registration/password_reset_form.html:11
+msgid "Reset Your Password"
+msgstr "আপনার পাসওয়ার্ড রিসেট করুন"
+
+#: templates/registration/password_reset_form.html:23
+msgid ""
+"Enter your email address and we'll send you instructions to reset your "
+"password."
+msgstr ""
+"আপনার ইমেইল ঠিকানা লিখুন এবং আমরা আপনার পাসওয়ার্ড রিসেট করার নির্দেশনা পাঠাব।"
+
+#: templates/registration/password_reset_form.html:28
+#: templates/registration/profile.html:177
+#: templates/registration/register.html:174
+msgid "Email Address"
+msgstr "ইমেইল ঠিকানা"
+
+#: templates/registration/password_reset_form.html:32
+msgid "Send Reset Link"
+msgstr "রিসেট লিংক পাঠান"
+
+#: templates/registration/profile.html:127
+msgid "Manage your account settings"
+msgstr "আপনার অ্যাকাউন্ট সেটিংস পরিচালনা করুন"
+
+#: templates/registration/profile.html:160
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change Photo"
+msgstr "পাসওয়ার্ড পরিবর্তন করুন"
+
+#: templates/registration/profile.html:185
+msgid "First Name"
+msgstr "প্রথম নাম"
+
+#: templates/registration/profile.html:190
+msgid "Last Name"
+msgstr "শেষ নাম"
+
+#: templates/registration/profile.html:198
+#: templates/registration/register.html:218
+msgid "Role"
+msgstr "ভূমিকা"
+
+#: templates/registration/profile.html:203
+msgid "Phone Number"
+msgstr "ফোন নম্বর"
+
+#: templates/registration/profile.html:210
+msgid "Update Profile"
+msgstr "প্রোফাইল আপডেট করুন"
+
+#: templates/registration/profile.html:219
+msgid "Security"
+msgstr "নিরাপত্তা"
+
+#: templates/registration/profile.html:220
+msgid "Change your password to keep your account secure."
+msgstr "আপনার অ্যাকাউন্ট সুরক্ষিত রাখতে পাসওয়ার্ড পরিবর্তন করুন।"
+
+#: templates/registration/register.html:142
+#: templates/registration/register.html:255
+msgid "Create Account"
+msgstr "অ্যাকাউন্ট তৈরি করুন"
+
+#: templates/registration/register.html:143
+msgid "Join our agricultural community"
+msgstr "আমাদের কৃষি সম্প্রদায়ে যোগ দিন"
+
+#: templates/registration/register.html:201
+msgid "Confirm Password"
+msgstr "পাসওয়ার্ড নিশ্চিত করুন"
+
+#: templates/registration/register.html:228
+msgid "Phone Number (Optional)"
+msgstr "ফোন নম্বর (ঐচ্ছিক)"
+
+#: templates/registration/register.html:241
+msgid "NID Number (Optional)"
+msgstr "এনআইডি নম্বর (ঐচ্ছিক)"
+
+#: templates/registration/register.html:248
+msgid "Enter your National ID number for account verification"
+msgstr "অ্যাকাউন্ট যাচাইয়ের জন্য আপনার জাতীয় পরিচয়পত্র নম্বর লিখুন"
+
+#: templates/registration/register.html:260
+#, fuzzy
+#| msgid "Don't have an account?"
+msgid "already have an account?"
+msgstr "অ্যাকাউন্ট নেই?"
+
+#: templates/registration/register.html:264
+msgid "Sign in instead"
+msgstr "বরং সাইন ইন করুন"
+
+#: templates/repayment/form.html:11
+msgid "Make Repayment"
+msgstr "কিস্তি পরিশোধ করুন"
+
+#: templates/repayment/form.html:24
+msgid "Loan Summary"
+msgstr "ঋণের সারসংক্ষেপ"
+
+#: templates/repayment/form.html:27
+msgid "Loan Amount:"
+msgstr "ঋণের পরিমাণ:"
+
+#: templates/repayment/form.html:28
+msgid "Monthly EMI:"
+msgstr "মাসিক ইএমআই:"
+
+#: templates/repayment/form.html:31
+msgid "Duration:"
+msgstr "মেয়াদ:"
+
+#: templates/repayment/form.html:32
+msgid "Remaining Balance:"
+msgstr "অবশিষ্ট ব্যালেন্স:"
+
+#: templates/repayment/form.html:40
+msgid "Payment Amount (BDT) *"
+msgstr "পরিশোধের পরিমাণ (টাকা) *"
+
+#: templates/repayment/form.html:49
+msgid "Notes (Optional)"
+msgstr "মন্তব্য (ঐচ্ছিক)"
+
+#: templates/repayment/form.html:58
+msgid "Record Payment"
+msgstr "পরিশোধ নথিভুক্ত করুন"
+
+#: templates/repayment/history.html:16 templates/repayment/pending_list.html:14
+msgid "Back to Loans"
+msgstr "ঋণসমূহে ফিরুন"
+
+#: templates/repayment/history.html:33
+msgid "All time payments"
+msgstr "সকল সময়ের পরিশোধ"
+
+#: templates/repayment/history.html:47
+msgid "Amount Paid"
+msgstr "পরিশোধিত পরিমাণ"
+
+#: templates/repayment/history.html:48
+msgid "Remaining Balance"
+msgstr "অবশিষ্ট ব্যালেন্স"
+
+#: templates/repayment/history.html:50
+msgid "Payment Date"
+msgstr "পরিশোধের তারিখ"
+
+#: templates/repayment/history.html:51
+msgid "Notes"
+msgstr "মন্তব্য"
+
+#: templates/repayment/history.html:126
+msgid "No repayment history yet."
+msgstr "এখনো কোনো পরিশোধের ইতিহাস নেই।"
+
+#: templates/repayment/pending_list.html:11
+msgid "Repayment Approvals"
+msgstr "পরিশোধ অনুমোদনসমূহ"
+
+#: templates/repayment/pending_list.html:29
+msgid "All"
+msgstr "সকল"
+
+#: templates/repayment/pending_list.html:49
+msgid "Approved By"
+msgstr "অনুমোদনকারী"
+
+#: templates/repayment/pending_list.html:133
+msgid "No repayments found."
+msgstr "কোনো পরিশোধ পাওয়া যায়নি।"
+
+#~ msgid ""
+#~ "Empowering farmers with easy access to credit for agricultural growth and "
+#~ "sustainable development. Simple process, quick approval, trusted service."
+#~ msgstr ""
+#~ "কৃষকদের কৃষি বৃদ্ধি ও টেকসই উন্নয়নের জন্য সহজ ঋণের সুবিধা প্রদান করা হচ্ছে। সহজ "
+#~ "প্রক্রিয়া, দ্রুত অনুমোদন, বিশ্বস্ত সেবা।"
+
+#~ msgid ""
+#~ "Apply for loans with our simple, step-by-step process. Complete your "
+#~ "application in minutes with our user-friendly interface."
+#~ msgstr ""
+#~ "আমাদের সহজ, ধাপে ধাপে প্রক্রিয়ায় ঋণের জন্য আবেদন করুন। আমাদের ব্যবহারকারী-"
+#~ "বান্ধব ইন্টারফেস দিয়ে মিনিটের মধ্যে আবেদন সম্পন্ন করুন।"
+
+#~ msgid ""
+#~ "Get fast approval on your loan applications. Our streamlined process "
+#~ "ensures quick decision-making and disbursement."
+#~ msgstr ""
+#~ "আপনার ঋণের আবেদনে দ্রুত অনুমোদন পান। আমাদের সুবিন্যস্ত প্রক্রিয়া দ্রুত সিদ্ধান্ত গ্রহণ "
+#~ "ও বিতরণ নিশ্চিত করে।"
+
+#~ msgid ""
+#~ "Monitor your loan status and repayment history in real-time through your "
+#~ "personalized dashboard."
+#~ msgstr ""
+#~ "আপনার ব্যক্তিগতকৃত ড্যাশবোর্ডের মাধ্যমে রিয়েল-টাইমে আপনার ঋণের অবস্থা ও পরিশোধের "
+#~ "ইতিহাস পর্যবেক্ষণ করুন।"
+
+#~ msgid ""
+#~ "Your data is protected with enterprise-grade security. We prioritize your "
+#~ "privacy and data safety."
+#~ msgstr ""
+#~ "আপনার ডেটা এন্টারপ্রাইজ-গ্রেড সুরক্ষায় সংরক্ষিত। আমরা আপনার গোপনীয়তা ও ডেটার "
+#~ "নিরাপত্তাকে অগ্রাধিকার দিই।"
+
+#~ msgid ""
+#~ "Choose from flexible repayment options that suit your agricultural cycle "
+#~ "and cash flow."
+#~ msgstr ""
+#~ "আপনার কৃষি চক্র ও নগদ প্রবাহের সাথে মানানসই নমনীয় পরিশোধের বিকল্প থেকে বেছে "
+#~ "নিন।"
+
+#~ msgid ""
+#~ "Join thousands of farmers who have improved their livelihoods with our "
+#~ "agricultural loan system. Start your journey today."
+#~ msgstr ""
+#~ "হাজার হাজার কৃষকের সাথে যোগ দিন যারা আমাদের কৃষি ঋণ ব্যবস্থার মাধ্যমে তাদের "
+#~ "জীবিকা উন্নত করেছেন। আজই আপনার যাত্রা শুরু করুন।"
+
+#~ msgid ""
+#~ "Empowering farmers with easy access to credit for agricultural growth and "
+#~ "development."
+#~ msgstr "কৃষকদের কৃষি বৃদ্ধি ও উন্নয়নের জন্য সহজ ঋণের সুবিধা প্রদান করা হচ্ছে।"

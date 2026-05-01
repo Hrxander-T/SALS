@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Bank Officer Dashboard - Smart Agricultural Loan System{% endblock %}
 
@@ -40,8 +41,8 @@
 {% block content %}
 <div class="row mb-4">
     <div class="col-12">
-        <h3 class="fw-bold"><i class="bi bi-speedometer2 me-2"></i>Bank Officer Dashboard</h3>
-        <p class="text-muted">Welcome back! Here's your loan overview.</p>
+        <h3 class="fw-bold"><i class="bi bi-speedometer2 me-2"></i>{% trans "Bank Officer Dashboard" %}</h3>
+        <p class="text-muted">{% trans "Welcome back! Here's your loan overview." %}</p>
     </div>
 </div>
 
@@ -51,7 +52,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <p class="text-white-50 mb-2">Total Farmers</p>
+                        <p class="text-white-50 mb-2">{% trans "Total Farmers" %}</p>
                         <h2 class="mb-0 fw-bold">{{ total_farmers }}</h2>
                     </div>
                     <div class="stat-icon bg-white bg-opacity-25">
@@ -66,7 +67,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <p class="text-white-50 mb-2">Total Loans</p>
+                        <p class="text-white-50 mb-2">{% trans "Total Loans" %}</p>
                         <h2 class="mb-0 fw-bold">{{ total_loans }}</h2>
                     </div>
                     <div class="stat-icon bg-white bg-opacity-25">
@@ -81,7 +82,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <p class="text-white-50 mb-2">Approved Loans</p>
+                        <p class="text-white-50 mb-2">{% trans "Approved Loans" %}</p>
                         <h2 class="mb-0 fw-bold">{{ approved_loans }}</h2>
                     </div>
                     <div class="stat-icon bg-white bg-opacity-25">
@@ -96,7 +97,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <p class="text-white-50 mb-2">Pending Loans</p>
+                        <p class="text-white-50 mb-2">{% trans "Pending Loans" %}</p>
                         <h2 class="mb-0 fw-bold">{{ pending_loans }}</h2>
                     </div>
                     <div class="stat-icon bg-white bg-opacity-25">
@@ -114,7 +115,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
-                        <p class="text-white-50 mb-2">Total Disbursed</p>
+                        <p class="text-white-50 mb-2">{% trans "Total Disbursed" %}</p>
                         <h3 class="mb-0 fw-bold">৳{{ total_disbursed|floatformat:2 }}</h3>
                     </div>
                     <div class="stat-icon bg-white bg-opacity-25">
@@ -127,22 +128,18 @@
     <div class="col-md-6">
         <div class="card shadow h-100">
             <div class="card-header bg-white py-3">
-                <h5 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Quick Actions</h5>
+                <h5 class="mb-0"><i class="bi bi-lightbulb me-2"></i>{% trans "Quick Actions" %}</h5>
             </div>
             <div class="card-body">
                 <div class="d-grid gap-2">
                     <a href="{% url 'loan_list' %}" class="btn btn-primary">
-                        <i class="bi bi-list-check me-2"></i>View All Loan Applications
-                    </a>
+                        <i class="bi bi-list-check me-2"></i>{% trans "View All Loan Applications" %}</a>
                     <a href="{% url 'loan_list' %}?status=Pending" class="btn btn-warning">
-                        <i class="bi bi-hourglass-split me-2"></i>Review Pending Loans
-                    </a>
+                        <i class="bi bi-hourglass-split me-2"></i>{% trans "Review Pending Loans" %}</a>
                     <a href="{% url 'repayment_list' %}?status=Pending" class="btn btn-success">
-                        <i class="bi bi-currency-exchange me-2"></i>Review Repayments
-                    </a>
+                        <i class="bi bi-currency-exchange me-2"></i>{% trans "Review Repayments" %}</a>
                     <a href="{% url 'nid_verification_list' %}" class="btn btn-info text-white">
-                        <i class="bi bi-person-badge me-2"></i>NID Verification
-                    </a>
+                        <i class="bi bi-person-badge me-2"></i>{% trans "NID Verification" %}</a>
                 </div>
             </div>
         </div>
@@ -153,20 +150,20 @@
     <div class="col-12">
         <div class="card shadow">
             <div class="card-header bg-white py-3">
-                <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Recent Loan Applications</h5>
+                <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>{% trans "Recent Loan Applications" %}</h5>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th>ID</th>
-                                <th>Farmer</th>
-                                <th>Type</th>
-                                <th>Amount</th>
-                                <th>Duration</th>
-                                <th>Risk Score</th>
-                                <th>Status</th>
+                                <th>{% trans "ID" %}</th>
+                                <th>{% trans "Farmer" %}</th>
+                                <th>{% trans "Type" %}</th>
+                                <th>{% trans "Amount" %}</th>
+                                <th>{% trans "Duration" %}</th>
+                                <th>{% trans "Risk Score" %}</th>
+                                <th>{% trans "Status" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -185,7 +182,7 @@
                                     {% elif loan.risk_score > 0 %}
                                         <span class="badge bg-danger">Low Priority - {{ loan.risk_score }}</span>
                                     {% else %}
-                                        <span class="badge bg-secondary">Pending</span>
+                                        <span class="badge bg-secondary">{% trans "Pending" %}</span>
                                     {% endif %}
                                 </td>
                                 <td>

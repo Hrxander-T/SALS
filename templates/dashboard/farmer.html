@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}Farmer Dashboard - Smart Agricultural Loan System{% endblock %}
@@ -171,8 +172,8 @@
 {% block content %}
 <div class="row mb-4">
     <div class="col-12 page-header">
-        <h3><i class="bi bi-speedometer2 me-2 text-success"></i>Farmer Dashboard</h3>
-        <p>Welcome back, <strong>{{ request.user.username }}</strong>!</p>
+        <h3><i class="bi bi-speedometer2 me-2 text-success"></i>{% trans "Farmer Dashboard" %}</h3>
+        <p>{% trans "Welcome back," %}<strong>{{ request.user.username }}</strong>!</p>
     </div>
 </div>
 
@@ -182,12 +183,11 @@
         <i class="bi bi-exclamation-triangle text-warning"></i>
     </div>
     <div>
-        <strong>Complete Your Profile</strong>
-        <p class="mb-0">Please complete your farmer profile to apply for loans.</p>
+        <strong>{% trans "Complete Your Profile" %}</strong>
+        <p class="mb-0">{% trans "Please complete your farmer profile to apply for loans." %}</p>
     </div>
     <a href="{% url 'farmer_profile_create' %}" class="btn btn-warning btn-sm ms-auto">
-        <i class="bi bi-person-plus me-1"></i>Create Profile
-    </a>
+        <i class="bi bi-person-plus me-1"></i>{% trans "Create Profile" %}</a>
 </div>
 {% endif %}
 
@@ -199,7 +199,7 @@
                 <i class="bi bi-currency-dollar"></i>
             </div>
             <h2>{{ total_loans }}</h2>
-            <p>My Loans</p>
+            <p>{% trans "My Loans" %}</p>
         </div>
     </div>
     <div class="col-md-6 col-xl-3">
@@ -208,7 +208,7 @@
                 <i class="bi bi-check-circle"></i>
             </div>
             <h2>{{ approved_loans }}</h2>
-            <p>Approved</p>
+            <p>{% trans "Approved" %}</p>
         </div>
     </div>
     <div class="col-md-6 col-xl-3">
@@ -217,7 +217,7 @@
                 <i class="bi bi-hourglass-split"></i>
             </div>
             <h2>{{ pending_loans }}</h2>
-            <p>Pending</p>
+            <p>{% trans "Pending" %}</p>
         </div>
     </div>
     <div class="col-md-6 col-xl-3">
@@ -226,7 +226,7 @@
                 <i class="bi bi-bank"></i>
             </div>
             <h2>৳{{ total_disbursed|floatformat:0 }}</h2>
-            <p>Total Disbursed</p>
+            <p>{% trans "Total Disbursed" %}</p>
         </div>
     </div>
 </div>
@@ -239,7 +239,7 @@
                 <i class="bi bi-cash-stack"></i>
             </div>
             <h2>৳{{ total_paid|floatformat:0 }}</h2>
-            <p>Total Repaid</p>
+            <p>{% trans "Total Repaid" %}</p>
         </div>
     </div>
     
@@ -247,25 +247,20 @@
     <div class="col-md-6">
         <div class="card card-custom quick-actions h-100">
             <div class="card-header">
-                <h5 class="mb-0"><i class="bi bi-lightning me-2"></i>Quick Actions</h5>
+                <h5 class="mb-0"><i class="bi bi-lightning me-2"></i>{% trans "Quick Actions" %}</h5>
             </div>
             <div class="card-body">
                 <div class="d-grid gap-3">
                     <a href="{% url 'loan_apply' %}" class="btn btn-primary-custom">
-                        <i class="bi bi-plus-lg"></i>Apply for New Loan
-                    </a>
+                        <i class="bi bi-plus-lg"></i>{% trans "Apply for New Loan" %}</a>
                     <a href="{% url 'loan_history' %}" class="btn btn-info text-white" style="background: linear-gradient(135deg, #1565c0, #1976d2); border: none;">
-                        <i class="bi bi-clock-history"></i>View My Loans
-                    </a>
+                        <i class="bi bi-clock-history"></i>{% trans "View My Loans" %}</a>
                     <a href="{% url 'repayment_history' %}" class="btn btn-success text-white" style="background: linear-gradient(135deg, #2e7d32, #4caf50); border: none;">
-                        <i class="bi bi-cash-stack"></i>Repayment History
-                    </a>
+                        <i class="bi bi-cash-stack"></i>{% trans "Repayment History" %}</a>
                     <a href="{% url 'farmer_profile' %}" class="btn btn-outline-primary">
-                        <i class="bi bi-person-badge"></i>View My Profile
-                    </a>
+                        <i class="bi bi-person-badge"></i>{% trans "View My Profile" %}</a>
                     <a href="{% url 'upload_document' %}" class="btn btn-outline-secondary">
-                        <i class="bi bi-upload"></i>Upload Document
-                    </a>
+                        <i class="bi bi-upload"></i>{% trans "Upload Document" %}</a>
                 </div>
             </div>
         </div>
@@ -278,7 +273,7 @@
     <div class="col-lg-6">
         <div class="card card-custom h-100">
             <div class="card-header">
-                <h5 class="mb-0"><i class="bi bi-pie-chart me-2"></i>Loans by Type</h5>
+                <h5 class="mb-0"><i class="bi bi-pie-chart me-2"></i>{% trans "Loans by Type" %}</h5>
             </div>
             <div class="card-body">
                 <div style="height: 280px;">
@@ -290,20 +285,20 @@
     <div class="col-lg-6">
         <div class="card card-custom h-100">
             <div class="card-header">
-                <h5 class="mb-0"><i class="bi bi-cash me-2"></i>Payment Summary</h5>
+                <h5 class="mb-0"><i class="bi bi-cash me-2"></i>{% trans "Payment Summary" %}</h5>
             </div>
             <div class="card-body">
                 <div class="text-center">
                     <div class="mb-4">
-                        <h6 class="text-muted text-uppercase small">Total Disbursed</h6>
+                        <h6 class="text-muted text-uppercase small">{% trans "Total Disbursed" %}</h6>
                         <h3 class="text-primary">৳{{ total_disbursed|floatformat:2 }}</h3>
                     </div>
                     <div class="mb-4">
-                        <h6 class="text-muted text-uppercase small">Total Repaid</h6>
+                        <h6 class="text-muted text-uppercase small">{% trans "Total Repaid" %}</h6>
                         <h3 class="text-success">৳{{ total_paid|floatformat:2 }}</h3>
                     </div>
                     <div>
-                        <h6 class="text-muted text-uppercase small">Remaining</h6>
+                        <h6 class="text-muted text-uppercase small">{% trans "Remaining" %}</h6>
                         <h3 class="text-danger">৳{{ total_disbursed|subtract:total_paid|floatformat:2 }}</h3>
                     </div>
                 </div>
@@ -318,7 +313,7 @@
     <div class="col-12">
         <div class="card card-custom">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Recent Loan Applications</h5>
+                <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>{% trans "Recent Loan Applications" %}</h5>
                 <a href="{% url 'loan_history' %}" class="btn btn-sm btn-light text-primary">
                     View All <i class="bi bi-arrow-right ms-1"></i>
                 </a>
@@ -328,13 +323,13 @@
                     <table class="table mb-0">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Loan Type</th>
-                                <th>Amount</th>
-                                <th>Duration</th>
-                                <th>EMI</th>
-                                <th>Status</th>
-                                <th>Date</th>
+                                <th>{% trans "ID" %}</th>
+                                <th>{% trans "Loan Type" %}</th>
+                                <th>{% trans "Amount" %}</th>
+                                <th>{% trans "Duration" %}</th>
+                                <th>{% trans "EMI" %}</th>
+                                <th>{% trans "Status" %}</th>
+                                <th>{% trans "Date" %}</th>
                             </tr>
                         </thead>
                         <tbody>

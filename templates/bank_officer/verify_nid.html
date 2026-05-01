@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Verify NID - {{ farmer.username }} - Smart Agricultural Loan System{% endblock %}
 
@@ -7,8 +8,8 @@
     <div class="col-12">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'nid_verification_list' %}">NID Verification</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">{% trans "Dashboard" %}</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'nid_verification_list' %}">{% trans "NID Verification" %}</a></li>
                 <li class="breadcrumb-item active">Verify NID - {{ farmer.username }}</li>
             </ol>
         </nav>
@@ -19,7 +20,7 @@
     <div class="col-md-8 mx-auto">
         <div class="card shadow">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h4 class="mb-0"><i class="bi bi-person-badge me-2"></i>NID Verification</h4>
+                <h4 class="mb-0"><i class="bi bi-person-badge me-2"></i>{% trans "NID Verification" %}</h4>
                 <span class="badge {% if farmer.nid_verified %}bg-success{% else %}bg-warning{% endif %} fs-6">
                     {% if farmer.nid_verified %}Verified{% else %}Pending Verification{% endif %}
                 </span>
@@ -37,13 +38,13 @@
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label text-muted">Farmer Username</label>
+                            <label class="form-label text-muted">{% trans "Farmer Username" %}</label>
                             <p class="form-control-plaintext fw-bold">{{ farmer.username }}</p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label text-muted">Email</label>
+                            <label class="form-label text-muted">{% trans "Email" %}</label>
                             <p class="form-control-plaintext fw-bold">{{ farmer.email }}</p>
                         </div>
                     </div>
@@ -52,18 +53,18 @@
                 {% if farmer.nid_verified %}
                 <div class="alert alert-success">
                     <i class="bi bi-check-circle me-2"></i>
-                    <strong>This NID has been verified</strong> by {{ farmer.nid_verified_by.username }} on {{
+                    <strong>{% trans "This NID has been verified" %}</strong> by {{ farmer.nid_verified_by.username }} on {{
                     farmer.nid_verified_at|date:"F d, Y h:i A" }}
                 </div>
                 {% endif %}
 
                 {% if farmer.nid_card_front or farmer.nid_card_back %}
                 <div class="mb-4">
-                    <label class="form-label fw-bold">NID Card Documents</label>
+                    <label class="form-label fw-bold">{% trans "NID Card Documents" %}</label>
                     <div class="row">
                         {% if farmer.nid_card_front %}
                         <div class="col-md-6 mb-3">
-                            <label class="form-label text-muted">Front Side</label>
+                            <label class="form-label text-muted">{% trans "Front Side" %}</label>
                             <div class="border rounded p-3 bg-light">
                                 {% with farmer.nid_card_front.url as file_url %}
                                 {% if '.pdf' in file_url or '/raw/' in file_url %}
@@ -72,8 +73,7 @@
                                     <p class="mt-2 mb-0">{{ file_name }}</p>
                                     <a href="{{ farmer.nid_card_front.url }}" target="_blank"
                                         class="btn btn-primary btn-sm mt-2">
-                                        <i class="bi bi-download me-1"></i>View/Download
-                                    </a>
+                                        <i class="bi bi-download me-1"></i>{% trans "View/Download" %}</a>
                                 </div>
                                 {% else %}
                                 <div class="text-center">
@@ -81,7 +81,7 @@
                                         <img src="{{ farmer.nid_card_front.url }}" alt="NID Card Front"
                                             class="img-fluid rounded" style="max-height: 300px; cursor: pointer;">
                                     </a>
-                                    <p class="mt-2 mb-0 text-muted">Click to zoom</p>
+                                    <p class="mt-2 mb-0 text-muted">{% trans "Click to zoom" %}</p>
                                 </div>
                                 {% endif %}
                                 {% endwith %}
@@ -91,7 +91,7 @@
 
                         {% if farmer.nid_card_back %}
                         <div class="col-md-6 mb-3">
-                            <label class="form-label text-muted">Back Side</label>
+                            <label class="form-label text-muted">{% trans "Back Side" %}</label>
                             <div class="border rounded p-3 bg-light">
                                 {% with farmer.nid_card_back.url as file_url %}
                                 {% if '.pdf' in file_url or '/raw/' in file_url %}
@@ -100,8 +100,7 @@
                                     <p class="mt-2 mb-0">{{ file_name }}</p>
                                     <a href="{{ farmer.nid_card_back.url }}" target="_blank"
                                         class="btn btn-primary btn-sm mt-2">
-                                        <i class="bi bi-download me-1"></i>View/Download
-                                    </a>
+                                        <i class="bi bi-download me-1"></i>{% trans "View/Download" %}</a>
                                 </div>
                                 {% else %}
                                 <div class="text-center">
@@ -109,7 +108,7 @@
                                         <img src="{{ farmer.nid_card_back.url }}" alt="NID Card Back"
                                             class="img-fluid rounded" style="max-height: 300px; cursor: pointer;">
                                     </a>
-                                    <p class="mt-2 mb-0 text-muted">Click to zoom</p>
+                                    <p class="mt-2 mb-0 text-muted">{% trans "Click to zoom" %}</p>
                                 </div>
                                 {% endif %}
                                 {% endwith %}
@@ -122,7 +121,7 @@
                 {% if not farmer.nid_verified %}
                 <div class="alert alert-warning">
                     <i class="bi bi-exclamation-triangle me-2"></i>
-                    <strong>Please verify the NID carefully.</strong> Check that the information on the NID matches the
+                    <strong>{% trans "Please verify the NID carefully." %}</strong> Check that the information on the NID matches the
                     farmer's profile details.
                 </div>
                 {% endif %}
@@ -139,11 +138,9 @@
                 <div class="d-flex justify-content-between">
                     <div class="d-flex gap-2">
                         <a href="{% url 'farmer_profile_view' user_id=farmer.id %}" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left me-1"></i>Back to Profile
-                        </a>
+                            <i class="bi bi-arrow-left me-1"></i>{% trans "Back to Profile" %}</a>
                         <a href="{% url 'nid_verification_list' %}" class="btn btn-outline-primary">
-                            <i class="bi bi-list me-1"></i>Back to List
-                        </a>
+                            <i class="bi bi-list me-1"></i>{% trans "Back to List" %}</a>
                     </div>
 
                     {% if farmer.nid_card_front %}
@@ -152,16 +149,14 @@
                         {% csrf_token %}
                         <input type="hidden" name="action" value="verify">
                         <button type="submit" class="btn btn-success">
-                            <i class="bi bi-check-circle me-1"></i>Verify NID (action=verify)
-                        </button>
+                            <i class="bi bi-check-circle me-1"></i>{% trans "Verify NID (action=verify)" %}</button>
                     </form>
                     <form method="post" class="d-inline">
                         {% csrf_token %}
                         <input type="hidden" name="action" value="reject">
                         <button type="submit" class="btn btn-danger"
                             onclick="return confirm('Are you sure you want to reject this NID? The farmer will need to upload a new one.');">
-                            <i class="bi bi-x-circle me-1"></i>Reject NID
-                        </button>
+                            <i class="bi bi-x-circle me-1"></i>{% trans "Reject NID" %}</button>
                     </form>
                     {% else %}
                     <form method="post" class="d-inline">
@@ -169,8 +164,7 @@
                         <input type="hidden" name="action" value="reject">
                         <button type="submit" class="btn btn-outline-danger"
                             onclick="return confirm('Are you sure you want to revoke verification? The farmer will need to upload a new NID.');">
-                            <i class="bi bi-arrow-counterclockwise me-1"></i>Revoke Verification
-                        </button>
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>{% trans "Revoke Verification" %}</button>
                     </form>
                     {% endif %}
                     {% endif %}
@@ -181,22 +175,21 @@
         {% if farmer.farmer_profile %}
         <div class="card shadow mt-4">
             <div class="card-header py-3">
-                <h5 class="mb-0"><i class="bi bi-person me-2"></i>Farmer Profile for Reference</h5>
+                <h5 class="mb-0"><i class="bi bi-person me-2"></i>{% trans "Farmer Profile for Reference" %}</h5>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Name:</strong> {{ farmer.first_name }} {{ farmer.last_name|default:"-" }}</p>
-                        <p><strong>Phone:</strong> {{ farmer.phone_number|default:"-" }}</p>
+                        <p><strong>{% trans "Name:" %}</strong> {{ farmer.first_name }} {{ farmer.last_name|default:"-" }}</p>
+                        <p><strong>{% trans "Phone:" %}</strong> {{ farmer.phone_number|default:"-" }}</p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Land Size:</strong> {{ farmer.farmer_profile.land_size }} acres</p>
-                        <p><strong>Location:</strong> {{ farmer.farmer_profile.location }}</p>
+                        <p><strong>{% trans "Land Size:" %}</strong> {{ farmer.farmer_profile.land_size }} acres</p>
+                        <p><strong>{% trans "Location:" %}</strong> {{ farmer.farmer_profile.location }}</p>
                     </div>
                 </div>
                 <a href="{% url 'farmer_profile_view' user_id=farmer.id %}" class="btn btn-outline-primary btn-sm">
-                    <i class="bi bi-box-arrow-up-right me-1"></i>View Full Profile
-                </a>
+                    <i class="bi bi-box-arrow-up-right me-1"></i>{% trans "View Full Profile" %}</a>
             </div>
         </div>
         {% endif %}
@@ -208,7 +201,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">NID Card Front Side</h5>
+                <h5 class="modal-title">{% trans "NID Card Front Side" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
@@ -224,7 +217,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">NID Card Back Side</h5>
+                <h5 class="modal-title">{% trans "NID Card Back Side" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">

@@ -28,6 +28,8 @@ LANGUAGES = [
     ('en', _('English')),
     ('bn', _('Bengali')),
 ]
+LANGUAGE_COOKIE_NAME = 'django_language'
+
 USE_I18N = True
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
@@ -83,6 +85,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.i18n",  
+
             ],
         },
     },
@@ -114,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True

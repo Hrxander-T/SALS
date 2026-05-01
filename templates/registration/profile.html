@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Profile - Smart Agricultural Loan System{% endblock %}
 
@@ -122,8 +123,8 @@
             <div class="card-header d-flex align-items-center">
                 <i class="bi bi-person-circle fs-4 me-3"></i>
                 <div>
-                    <h4 class="mb-0">My Profile</h4>
-                    <small class="opacity-75">Manage your account settings</small>
+                    <h4 class="mb-0">{% trans "My Profile" %}</h4>
+                    <small class="opacity-75">{% trans "Manage your account settings" %}</small>
                 </div>
             </div>
             <div class="card-body">
@@ -156,7 +157,7 @@
                         {% endif %}
                         <div>
                             <label for="id_profile_picture" class="upload-btn" style="cursor: pointer;">
-                                <i class="bi bi-camera"></i> Change Photo
+                                <i class="bi bi-camera"></i> {% trans "Change Photo" %}
                             </label>
                             <input type="file" id="id_profile_picture" name="profile_picture" accept="image/*" style="display: none;" onchange="previewAvatar(this)">
                         </div>
@@ -168,14 +169,12 @@
                     <div class="row g-4">
                         <div class="col-md-6">
                             <label for="id_username" class="form-label-custom">
-                                <i class="bi bi-person me-2"></i>Username
-                            </label>
+                                <i class="bi bi-person me-2"></i>{% trans "Username" %}</label>
                             {{ form.username }}
                         </div>
                         <div class="col-md-6">
                             <label for="id_email" class="form-label-custom">
-                                <i class="bi bi-envelope me-2"></i>Email Address
-                            </label>
+                                <i class="bi bi-envelope me-2"></i>{% trans "Email Address" %}</label>
                             {{ form.email }}
                         </div>
                     </div>
@@ -183,14 +182,12 @@
                     <div class="row g-4 mt-2">
                         <div class="col-md-6">
                             <label for="id_first_name" class="form-label-custom">
-                                <i class="bi bi-person-badge me-2"></i>First Name
-                            </label>
+                                <i class="bi bi-person-badge me-2"></i>{% trans "First Name" %}</label>
                             {{ form.first_name }}
                         </div>
                         <div class="col-md-6">
                             <label for="id_last_name" class="form-label-custom">
-                                <i class="bi bi-person-badge me-2"></i>Last Name
-                            </label>
+                                <i class="bi bi-person-badge me-2"></i>{% trans "Last Name" %}</label>
                             {{ form.last_name }}
                         </div>
                     </div>
@@ -198,23 +195,20 @@
                     <div class="row g-4 mt-2">
                         <div class="col-md-6">
                             <label for="id_role" class="form-label-custom">
-                                <i class="bi bi-briefcase me-2"></i>Role
-                            </label>
+                                <i class="bi bi-briefcase me-2"></i>{% trans "Role" %}</label>
                             {{ form.role }}
                         </div>
                         <div class="col-md-6">
                             <label for="id_phone_number" class="form-label-custom">
-                                <i class="bi bi-phone me-2"></i>Phone Number
-                            </label>
+                                <i class="bi bi-phone me-2"></i>{% trans "Phone Number" %}</label>
                             {{ form.phone_number }}
                         </div>
                     </div>
 
                     <div class="d-flex gap-3 mt-5">
                         <button type="submit" class="btn btn-primary-custom btn-update">
-                            <i class="bi bi-check-lg me-2"></i>Update Profile
-                        </button>
-                        <a href="{% url 'home' %}" class="btn btn-secondary btn-update">Cancel</a>
+                            <i class="bi bi-check-lg me-2"></i>{% trans "Update Profile" %}</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary btn-update">{% trans "Cancel" %}</a>
                     </div>
                 </form>
 
@@ -222,13 +216,12 @@
 
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <h5 class="mb-2"><i class="bi bi-shield-lock me-2"></i>Security</h5>
-                        <p class="text-muted mb-0">Change your password to keep your account secure.</p>
+                        <h5 class="mb-2"><i class="bi bi-shield-lock me-2"></i>{% trans "Security" %}</h5>
+                        <p class="text-muted mb-0">{% trans "Change your password to keep your account secure." %}</p>
                     </div>
                     <div class="col-md-6 text-md-end mt-3 mt-md-0">
                         <a href="{% url 'password_change' %}" class="btn btn-outline-primary">
-                            <i class="bi bi-key me-2"></i>Change Password
-                        </a>
+                            <i class="bi bi-key me-2"></i>{% trans "Change Password" %}</a>
                     </div>
                 </div>
             </div>

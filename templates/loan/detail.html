@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Loan Details - Smart Agricultural Loan System{% endblock %}
 
@@ -11,10 +12,9 @@
                 <div>
                     {% if application.status == 'Approved' %}
                     <a href="{% url 'loan_download_pdf' application.id %}" class="btn btn-primary btn-sm">
-                        <i class="bi bi-download me-1"></i>Download PDF
-                    </a>
+                        <i class="bi bi-download me-1"></i>{% trans "Download PDF" %}</a>
                     {% endif %}
-                    <a href="{% url 'loan_history' %}" class="btn btn-secondary btn-sm">Back to History</a>
+                    <a href="{% url 'loan_history' %}" class="btn btn-secondary btn-sm">{% trans "Back to History" %}</a>
                 </div>
             </div>
             <div class="card-body p-4">
@@ -30,7 +30,7 @@
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label text-muted">Status</label>
+                            <label class="form-label text-muted">{% trans "Status" %}</label>
                             <p>
                                 {% if application.status == 'Pending' %}
                                     <span class="badge bg-warning fs-6">{{ application.status }}</span>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label text-muted">Risk Score</label>
+                            <label class="form-label text-muted">{% trans "Risk Score" %}</label>
                             <p>
                                 {% if application.risk_score >= 70 %}
                                     <span class="badge bg-success fs-6">Priority (Deserving) - {{ application.risk_score }}</span>
@@ -53,7 +53,7 @@
                                 {% elif application.risk_score > 0 %}
                                     <span class="badge bg-danger fs-6">Low Priority - {{ application.risk_score }}</span>
                                 {% else %}
-                                    <span class="badge bg-secondary fs-6">Pending</span>
+                                    <span class="badge bg-secondary fs-6">{% trans "Pending" %}</span>
                                 {% endif %}
                             </p>
                         </div>
@@ -64,33 +64,33 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Loan Type</label>
+                        <label class="form-label text-muted">{% trans "Loan Type" %}</label>
                         <p class="fw-bold">{{ application.loan_type.name }}</p>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Interest Rate</label>
+                        <label class="form-label text-muted">{% trans "Interest Rate" %}</label>
                         <p class="fw-bold">{{ application.loan_type.interest_rate }}%</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Loan Amount</label>
+                        <label class="form-label text-muted">{% trans "Loan Amount" %}</label>
                         <p class="fw-bold">৳{{ application.amount|floatformat:2 }}</p>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Duration</label>
+                        <label class="form-label text-muted">{% trans "Duration" %}</label>
                         <p class="fw-bold">{{ application.duration_months }} months</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Monthly EMI</label>
+                        <label class="form-label text-muted">{% trans "Monthly EMI" %}</label>
                         <p class="fw-bold text-success">৳{{ application.emi|floatformat:2 }}</p>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Total Repayment</label>
+                        <label class="form-label text-muted">{% trans "Total Repayment" %}</label>
                         <p class="fw-bold">৳{{ application.emi|floatformat:2 }} x {{ application.duration_months }} = ৳{{ application.total_repayment|floatformat:2 }}</p>
                     </div>
                 </div>
@@ -99,11 +99,11 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Applied On</label>
+                        <label class="form-label text-muted">{% trans "Applied On" %}</label>
                         <p class="fw-bold">{{ application.created_at|date:"F d, Y, h:i A" }}</p>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label text-muted">Last Updated</label>
+                        <label class="form-label text-muted">{% trans "Last Updated" %}</label>
                         <p class="fw-bold">{{ application.updated_at|date:"F d, Y, h:i A" }}</p>
                     </div>
                 </div>
