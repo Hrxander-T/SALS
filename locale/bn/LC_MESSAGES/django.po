@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-01 21:46+0000\n"
+"POT-Creation-Date: 2026-05-01 22:49+0000\n"
 "PO-Revision-Date: 2026-05-01 18:00+0600\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -863,123 +863,178 @@ msgstr "স্মার্ট কৃষি"
 msgid "Loan System"
 msgstr "ঋণ ব্যবস্থা"
 
-#: templates/home.html:414 templates/landing_base.html:287
+#: templates/home.html:409
+msgid ""
+"Empowering farmers with easy access to credit for agricultural growth and "
+"sustainable development. Simple process, quick approval,trusted service."
+msgstr ""
+"কৃষকদের কৃষি বৃদ্ধি ও টেকসই উন্নয়নের জন্য সহজ ঋণের সুবিধা প্রদান করা হচ্ছে। সহজ "
+"প্রক্রিয়া, দ্রুত অনুমোদন, বিশ্বস্ত সেবা।"
+
+#: templates/home.html:412 templates/landing_base.html:287
 #: templates/registration/login.html:181
 #: templates/registration/register.html:265
 msgid "Sign In"
 msgstr "সাইন ইন করুন"
 
-#: templates/home.html:416
+#: templates/home.html:414
 msgid "Register Now"
 msgstr "এখনই নিবন্ধন করুন"
 
-#: templates/home.html:431
+#: templates/home.html:429
 msgid "Farmers Served"
 msgstr "সেবাপ্রাপ্ত কৃষক"
 
-#: templates/home.html:438
+#: templates/home.html:436
 msgid "Loans Disbursed"
 msgstr "বিতরণকৃত ঋণ"
 
-#: templates/home.html:445
+#: templates/home.html:443
 msgid "Approval Rate"
 msgstr "অনুমোদনের হার"
 
-#: templates/home.html:452
+#: templates/home.html:450
 msgid "User Rating"
 msgstr "ব্যবহারকারীর রেটিং"
 
-#: templates/home.html:463
+#: templates/home.html:461
 msgid "Our Features"
 msgstr "আমাদের বৈশিষ্ট্যসমূহ"
 
-#: templates/home.html:464
+#: templates/home.html:462
 msgid "Everything you need to manage your agricultural loans efficiently"
 msgstr "আপনার কৃষি ঋণ দক্ষতার সাথে পরিচালনার জন্য প্রয়োজনীয় সবকিছু"
 
-#: templates/home.html:472
+#: templates/home.html:470
 msgid "Easy Applications"
 msgstr "সহজ আবেদন"
 
-#: templates/home.html:482
+#: templates/home.html:471
+msgid ""
+"Apply for loans with our simple, step-by-step process. Complete your "
+"application in minutes with our user-friendly interface."
+msgstr ""
+"আমাদের সহজ, ধাপে ধাপে প্রক্রিয়ায় ঋণের জন্য আবেদন করুন। আমাদের ব্যবহারকারী-বান্ধব "
+"ইন্টারফেস দিয়ে মিনিটের মধ্যে আবেদন সম্পন্ন করুন।"
+
+#: templates/home.html:479
 msgid "Quick Approval"
 msgstr "দ্রুত অনুমোদন"
 
-#: templates/home.html:492
+#: templates/home.html:480
+msgid ""
+"Get fast approval on your loan applications. Our streamlined process ensures "
+"quick decision-making and disbursement."
+msgstr ""
+"আপনার ঋণের আবেদনে দ্রুত অনুমোদন পান। আমাদের সুবিন্যস্ত প্রক্রিয়া দ্রুত সিদ্ধান্ত গ্রহণ ও "
+"বিতরণ নিশ্চিত করে।"
+
+#: templates/home.html:488
 msgid "Real-time Tracking"
 msgstr "রিয়েল-টাইম ট্র্যাকিং"
 
-#: templates/home.html:502
+#: templates/home.html:489
+msgid ""
+"Monitor your loan status and repayment history in real-time through your "
+"personalized dashboard."
+msgstr ""
+"আপনার ব্যক্তিগতকৃত ড্যাশবোর্ডের মাধ্যমে রিয়েল-টাইমে আপনার ঋণের অবস্থা ও পরিশোধের "
+"ইতিহাস পর্যবেক্ষণ করুন।"
+
+#: templates/home.html:497
 msgid "Secure & Reliable"
 msgstr "নিরাপদ ও নির্ভরযোগ্য"
 
-#: templates/home.html:512
+#: templates/home.html:498
+msgid ""
+"Your data is protected with enterprise-grade security. We prioritize your "
+"privacy and data safety."
+msgstr ""
+"আপনার ডেটা এন্টারপ্রাইজ-গ্রেড সুরক্ষায় সংরক্ষিত। আমরা আপনার গোপনীয়তা ও ডেটার "
+"নিরাপত্তাকে অগ্রাধিকার দিই।"
+
+#: templates/home.html:506
 msgid "Flexible Repayment"
 msgstr "নমনীয় পরিশোধ"
 
-#: templates/home.html:522
+#: templates/home.html:507
+msgid ""
+"Choose from flexible repayment options that suit your agricultural cycle and "
+"cash flow."
+msgstr ""
+"আপনার কৃষি চক্র ও নগদ প্রবাহের সাথে মানানসই নমনীয় পরিশোধের বিকল্প থেকে বেছে নিন।"
+
+#: templates/home.html:515
 msgid "24/7 Support"
 msgstr "২৪/৭ সহায়তা"
 
-#: templates/home.html:523
+#: templates/home.html:516
 msgid ""
 "Get assistance whenever you need it with our dedicated customer support team."
 msgstr "আমাদের নিবেদিত গ্রাহক সহায়তা দলের সাহায্যে যেকোনো সময় সহায়তা পান।"
 
-#: templates/home.html:534
+#: templates/home.html:527
 msgid "How It Works"
 msgstr "এটি কীভাবে কাজ করে"
 
-#: templates/home.html:535
+#: templates/home.html:528
 msgid "Get your agricultural loan in four simple steps"
 msgstr "চারটি সহজ ধাপে আপনার কৃষি ঋণ পান"
 
-#: templates/home.html:541 templates/landing_base.html:291
-#: templates/landing_base.html:323
+#: templates/home.html:534 templates/landing_base.html:291
+#: templates/landing_base.html:322
 msgid "Register"
 msgstr "নিবন্ধন করুন"
 
-#: templates/home.html:542
+#: templates/home.html:535
 msgid "Create your account and complete your farmer profile"
 msgstr "আপনার অ্যাকাউন্ট তৈরি করুন এবং কৃষক প্রোফাইল সম্পূর্ণ করুন"
 
-#: templates/home.html:548
+#: templates/home.html:541
 msgid "Verify NID"
 msgstr "এনআইডি যাচাই করুন"
 
-#: templates/home.html:549
+#: templates/home.html:542
 msgid "Upload your National ID for verification"
 msgstr "যাচাইয়ের জন্য আপনার জাতীয় পরিচয়পত্র আপলোড করুন"
 
-#: templates/home.html:555
+#: templates/home.html:548
 msgid "Apply"
 msgstr "আবেদন করুন"
 
-#: templates/home.html:556
+#: templates/home.html:549
 msgid "Submit your loan application with required details"
 msgstr "প্রয়োজনীয় তথ্যসহ আপনার ঋণের আবেদন জমা দিন"
 
-#: templates/home.html:562
+#: templates/home.html:555
 msgid "Receive Funds"
 msgstr "অর্থ গ্রহণ করুন"
 
-#: templates/home.html:563
+#: templates/home.html:556
 msgid "Get approved and receive funds directly"
 msgstr "অনুমোদন পান এবং সরাসরি অর্থ গ্রহণ করুন"
 
-#: templates/home.html:575
+#: templates/home.html:568
 msgid "Ready to Grow Your Farm?"
 msgstr "আপনার খামার বাড়াতে প্রস্তুত?"
 
-#: templates/home.html:579
+#: templates/home.html:569
+msgid ""
+"Join thousands of farmers who have improved their livelihoods with our "
+"agricultural loan system. Start your journey today."
+msgstr ""
+"হাজার হাজার কৃষকের সাথে যোগ দিন যারা আমাদের কৃষি ঋণ ব্যবস্থার মাধ্যমে তাদের "
+"জীবিকা উন্নত করেছেন। আজই আপনার যাত্রা শুরু করুন।"
+
+#: templates/home.html:571
 msgid "Get Started Now"
 msgstr "এখনই শুরু করুন"
 
-#: templates/landing_base.html:278 templates/landing_base.html:320
+#: templates/landing_base.html:278 templates/landing_base.html:319
 msgid "Home"
 msgstr "হোম"
 
-#: templates/landing_base.html:281 templates/landing_base.html:321
+#: templates/landing_base.html:281 templates/landing_base.html:320
 msgid "Features"
 msgstr "বৈশিষ্ট্যসমূহ"
 
@@ -987,39 +1042,45 @@ msgstr "বৈশিষ্ট্যসমূহ"
 msgid "About"
 msgstr "সম্পর্কে"
 
-#: templates/landing_base.html:319
+#: templates/landing_base.html:309
+msgid ""
+"Empowering farmers with easy access to credit for agricultural growth and "
+"development."
+msgstr "কৃষকদের কৃষি বৃদ্ধি ও উন্নয়নের জন্য সহজ ঋণের সুবিধা প্রদান করা হচ্ছে।"
+
+#: templates/landing_base.html:318
 msgid "Quick Links"
 msgstr "দ্রুত লিংক"
 
-#: templates/landing_base.html:322
+#: templates/landing_base.html:321
 msgid "About Us"
 msgstr "আমাদের সম্পর্কে"
 
-#: templates/landing_base.html:326
+#: templates/landing_base.html:325
 msgid "Services"
 msgstr "সেবাসমূহ"
 
-#: templates/landing_base.html:327
+#: templates/landing_base.html:326
 msgid "Crop Loan"
 msgstr "ফসল ঋণ"
 
-#: templates/landing_base.html:328
+#: templates/landing_base.html:327
 msgid "Equipment Loan"
 msgstr "সরঞ্জাম ঋণ"
 
-#: templates/landing_base.html:329
+#: templates/landing_base.html:328
 msgid "Livestock Loan"
 msgstr "পশুসম্পদ ঋণ"
 
-#: templates/landing_base.html:330
+#: templates/landing_base.html:329
 msgid "Storage Loan"
 msgstr "গুদামজাত ঋণ"
 
-#: templates/landing_base.html:333
+#: templates/landing_base.html:332
 msgid "Contact"
 msgstr "যোগাযোগ"
 
-#: templates/landing_base.html:336
+#: templates/landing_base.html:335
 msgid "Dhaka, Bangladesh"
 msgstr "ঢাকা, বাংলাদেশ"
 
@@ -1205,9 +1266,10 @@ msgstr "নতুন পাসওয়ার্ড সেট করুন"
 
 #: templates/registration/password_reset_confirm.html:24
 msgid "Please enter your new password twice to verify you typed it correctly."
-msgstr "সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।"
-"সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।অনুগ্রহ করে আপনার "
-"নতুন পাসওয়ার্ড সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে দুবার লিখুন।"
+msgstr ""
+"সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।সঠিকভাবে টাইপ "
+"করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।অনুগ্রহ করে আপনার নতুন পাসওয়ার্ড "
+"সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে দুবার লিখুন।"
 
 #: templates/registration/password_reset_confirm.html:36
 msgid "Change My Password"
@@ -1301,8 +1363,6 @@ msgid "Manage your account settings"
 msgstr "আপনার অ্যাকাউন্ট সেটিংস পরিচালনা করুন"
 
 #: templates/registration/profile.html:160
-#, fuzzy
-#| msgid "Change Password"
 msgid "Change Photo"
 msgstr "পাসওয়ার্ড পরিবর্তন করুন"
 
@@ -1361,8 +1421,6 @@ msgid "Enter your National ID number for account verification"
 msgstr "অ্যাকাউন্ট যাচাইয়ের জন্য আপনার জাতীয় পরিচয়পত্র নম্বর লিখুন"
 
 #: templates/registration/register.html:260
-#, fuzzy
-#| msgid "Don't have an account?"
 msgid "already have an account?"
 msgstr "অ্যাকাউন্ট নেই?"
 
@@ -1449,57 +1507,3 @@ msgstr "অনুমোদনকারী"
 #: templates/repayment/pending_list.html:133
 msgid "No repayments found."
 msgstr "কোনো পরিশোধ পাওয়া যায়নি।"
-
-#~ msgid ""
-#~ "Empowering farmers with easy access to credit for agricultural growth and "
-#~ "sustainable development. Simple process, quick approval, trusted service."
-#~ msgstr ""
-#~ "কৃষকদের কৃষি বৃদ্ধি ও টেকসই উন্নয়নের জন্য সহজ ঋণের সুবিধা প্রদান করা হচ্ছে। সহজ "
-#~ "প্রক্রিয়া, দ্রুত অনুমোদন, বিশ্বস্ত সেবা।"
-
-#~ msgid ""
-#~ "Apply for loans with our simple, step-by-step process. Complete your "
-#~ "application in minutes with our user-friendly interface."
-#~ msgstr ""
-#~ "আমাদের সহজ, ধাপে ধাপে প্রক্রিয়ায় ঋণের জন্য আবেদন করুন। আমাদের ব্যবহারকারী-"
-#~ "বান্ধব ইন্টারফেস দিয়ে মিনিটের মধ্যে আবেদন সম্পন্ন করুন।"
-
-#~ msgid ""
-#~ "Get fast approval on your loan applications. Our streamlined process "
-#~ "ensures quick decision-making and disbursement."
-#~ msgstr ""
-#~ "আপনার ঋণের আবেদনে দ্রুত অনুমোদন পান। আমাদের সুবিন্যস্ত প্রক্রিয়া দ্রুত সিদ্ধান্ত গ্রহণ "
-#~ "ও বিতরণ নিশ্চিত করে।"
-
-#~ msgid ""
-#~ "Monitor your loan status and repayment history in real-time through your "
-#~ "personalized dashboard."
-#~ msgstr ""
-#~ "আপনার ব্যক্তিগতকৃত ড্যাশবোর্ডের মাধ্যমে রিয়েল-টাইমে আপনার ঋণের অবস্থা ও পরিশোধের "
-#~ "ইতিহাস পর্যবেক্ষণ করুন।"
-
-#~ msgid ""
-#~ "Your data is protected with enterprise-grade security. We prioritize your "
-#~ "privacy and data safety."
-#~ msgstr ""
-#~ "আপনার ডেটা এন্টারপ্রাইজ-গ্রেড সুরক্ষায় সংরক্ষিত। আমরা আপনার গোপনীয়তা ও ডেটার "
-#~ "নিরাপত্তাকে অগ্রাধিকার দিই।"
-
-#~ msgid ""
-#~ "Choose from flexible repayment options that suit your agricultural cycle "
-#~ "and cash flow."
-#~ msgstr ""
-#~ "আপনার কৃষি চক্র ও নগদ প্রবাহের সাথে মানানসই নমনীয় পরিশোধের বিকল্প থেকে বেছে "
-#~ "নিন।"
-
-#~ msgid ""
-#~ "Join thousands of farmers who have improved their livelihoods with our "
-#~ "agricultural loan system. Start your journey today."
-#~ msgstr ""
-#~ "হাজার হাজার কৃষকের সাথে যোগ দিন যারা আমাদের কৃষি ঋণ ব্যবস্থার মাধ্যমে তাদের "
-#~ "জীবিকা উন্নত করেছেন। আজই আপনার যাত্রা শুরু করুন।"
-
-#~ msgid ""
-#~ "Empowering farmers with easy access to credit for agricultural growth and "
-#~ "development."
-#~ msgstr "কৃষকদের কৃষি বৃদ্ধি ও উন্নয়নের জন্য সহজ ঋণের সুবিধা প্রদান করা হচ্ছে।"

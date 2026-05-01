@@ -409,3 +409,60 @@ http://127.0.0.1:8000/admin/
 # Test rosetta translation UI
 http://127.0.0.1:8000/rosetta/
 ```
+
+---
+
+### Removing fuzzy from .po file
+This is still fuzzy because the `msgid` spans multiple lines in the `.po` file. The translation exists but Django won't use it while it's marked fuzzy.
+
+Fix — remove the `#, fuzzy` and `#|` lines manually:
+
+bash
+
+```bash
+nano locale/bn/LC_MESSAGES/django.po
+```
+
+Find every block with `#, fuzzy` and delete those lines, keeping only:
+
+```
+msgid "..."
+msgstr "..."
+```
+
+Or do it automatically:
+
+bash
+
+```bash
+python3 - << 'EOF'
+with open('locale/bn/LC_MESSAGES/django.po', 'r') as f:
+    lines = f.readlines()
+
+result = []
+for line in lines:
+    if line.startswith('#, fuzzy') or line.startswith('#| '):
+        continue
+    result.append(line)
+
+with open('locale/bn/LC_MESSAGES/django.po', 'w') as f:
+    f.writelines(result)
+
+print("Done")
+EOF
+```
+
+Then compile:
+
+
+
+```bash
+python manage.py compilemessages
+```
+---
+
+##### This finds all `{% trans` tags that don't have a closing `%}` on the same line.
+
+```bash
+grep -rn "{% trans" templates/ | grep -v "%}"
+```

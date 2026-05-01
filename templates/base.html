@@ -85,6 +85,45 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
+        /* Swtich Language  */
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 4px 6px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        .lang-divider {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+        }
+
         /* Sidebar */
         .sidebar-custom {
             background: rgba(255, 255, 255, 0.95);
