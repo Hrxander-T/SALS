@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Smart Agricultural Loan System - Dashboard">
-    <title>{% block title %}Smart Agricultural Loan System{% endblock %}</title>
+    <title>{% block title %}{% trans "Smart Agricultural Loan System" %}{% endblock %}</title>
     <!-- FaviIcon-->
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <!-- Bootstrap CSS -->
@@ -305,26 +307,30 @@
     </style>
     {% block extra_css %}{% endblock %}
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <i class="bi bi-flower1"></i>
-                SmartAgri Loan
+                {% trans "SmartAgri Loan" %}
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
+
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="bi bi-bell fs-5"></i></a>
                     </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
                             data-bs-toggle="dropdown">
+
                             {% if user.profile_picture %}
                             <img src="{{ user.profile_picture.url }}" class="rounded-circle me-2"
                                 style="width: 32px; height: 32px; object-fit: cover;">
@@ -334,18 +340,27 @@
                                 <i class="bi bi-person"></i>
                             </div>
                             {% endif %}
+
                             <span>{{ user.username }}</span>
                         </a>
+
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
-                            <li><a class="dropdown-item dropdown-item-custom" href="{% url 'profile' %}"><i
-                                        class="bi bi-person me-2"></i>Profile</a></li>
                             <li>
-                                <hr class="dropdown-divider">
+                                <a class="dropdown-item dropdown-item-custom" href="{% url 'profile' %}">
+                                    <i class="bi bi-person me-2"></i>{% trans "Profile" %}
+                                </a>
                             </li>
-                            <li><a class="dropdown-item dropdown-item-custom" href="{% url 'logout' %}"><i
-                                        class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item dropdown-item-custom" href="{% url 'logout' %}">
+                                    <i class="bi bi-box-arrow-right me-2"></i>{% trans "Logout" %}
+                                </a>
+                            </li>
                         </ul>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -354,67 +369,83 @@
     <!-- Main Content -->
     <div class="container-fluid">
         <div class="row">
+
             <!-- Sidebar -->
             <div class="col-md-2 sidebar-custom">
                 <ul class="nav flex-column">
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'dashboard' %}">
-                            <i class="bi bi-speedometer2"></i> Dashboard
+                            <i class="bi bi-speedometer2"></i> {% trans "Dashboard" %}
                         </a>
                     </li>
+
                     {% if user.role == 'Farmer' %}
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'loan_list' %}">
-                            <i class="bi bi-currency-dollar"></i> Loans
+                            <i class="bi bi-currency-dollar"></i> {% trans "Loans" %}
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'loan_apply' %}">
-                            <i class="bi bi-plus-circle"></i> Apply for Loan
+                            <i class="bi bi-plus-circle"></i> {% trans "Apply for Loan" %}
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'loan_history' %}">
-                            <i class="bi bi-clock-history"></i> My Loans
+                            <i class="bi bi-clock-history"></i> {% trans "My Loans" %}
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'repayment_history' %}">
-                            <i class="bi bi-cash-stack"></i> Repayments
+                            <i class="bi bi-cash-stack"></i> {% trans "Repayments" %}
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'farmer_profile' %}">
-                            <i class="bi bi-person-badge"></i> My Profile
+                            <i class="bi bi-person-badge"></i> {% trans "My Profile" %}
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'upload_nid' %}">
-                            <i class="bi bi-upload"></i> Upload NID
+                            <i class="bi bi-upload"></i> {% trans "Upload NID" %}
                         </a>
                     </li>
+
                     {% elif user.role == 'Bank Officer' %}
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'loan_list' %}">
-                            <i class="bi bi-list-check"></i> Loan Applications
+                            <i class="bi bi-list-check"></i> {% trans "Loan Applications" %}
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'farmer_list' %}">
-                            <i class="bi bi-people"></i> Farmers
+                            <i class="bi bi-people"></i> {% trans "Farmers" %}
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'repayment_list' %}">
-                            <i class="bi bi-currency-exchange"></i> Repayments
+                            <i class="bi bi-currency-exchange"></i> {% trans "Repayments" %}
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'nid_verification_list' %}">
-                            <i class="bi bi-person-badge"></i> NID Verification
+                            <i class="bi bi-person-badge"></i> {% trans "NID Verification" %}
                         </a>
                     </li>
+
                     {% endif %}
+
                 </ul>
             </div>
 
@@ -422,13 +453,16 @@
             <div class="col-md-10 content-wrapper">
                 {% block content %}{% endblock %}
             </div>
+
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer-custom text-center">
         <div class="container">
-            <p class="mb-0">&copy; 2026 Smart Agricultural Loan System. All Rights Reserved.</p>
+            <p class="mb-0">
+                &copy; 2026 {% trans "Smart Agricultural Loan System. All Rights Reserved." %}
+            </p>
         </div>
     </footer>
 

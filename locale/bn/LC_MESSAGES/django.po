@@ -7,7 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-05-01 12:54+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-01 13:35+0000\n"
 "PO-Revision-Date: 2026-05-01 18:00+0600\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -179,3 +180,64 @@ msgstr "ইংরেজি"
 #: sals_project/settings.py:29
 msgid "Bengali"
 msgstr "বাংলা"
+
+#: templates/base.html:11
+msgid "Smart Agricultural Loan System"
+msgstr "স্মার্ট কৃষি ঋণ ব্যবস্থা"
+
+#: templates/base.html:316
+msgid "SmartAgri Loan"
+msgstr "স্মার্টএগ্রি ঋণ"
+
+#: templates/base.html:350
+msgid "Profile"
+msgstr "প্রোফাইল"
+
+#: templates/base.html:358
+msgid "Logout"
+msgstr "লগআউট"
+
+#: templates/base.html:379
+msgid "Dashboard"
+msgstr "ড্যাশবোর্ড"
+
+#: templates/base.html:387
+msgid "Loans"
+msgstr "ঋণসমূহ"
+
+#: templates/base.html:393
+msgid "Apply for Loan"
+msgstr "ঋণের জন্য আবেদন করুন"
+
+#: templates/base.html:399
+msgid "My Loans"
+msgstr "আমার ঋণসমূহ"
+
+#: templates/base.html:405
+#: templates/base.html:437
+msgid "Repayments"
+msgstr "কিস্তি পরিশোধ"
+
+#: templates/base.html:411
+msgid "My Profile"
+msgstr "আমার প্রোফাইল"
+
+#: templates/base.html:417
+msgid "Upload NID"
+msgstr "এনআইডি আপলোড করুন"
+
+#: templates/base.html:425
+msgid "Loan Applications"
+msgstr "ঋণের আবেদনসমূহ"
+
+#: templates/base.html:431
+msgid "Farmers"
+msgstr "কৃষকগণ"
+
+#: templates/base.html:443
+msgid "NID Verification"
+msgstr "এনআইডি যাচাই"
+
+#: templates/base.html:464
+msgid "Smart Agricultural Loan System. All Rights Reserved."
+msgstr "স্মার্ট কৃষি ঋণ ব্যবস্থা। সর্বস্বত্ব সংরক্ষিত।"
