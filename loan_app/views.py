@@ -35,6 +35,15 @@ from .forms import (
 )
 from .models import FarmerProfile, LoanApplication, LoanType, Repayment, User
 
+def _is_active_officer(user):
+    """Return True if the user is allowed to act as a Bank Officer.
+
+    Staff/superusers are allowed. Regular users with role 'Bank Officer'
+    must also have is_approved=True.
+    """
+    if user.is_staff or user.is_superuser:
+        return True
+    return user.role == "Bank Officer" and user.is_approved
 
 class LoanApprovalPDF(FPDF):
     def header(self):
@@ -315,6 +324,8 @@ def dashboard(request):
     if request.user.role == "Admin" or request.user.is_staff:
         return admin_dashboard(request)
     elif request.user.role == "Bank Officer":
+        if not _is_active_officer(request.user):
+            return pending_approval(request)
         return bank_officer_dashboard(request)
     else:
         return farmer_dashboard(request)
@@ -491,6 +502,9 @@ def redirect_after_login(user):
     if user.role == "Admin":
         return redirect("dashboard")
     elif user.role == "Bank Officer":
+        # Unapproved bank officers should see the pending approval page
+        if not user.is_approved and not user.is_staff and not user.is_superuser:
+            return redirect("pending_approval")
         return redirect("dashboard")
     else:
         return redirect("home")
@@ -528,7 +542,7 @@ def farmer_profile(request):
 
 @login_required
 def farmer_profile_view(request, user_id):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to view this profile."))
         return redirect("home")
 
@@ -745,7 +759,7 @@ def repayment_history_download_pdf(request):
 
 @login_required
 def approve_loan(request, pk):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to approve loans."))
         return redirect("home")
 
@@ -759,7 +773,7 @@ def approve_loan(request, pk):
 
 @login_required
 def reject_loan(request, pk):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to reject loans."))
         return redirect("home")
 
@@ -773,7 +787,7 @@ def reject_loan(request, pk):
 
 @login_required
 def repayment_list(request):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to view repayments."))
         return redirect("home")
 
@@ -795,7 +809,7 @@ def repayment_list(request):
 
 @login_required
 def approve_repayment(request, pk):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to approve repayments."))
         return redirect("home")
 
@@ -814,7 +828,7 @@ def approve_repayment(request, pk):
 
 @login_required
 def reject_repayment(request, pk):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to reject repayments."))
         return redirect("home")
 
@@ -833,7 +847,7 @@ def reject_repayment(request, pk):
 
 @login_required
 def record_repayment_by_officer(request, loan_id):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to record repayments."))
         return redirect("home")
 
@@ -895,7 +909,7 @@ def farmer_repayment_history(request):
 
 @login_required
 def loan_list(request):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         return redirect("home")
 
     applications = LoanApplication.objects.all().order_by("-created_at")
@@ -966,7 +980,7 @@ def repayment_history(request):
 
 @login_required
 def farmer_list(request):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to view farmers."))
         return redirect("home")
 
@@ -1000,7 +1014,7 @@ def upload_nid(request):
 
 @login_required
 def verify_nid(request, user_id):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to verify NID."))
         return redirect("home")
 
@@ -1033,7 +1047,7 @@ def verify_nid(request, user_id):
 
 @login_required
 def nid_verification_list(request):
-    if not (request.user.is_staff or request.user.role == "Bank Officer"):
+    if not _is_active_officer(request.user):
         messages.error(request, _("You do not have permission to view this page."))
         return redirect("home")
 
@@ -1069,6 +1083,52 @@ def nid_verification_list(request):
     }
     return render(request, "bank_officer/nid_verification_list.html", context)
 
+
+@login_required
+def pending_officers(request):
+    if not (request.user.role == "Admin" or request.user.is_staff or request.user.is_superuser):
+        messages.error(request, "You do not have permission to view this page.")
+        return redirect("home")
+
+    officers = User.objects.filter(role="Bank Officer", is_approved=False).order_by("date_joined")
+    paginator = Paginator(officers, 20)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    return render(request, "admin/pending_officers.html", {"page_obj": page_obj})
+
+
+@login_required
+def approve_officer(request, user_id):
+    if not (request.user.role == "Admin" or request.user.is_staff or request.user.is_superuser):
+        messages.error(request, "You do not have permission to perform this action.")
+        return redirect("home")
+
+    officer = get_object_or_404(User, id=user_id, role="Bank Officer")
+    officer.is_approved = True
+    officer.save(update_fields=["is_approved"])
+    messages.success(request, _("Bank Officer %s has been approved.") % officer.username)
+    return redirect("pending_officers")
+
+
+@login_required
+def pending_approval(request):
+    # Show the pending approval page for users awaiting admin approval
+    role = request.user.role if request.user.is_authenticated else None
+    return render(request, "dashboard/pending_approval.html", {"role": role})
+
+
+@login_required
+def reject_officer(request, user_id):
+    if not (request.user.role == "Admin" or request.user.is_staff or request.user.is_superuser):
+        messages.error(request, "You do not have permission to perform this action.")
+        return redirect("home")
+
+    officer = get_object_or_404(User, id=user_id, role="Bank Officer")
+    # For rejection we can delete or mark inactive; mark inactive and leave record
+    officer.is_active = False
+    officer.save(update_fields=["is_active"])
+    messages.success(request, _("Bank Officer %s has been rejected and deactivated.") % officer.username)
+    return redirect("pending_officers")
 
 @csrf_exempt
 @require_http_methods(["POST"])

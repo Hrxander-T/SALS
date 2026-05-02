@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-02 13:57+0000\n"
+"POT-Creation-Date: 2026-05-02 20:24+0000\n"
 "PO-Revision-Date: 2026-05-01 18:00+0600\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -15,162 +15,173 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: loan_app/views.py:450
+#: loan_app/views.py:461
 msgid "Registration successful!"
 msgstr "নিবন্ধন সফল হয়েছে!"
 
-#: loan_app/views.py:464
+#: loan_app/views.py:475
 #, python-format
 msgid "Welcome back, %s!"
 msgstr "আবার স্বাগতম, %s!"
 
-#: loan_app/views.py:467
+#: loan_app/views.py:478
 msgid "Invalid username or password."
 msgstr "ব্যবহারকারীর নাম বা পাসওয়ার্ড সঠিক নয়।"
 
-#: loan_app/views.py:473
+#: loan_app/views.py:484
 msgid "You have been logged out."
 msgstr "আপনি সফলভাবে লগ আউট হয়েছেন।"
 
-#: loan_app/views.py:483
+#: loan_app/views.py:494
 msgid "Profile updated successfully!"
 msgstr "প্রোফাইল সফলভাবে হালনাগাদ হয়েছে!"
 
-#: loan_app/views.py:522
+#: loan_app/views.py:536
 msgid "Please complete your farmer profile."
 msgstr "অনুগ্রহ করে আপনার কৃষক প্রোফাইল সম্পূর্ণ করুন।"
 
-#: loan_app/views.py:532
+#: loan_app/views.py:546
 msgid "You do not have permission to view this profile."
 msgstr "এই প্রোফাইল দেখার অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:549
+#: loan_app/views.py:563
 msgid "You already have a profile."
 msgstr "আপনার ইতোমধ্যে একটি প্রোফাইল রয়েছে।"
 
-#: loan_app/views.py:558
+#: loan_app/views.py:572
 msgid "Farmer profile created successfully!"
 msgstr "কৃষক প্রোফাইল সফলভাবে তৈরি হয়েছে!"
 
-#: loan_app/views.py:577
+#: loan_app/views.py:591
 msgid "Farmer profile updated successfully!"
 msgstr "কৃষক প্রোফাইল সফলভাবে হালনাগাদ হয়েছে!"
 
-#: loan_app/views.py:591 loan_app/views.py:611
+#: loan_app/views.py:605 loan_app/views.py:625
 msgid "Please complete your farmer profile first."
 msgstr "অনুগ্রহ করে প্রথমে আপনার কৃষক প্রোফাইল সম্পূর্ণ করুন।"
 
-#: loan_app/views.py:600
+#: loan_app/views.py:614
 msgid "Document uploaded successfully!"
 msgstr "দলিল সফলভাবে আপলোড হয়েছে!"
 
-#: loan_app/views.py:602
+#: loan_app/views.py:616
 msgid "Please select a file to upload."
 msgstr "আপলোড করার জন্য একটি ফাইল নির্বাচন করুন।"
 
-#: loan_app/views.py:615
+#: loan_app/views.py:629
 msgid "You already have a loan application."
 msgstr "আপনার ইতোমধ্যে একটি ঋণের আবেদন রয়েছে।"
 
-#: loan_app/views.py:694
+#: loan_app/views.py:708
 msgid "Only approved loans can download the approval letter."
 msgstr "শুধুমাত্র অনুমোদিত ঋণের জন্য অনুমোদনপত্র ডাউনলোড করা যাবে।"
 
-#: loan_app/views.py:712
+#: loan_app/views.py:726
 msgid "Repayment not found."
 msgstr "পরিশোধের তথ্য পাওয়া যায়নি।"
 
-#: loan_app/views.py:718
+#: loan_app/views.py:732
 msgid "You do not have permission to download this receipt."
 msgstr "এই রসিদ ডাউনলোড করার অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:749
+#: loan_app/views.py:763
 msgid "You do not have permission to approve loans."
 msgstr "ঋণ অনুমোদনের অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:756
+#: loan_app/views.py:770
 #, python-format
 msgid "Loan application #%s approved!"
 msgstr "ঋণের আবেদন #%s অনুমোদিত হয়েছে!"
 
-#: loan_app/views.py:763
+#: loan_app/views.py:777
 msgid "You do not have permission to reject loans."
 msgstr "ঋণ বাতিল করার অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:770
+#: loan_app/views.py:784
 #, python-format
 msgid "Loan application #%s rejected!"
 msgstr "ঋণের আবেদন #%s বাতিল করা হয়েছে!"
 
-#: loan_app/views.py:777
+#: loan_app/views.py:791
 msgid "You do not have permission to view repayments."
 msgstr "পরিশোধের তথ্য দেখার অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:799
+#: loan_app/views.py:813
 msgid "You do not have permission to approve repayments."
 msgstr "পরিশোধ অনুমোদনের অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:804 loan_app/views.py:823
+#: loan_app/views.py:818 loan_app/views.py:837
 msgid "This repayment has already been processed."
 msgstr "এই পরিশোধ ইতোমধ্যে প্রক্রিয়াকৃত হয়েছে।"
 
-#: loan_app/views.py:811
+#: loan_app/views.py:825
 #, python-format
 msgid "Repayment #%s approved!"
 msgstr "পরিশোধ #%s অনুমোদিত হয়েছে!"
 
-#: loan_app/views.py:818
+#: loan_app/views.py:832
 msgid "You do not have permission to reject repayments."
 msgstr "পরিশোধ বাতিল করার অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:830
+#: loan_app/views.py:844
 #, python-format
 msgid "Repayment #%s rejected!"
 msgstr "পরিশোধ #%s বাতিল করা হয়েছে!"
 
-#: loan_app/views.py:837
+#: loan_app/views.py:851
 msgid "You do not have permission to record repayments."
 msgstr "পরিশোধ নথিভুক্ত করার অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:843 loan_app/views.py:921
+#: loan_app/views.py:857 loan_app/views.py:935
 msgid "Only approved loans can have repayments."
 msgstr "শুধুমাত্র অনুমোদিত ঋণের পরিশোধ গ্রহণ করা যাবে।"
 
-#: loan_app/views.py:851 loan_app/views.py:929
+#: loan_app/views.py:865 loan_app/views.py:943
 msgid "This loan has been fully repaid."
 msgstr "এই ঋণ সম্পূর্ণ পরিশোধ করা হয়েছে।"
 
-#: loan_app/views.py:864
+#: loan_app/views.py:878
 msgid "Repayment recorded and approved successfully!"
 msgstr "পরিশোধ সফলভাবে নথিভুক্ত ও অনুমোদিত হয়েছে!"
 
-#: loan_app/views.py:879
+#: loan_app/views.py:893
 msgid "Farmer access only."
 msgstr "শুধুমাত্র কৃষকদের জন্য প্রবেশাধিকার।"
 
-#: loan_app/views.py:939
+#: loan_app/views.py:953
 msgid "Repayment recorded successfully!"
 msgstr "পরিশোধ সফলভাবে নথিভুক্ত হয়েছে!"
 
-#: loan_app/views.py:970
+#: loan_app/views.py:984
 msgid "You do not have permission to view farmers."
 msgstr "কৃষকদের তথ্য দেখার অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:987
+#: loan_app/views.py:1001
 msgid "Only farmers can upload NID cards."
 msgstr "শুধুমাত্র কৃষকরাই এনআইডি কার্ড আপলোড করতে পারবেন।"
 
-#: loan_app/views.py:994
+#: loan_app/views.py:1008
 msgid "NID card uploaded successfully!"
 msgstr "এনআইডি কার্ড সফলভাবে আপলোড হয়েছে!"
 
-#: loan_app/views.py:1004
+#: loan_app/views.py:1018
 msgid "You do not have permission to verify NID."
 msgstr "এনআইডি যাচাই করার অনুমতি আপনার নেই।"
 
-#: loan_app/views.py:1037
+#: loan_app/views.py:1051
 msgid "You do not have permission to view this page."
 msgstr "এই পৃষ্ঠা দেখার অনুমতি আপনার নেই।"
+
+#: loan_app/views.py:1109
+#, fuzzy, python-format
+#| msgid "Bank Officer Dashboard"
+msgid "Bank Officer %s has been approved."
+msgstr "ব্যাংক কর্মকর্তার ড্যাশবোর্ড"
+
+#: loan_app/views.py:1130
+#, python-format
+msgid "Bank Officer %s has been rejected and deactivated."
+msgstr "ব্যাংক অফিসার %s প্রত্যাখ্যাত এবং নিষ্ক্রিয় করা হয়েছে।"
 
 #: sals_project/settings.py:28
 msgid "English"
@@ -215,8 +226,9 @@ msgstr "ফোন"
 
 #: templates/bank_officer/farmer_list.html:26
 #: templates/bank_officer/nid_verification_list.html:68
-#: templates/loan/history.html:38 templates/loan/list.html:41
-#: templates/repayment/history.html:52 templates/repayment/pending_list.html:50
+#: templates/dashboard/admin.html:237 templates/loan/history.html:38
+#: templates/loan/list.html:41 templates/repayment/history.html:52
+#: templates/repayment/pending_list.html:50
 msgid "Actions"
 msgstr "কার্যক্রম"
 
@@ -391,8 +403,8 @@ msgstr "স্মার্টএগ্রি ঋণ"
 msgid "Profile"
 msgstr "প্রোফাইল"
 
-#: templates/base.html:426 templates/dashboard/pending_approval.html:128
-#: templates_backup/base.html:358
+#: templates/base.html:426 templates/dashboard/pending_approval.html:131
+#: templates/dashboard/pending_approval.html:146 templates_backup/base.html:358
 msgid "Logout"
 msgstr "লগআউট"
 
@@ -430,102 +442,102 @@ msgstr "এনআইডি আপলোড করুন"
 msgid "Loan Applications"
 msgstr "ঋণের আবেদনসমূহ"
 
-#: templates/base.html:532 templates_backup/base.html:464
+#: templates/base.html:539 templates_backup/base.html:464
 msgid "Smart Agricultural Loan System. All Rights Reserved."
 msgstr "স্মার্ট কৃষি ঋণ ব্যবস্থা। সর্বস্বত্ব সংরক্ষিত।"
 
-#: templates/dashboard/admin.html:52
+#: templates/dashboard/admin.html:60
 msgid "Admin Dashboard"
 msgstr "অ্যাডমিন ড্যাশবোর্ড"
 
-#: templates/dashboard/admin.html:53
+#: templates/dashboard/admin.html:61
 msgid "Welcome back! Here's an overview of your loan system."
 msgstr "আবার স্বাগতম! এখানে আপনার ঋণ ব্যবস্থার একটি সংক্ষিপ্ত বিবরণ রয়েছে।"
 
-#: templates/dashboard/admin.html:63 templates/dashboard/bank_officer.html:55
+#: templates/dashboard/admin.html:71 templates/dashboard/bank_officer.html:55
 msgid "Total Farmers"
 msgstr "মোট কৃষক"
 
-#: templates/dashboard/admin.html:78 templates/dashboard/bank_officer.html:70
+#: templates/dashboard/admin.html:86 templates/dashboard/bank_officer.html:70
 msgid "Total Loans"
 msgstr "মোট ঋণ"
 
-#: templates/dashboard/admin.html:93 templates/dashboard/bank_officer.html:85
+#: templates/dashboard/admin.html:101 templates/dashboard/bank_officer.html:85
 msgid "Approved Loans"
 msgstr "অনুমোদিত ঋণ"
 
-#: templates/dashboard/admin.html:108 templates/dashboard/bank_officer.html:100
+#: templates/dashboard/admin.html:116 templates/dashboard/bank_officer.html:100
 msgid "Pending Loans"
 msgstr "অপেক্ষমাণ ঋণ"
 
-#: templates/dashboard/admin.html:126 templates/dashboard/bank_officer.html:118
+#: templates/dashboard/admin.html:134 templates/dashboard/bank_officer.html:118
 #: templates/dashboard/farmer.html:229 templates/dashboard/farmer.html:293
 msgid "Total Disbursed"
 msgstr "মোট বিতরণকৃত"
 
-#: templates/dashboard/admin.html:141 templates/dashboard/farmer.html:242
+#: templates/dashboard/admin.html:149 templates/dashboard/farmer.html:242
 #: templates/dashboard/farmer.html:297 templates/repayment/history.html:32
 msgid "Total Repaid"
 msgstr "মোট পরিশোধিত"
 
-#: templates/dashboard/admin.html:156
+#: templates/dashboard/admin.html:164
 msgid "Rejected Loans"
 msgstr "প্রত্যাখ্যাত ঋণ"
 
-#: templates/dashboard/admin.html:171
+#: templates/dashboard/admin.html:179
 msgid "Recovery Rate"
 msgstr "পুনরুদ্ধারের হার"
 
-#: templates/dashboard/admin.html:191
+#: templates/dashboard/admin.html:199
 msgid "Loans by Status"
 msgstr "অবস্থা অনুযায়ী ঋণ"
 
-#: templates/dashboard/admin.html:203 templates/dashboard/farmer.html:276
+#: templates/dashboard/admin.html:211 templates/dashboard/farmer.html:276
 msgid "Loans by Type"
 msgstr "ধরন অনুযায়ী ঋণ"
 
-#: templates/dashboard/admin.html:218 templates/dashboard/bank_officer.html:153
+#: templates/dashboard/admin.html:226 templates/dashboard/bank_officer.html:153
 #: templates/dashboard/farmer.html:316
 msgid "Recent Loan Applications"
 msgstr "সাম্প্রতিক ঋণের আবেদনসমূহ"
 
-#: templates/dashboard/admin.html:225 templates/dashboard/bank_officer.html:161
+#: templates/dashboard/admin.html:233 templates/dashboard/bank_officer.html:161
 #: templates/loan/list.html:34 templates/repayment/pending_list.html:42
 msgid "Farmer"
 msgstr "কৃষক"
 
-#: templates/dashboard/admin.html:226 templates/dashboard/bank_officer.html:162
+#: templates/dashboard/admin.html:234 templates/dashboard/bank_officer.html:162
 msgid "Type"
 msgstr "ধরন"
 
-#: templates/dashboard/admin.html:227 templates/dashboard/admin.html:265
+#: templates/dashboard/admin.html:235 templates/dashboard/admin.html:292
 #: templates/dashboard/bank_officer.html:163
 #: templates/dashboard/farmer.html:328 templates/loan/history.html:32
 #: templates/loan/list.html:36 templates/repayment/pending_list.html:45
 msgid "Amount"
 msgstr "পরিমাণ"
 
-#: templates/dashboard/admin.html:228 templates/dashboard/bank_officer.html:166
+#: templates/dashboard/admin.html:236 templates/dashboard/bank_officer.html:166
 #: templates/dashboard/farmer.html:331 templates/loan/detail.html:33
 #: templates/loan/history.html:36 templates/loan/list.html:39
 #: templates/repayment/history.html:49 templates/repayment/pending_list.html:48
 msgid "Status"
 msgstr "অবস্থা"
 
-#: templates/dashboard/admin.html:257
+#: templates/dashboard/admin.html:284
 msgid "Recent Repayments"
 msgstr "সাম্প্রতিক পরিশোধসমূহ"
 
-#: templates/dashboard/admin.html:264 templates/repayment/history.html:45
+#: templates/dashboard/admin.html:291 templates/repayment/history.html:45
 #: templates/repayment/pending_list.html:43
 msgid "Loan ID"
 msgstr "ঋণ আইডি"
 
-#: templates/dashboard/admin.html:266
+#: templates/dashboard/admin.html:293
 msgid "Balance"
 msgstr "ব্যালেন্স"
 
-#: templates/dashboard/admin.html:267 templates/dashboard/farmer.html:332
+#: templates/dashboard/admin.html:294 templates/dashboard/farmer.html:332
 #: templates/loan/history.html:37 templates/loan/list.html:40
 #: templates/repayment/pending_list.html:47
 msgid "Date"
@@ -638,15 +650,15 @@ msgstr "ঋণের ধরন"
 msgid "EMI"
 msgstr "ইএমআই"
 
-#: templates/dashboard/pending_approval.html:7
+#: templates/dashboard/pending_approval.html:8
 msgid "Pending Approval - Smart Agricultural Loan System"
 msgstr "অনুমোদন অপেক্ষমাণ - স্মার্ট কৃষি ঋণ ব্যবস্থা"
 
-#: templates/dashboard/pending_approval.html:116
+#: templates/dashboard/pending_approval.html:119
 msgid "Account Pending Approval"
 msgstr "অ্যাকাউন্ট অনুমোদন অপেক্ষমাণ"
 
-#: templates/dashboard/pending_approval.html:119
+#: templates/dashboard/pending_approval.html:122
 msgid ""
 "Your farmer account is pending approval by a bank officer. You will be able "
 "to apply for loans once your account is verified."
@@ -654,13 +666,41 @@ msgstr ""
 "আপনার কৃষক অ্যাকাউন্ট একজন ব্যাংক কর্মকর্তার অনুমোদনের অপেক্ষায় আছে। আপনার অ্যাকাউন্ট "
 "যাচাই হলে আপনি ঋণের জন্য আবেদন করতে পারবেন।"
 
-#: templates/dashboard/pending_approval.html:132
+#: templates/dashboard/pending_approval.html:125
+#, fuzzy
+#| msgid "Awaiting bank officer verification"
+msgid "Wait for bank officer to verify your account"
+msgstr "ব্যাংক কর্মকর্তার যাচাইয়ের অপেক্ষায়"
+
+#: templates/dashboard/pending_approval.html:126
+#, fuzzy
+#| msgid "Only approved loans can have repayments."
+msgid "Once approved, you can apply for loans"
+msgstr "শুধুমাত্র অনুমোদিত ঋণের পরিশোধ গ্রহণ করা যাবে।"
+
+#: templates/dashboard/pending_approval.html:136
+#, fuzzy
+#| msgid ""
+#| "Your bank officer account is pending approval by the admin. Please "
+#| "contact the administrator for access."
 msgid ""
-"Your bank officer account is pending approval by the admin. Please contact "
-"the administrator for access."
+"Your bank officer account is pending approval by the admin. You will gain "
+"full access to the bank officer dashboard once approved."
 msgstr ""
 "আপনার ব্যাংক কর্মকর্তার অ্যাকাউন্ট অ্যাডমিনের অনুমোদনের অপেক্ষায় আছে। অ্যাক্সেসের জন্য "
 "অনুগ্রহ করে প্রশাসকের সাথে যোগাযোগ করুন।"
+
+#: templates/dashboard/pending_approval.html:139
+msgid "Wait for admin to review and approve your registration"
+msgstr "অ্যাডমিনের পর্যালোচনা ও অনুমোদনের জন্য অপেক্ষা করুন"
+
+#: templates/dashboard/pending_approval.html:140
+msgid "Once approved, you can access the dashboard"
+msgstr "অনুমোদিত হলে আপনি ড্যাশবোর্ড অ্যাক্সেস করতে পারবেন"
+
+#: templates/dashboard/pending_approval.html:141
+msgid "You'll be able to verify farmer NID cards and manage loans"
+msgstr "আপনি কৃষকদের এনআইডি কার্ড যাচাই ও ঋণ পরিচালনা করতে পারবেন"
 
 #: templates/farmer/profile_form.html:27
 msgid "Land Size (Acres) *"
@@ -1270,7 +1310,7 @@ msgstr "নতুন পাসওয়ার্ড সেট করুন"
 
 #: templates/registration/password_reset_confirm.html:24
 msgid "Please enter your new password twice to verify you typed it correctly."
-msgstr ""
+msgstr "সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।"
 "সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।সঠিকভাবে টাইপ "
 "করেছেন কিনা যাচাই করতে নতুন পাসওয়ার্ড দুবার লিখুন।অনুগ্রহ করে আপনার নতুন পাসওয়ার্ড "
 "সঠিকভাবে টাইপ করেছেন কিনা যাচাই করতে দুবার লিখুন।"

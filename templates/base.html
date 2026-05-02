@@ -512,6 +512,13 @@
                         </a>
                     </li>
 
+                     {% elif user.role == 'Admin' or user.is_staff or user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pending_officers' %}">
+                            <i class="bi bi-person-plus"></i> Pending Bank Officers
+                        </a>
+                    </li>
+                    
                     {% endif %}
 
                 </ul>

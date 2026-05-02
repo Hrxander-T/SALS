@@ -89,4 +89,8 @@ urlpatterns = [
     path(
         "nid/verification/", views.nid_verification_list, name="nid_verification_list"
     ),
+     path("pending-approval/", views.pending_approval, name="pending_approval"),
+    path("admin/pending-officers/", views.pending_officers, name="pending_officers"),
+    path("admin/approve-officer/<int:user_id>/", views.approve_officer, name="approve_officer"),
+    path("admin/reject-officer/<int:user_id>/", views.reject_officer, name="reject_officer"),
 ]

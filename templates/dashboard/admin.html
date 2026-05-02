@@ -11,10 +11,12 @@
         border-radius: 15px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .stat-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
+
     .stat-icon {
         width: 60px;
         height: 60px;
@@ -24,21 +26,27 @@
         justify-content: center;
         font-size: 1.5rem;
     }
+
     .bg-gradient-green {
         background: linear-gradient(135deg, #2e7d32, #4caf50);
     }
+
     .bg-gradient-orange {
         background: linear-gradient(135deg, #f57c00, #ff9800);
     }
+
     .bg-gradient-blue {
         background: linear-gradient(135deg, #1976d2, #42a5f5);
     }
+
     .bg-gradient-purple {
         background: linear-gradient(135deg, #7b1fa2, #ba68c8);
     }
+
     .bg-gradient-red {
         background: linear-gradient(135deg, #c62828, #ef5350);
     }
+
     .chart-container {
         position: relative;
         height: 300px;
@@ -226,6 +234,7 @@
                                 <th>{% trans "Type" %}</th>
                                 <th>{% trans "Amount" %}</th>
                                 <th>{% trans "Status" %}</th>
+                                <th>{% trans "Actions" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -236,13 +245,31 @@
                                 <td>৳{{ loan.amount|floatformat:2 }}</td>
                                 <td>
                                     {% if loan.status == 'Pending' %}
-                                        <span class="badge bg-warning">{{ loan.status }}</span>
+                                    <span class="badge bg-warning">{{ loan.status }}</span>
                                     {% elif loan.status == 'Approved' %}
-                                        <span class="badge bg-success">{{ loan.status }}</span>
+                                    <span class="badge bg-success">{{ loan.status }}</span>
                                     {% else %}
-                                        <span class="badge bg-danger">{{ loan.status }}</span>
+                                    <span class="badge bg-danger">{{ loan.status }}</span>
                                     {% endif %}
                                 </td>
+
+                                  <td>
+                                    {% if loan.status == 'Pending' %}
+                                        <a href="{% url 'approve_loan' loan.id %}" class="btn btn-sm btn-success" title="Approve">
+                                            <i class="bi bi-check-lg"></i>
+                                        </a>
+                                        <a href="{% url 'reject_loan' loan.id %}" class="btn btn-sm btn-danger" title="Reject">
+                                            <i class="bi bi-x-lg"></i>
+                                        </a>
+                                    {% elif loan.status == 'Approved' %}
+                                        <a href="{% url 'record_repayment_by_officer' loan.id %}" class="btn btn-sm btn-primary" title="Record Repayment">
+                                            <i class="bi bi-cash-stack"></i> Repay
+                                        </a>
+                                    {% else %}
+                                        <span class="text-muted">-</span>
+                                    {% endif %}
+                                </td>
+                                
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -288,8 +315,8 @@
 {% block extra_js %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const statusData = {{ loans_by_status|safe }};
-    const typeData = {{ loans_by_type|safe }};
+    const statusData = {{ loans_by_status| safe }};
+    const typeData = {{ loans_by_type| safe }};
 
     const statusCtx = document.getElementById('statusChart').getContext('2d');
     new Chart(statusCtx, {

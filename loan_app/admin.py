@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.db.models import Sum, Count
 from django.utils.html import format_html
+from django.core.exceptions import PermissionDenied
 from .models import User, FarmerProfile, LoanType, LoanApplication, Repayment
 
 
@@ -25,18 +26,75 @@ class LoanApplicationInline(admin.TabularInline):
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ['username', 'email', 'role', 'phone_number', 'is_staff', 'is_active']
-    list_filter = ['role', 'is_staff', 'is_superuser', 'is_active', 'date_joined']
+    list_display = ['username', 'email', 'role', 'phone_number', 'approval_status', 'is_staff', 'is_active']
+    list_filter = ['role', 'is_approved', 'is_staff', 'is_superuser', 'is_active', 'date_joined']
     search_fields = ['username', 'email', 'first_name', 'last_name', 'phone_number']
     list_editable = ['is_active']
     date_hierarchy = 'date_joined'
+    actions = ['approve_bank_officers', 'reject_bank_officers']
     fieldsets = UserAdmin.fieldsets + (
-        ('Additional Info', {'fields': ('role', 'phone_number')}),
+        ('Additional Info', {'fields': ('role', 'phone_number', 'is_approved')}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         ('Additional Info', {'fields': ('role', 'phone_number')}),
     )
     inlines = [LoanApplicationInline]
+
+    def approval_status(self, obj):
+        """Display approval status for Bank Officers"""
+        if obj.role == "Bank Officer":
+            if obj.is_approved:
+                return format_html(
+                    '<span style="color: green; font-weight: bold;">✓ Approved</span>'
+                )
+            else:
+                return format_html(
+                    '<span style="color: red; font-weight: bold;">✗ Pending</span>'
+                )
+        return "-"
+    
+    approval_status.short_description = "Approval Status"
+
+    def get_readonly_fields(self, request, obj=None):
+        """Make is_approved field editable for Bank Officers only"""
+        readonly = list(super().get_readonly_fields(request, obj))
+        if obj and obj.role != "Bank Officer":
+            # is_approved is only relevant for Bank Officers
+            if 'is_approved' in self.fieldsets[2][1]['fields']:
+                readonly.append('is_approved')
+        return readonly
+
+    def approve_bank_officers(self, request, queryset):
+        """Admin action to approve Bank Officer registrations"""
+        if not request.user.is_superuser and not request.user.is_staff:
+            raise PermissionDenied("Only admins can approve Bank Officer registrations.")
+        
+        # Filter only Bank Officers
+        bank_officers = queryset.filter(role="Bank Officer")
+        updated = bank_officers.update(is_approved=True)
+        
+        if updated > 0:
+            self.message_user(request, f'{updated} Bank Officer(s) approved successfully.')
+        else:
+            self.message_user(request, 'No Bank Officers were selected.', level='warning')
+    
+    approve_bank_officers.short_description = "✓ Approve selected Bank Officer registrations"
+
+    def reject_bank_officers(self, request, queryset):
+        """Admin action to reject Bank Officer registrations"""
+        if not request.user.is_superuser and not request.user.is_staff:
+            raise PermissionDenied("Only admins can reject Bank Officer registrations.")
+        
+        # Filter only Bank Officers
+        bank_officers = queryset.filter(role="Bank Officer")
+        updated = bank_officers.update(is_approved=False)
+        
+        if updated > 0:
+            self.message_user(request, f'{updated} Bank Officer(s) rejected.', level='error')
+        else:
+            self.message_user(request, 'No Bank Officers were selected.', level='warning')
+    
+    reject_bank_officers.short_description = "✗ Reject selected Bank Officer registrations"
 
 
 @admin.register(FarmerProfile)

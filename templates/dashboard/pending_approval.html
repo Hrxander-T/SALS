@@ -1,13 +1,15 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans "Pending Approval - Smart Agricultural Loan System" %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #2e7d32;
@@ -18,11 +20,11 @@
             --text-primary: #333333;
             --text-secondary: #666666;
         }
-        
+
         * {
             font-family: 'Poppins', sans-serif;
         }
-        
+
         body {
             background: linear-gradient(135deg, #faf8f5 0%, #f0f4f0 50%, #e8f5e9 100%);
             min-height: 100vh;
@@ -30,12 +32,12 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .pending-card {
             max-width: 500px;
             text-align: center;
         }
-        
+
         .pending-icon {
             width: 120px;
             height: 120px;
@@ -47,23 +49,23 @@
             margin: 0 auto 30px;
             box-shadow: 0 10px 40px rgba(46, 125, 50, 0.3);
         }
-        
+
         .pending-icon i {
             font-size: 3.5rem;
             color: white;
         }
-        
+
         .pending-card h3 {
             color: var(--text-primary);
             margin-bottom: 16px;
         }
-        
+
         .pending-card p {
             color: var(--text-secondary);
             font-size: 1.05rem;
             line-height: 1.6;
         }
-        
+
         .info-list {
             text-align: left;
             background: var(--secondary-light);
@@ -71,21 +73,21 @@
             padding: 24px;
             margin-top: 24px;
         }
-        
+
         .info-list li {
             margin-bottom: 12px;
             color: var(--text-secondary);
         }
-        
+
         .info-list li:last-child {
             margin-bottom: 0;
         }
-        
+
         .info-list i {
             color: var(--primary);
             margin-right: 8px;
         }
-        
+
         .logout-btn {
             background: #6c757d;
             border: none;
@@ -97,13 +99,14 @@
             text-decoration: none;
             display: inline-block;
         }
-        
+
         .logout-btn:hover {
             background: #5a6268;
             color: white;
         }
     </style>
 </head>
+
 <body>
     <div class="row w-100">
         <div class="col-md-8 mx-auto">
@@ -112,30 +115,45 @@
                     <div class="pending-icon">
                         <i class="bi bi-hourglass-split"></i>
                     </div>
-                    
+
                     <h3>{% trans "Account Pending Approval" %}</h3>
-                    
+
                     {% if role == 'Farmer' %}
                     <p>{% trans "Your farmer account is pending approval by a bank officer. You will be able to apply for loans once your account is verified." %}</p>
-                    
+
                     <ul class="info-list">
-                        <li><i class="bi bi-check-circle"></i> Wait for bank officer to verify your account</li>
-                        <li><i class="bi bi-check-circle"></i> Once approved, you can apply for loans</li>
+                        <li><i class="bi bi-check-circle"></i> {% trans "Wait for bank officer to verify your account"%}</li>
+                        <li><i class="bi bi-check-circle"></i> {% trans "Once approved, you can apply for loans" %}</li>
                     </ul>
-                    
+
                     <div class="mt-4">
                         <a href="{% url 'logout' %}" class="logout-btn">
-                            <i class="bi bi-box-arrow-left me-2"></i>{% trans "Logout" %}</a>
+                            <i class="bi bi-box-arrow-left me-2"></i>{% trans "Logout" %}
+                        </a>
                     </div>
-                    
+
                     {% else %}
-                    <p>{% trans "Your bank officer account is pending approval by the admin. Please contact the administrator for access." %}</p>
+                    <p>{% trans "Your bank officer account is pending approval by the admin. You will gain full access to the bank officer dashboard once approved." %}</p>
+
+                    <ul class="info-list">
+                        <li><i class="bi bi-check-circle"></i> {% trans "Wait for admin to review and approve your registration" %}</li>
+                        <li><i class="bi bi-check-circle"></i> {% trans "Once approved, you can access the dashboard" %}</li>
+                        <li><i class="bi bi-check-circle"></i> {% trans "You'll be able to verify farmer NID cards and manage loans" %}</li>
+                    </ul>
+
+                    <div class="mt-4">
+                        <a href="{% url 'logout' %}" class="logout-btn">
+                            <i class="bi bi-box-arrow-left me-2"></i>{% trans "Logout" %}
+                        </a>
+                    </div>
                     {% endif %}
+
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
