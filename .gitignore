@@ -8,5 +8,4 @@ media/
 __pycache__/
 *.pyc
 .DS_Store
-
 templates_backup/

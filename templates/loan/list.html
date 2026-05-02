@@ -35,7 +35,7 @@
                                 <th>{% trans "Loan Type" %}</th>
                                 <th>{% trans "Amount" %}</th>
                                 <th>{% trans "Duration" %}</th>
-                                <th>{% trans "Risk Score" %}</th>
+                                <th>{% trans "Priority Score" %}</th>
                                 <th>{% trans "Status" %}</th>
                                 <th>{% trans "Date" %}</th>
                                 <th>{% trans "Actions" %}</th>
@@ -53,12 +53,12 @@
                                 <td>৳{{ loan.amount|floatformat:2 }}</td>
                                 <td>{{ loan.duration_months }} mo</td>
                                 <td>
-                                    {% if loan.risk_score >= 70 %}
-                                        <span class="badge bg-success">Priority ({{ loan.risk_score }})</span>
-                                    {% elif loan.risk_score >= 40 %}
-                                        <span class="badge bg-warning">Review ({{ loan.risk_score }})</span>
-                                    {% elif loan.risk_score > 0 %}
-                                        <span class="badge bg-danger">Low ({{ loan.risk_score }})</span>
+                                    {% if loan.priority_score >= 70 %}
+                                        <span class="badge bg-success">Priority ({{ loan.priority_score }})</span>
+                                    {% elif loan.priority_score >= 40 %}
+                                        <span class="badge bg-warning">Review ({{ loan.priority_score }})</span>
+                                    {% elif loan.priority_score > 0 %}
+                                        <span class="badge bg-danger">Low ({{ loan.priority_score }})</span>
                                     {% else %}
                                         <span class="badge bg-secondary">{% trans "Pending" %}</span>
                                     {% endif %}

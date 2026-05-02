@@ -299,7 +299,7 @@ def generate_loan_approval_pdf(loan):
     pdf.ln(15)
 
     pdf.set_font("Helvetica", "I", 8)
-    pdf.cell(0, 6, f"Risk Score: {loan.risk_score} | Application Date: {loan.created_at.strftime('%B %d, %Y')}", border=False, align="C")
+    pdf.cell(0, 6, f"Priority Score: {loan.priority_score} | Application Date: {loan.created_at.strftime('%B %d, %Y')}", border=False, align="C")
 
     return pdf
 
@@ -381,9 +381,9 @@ def bank_officer_dashboard(request):
 
     recent_loans = LoanApplication.objects.order_by("-created_at")[:5]
     for loan in recent_loans:
-        if loan.risk_score == 0:
-            loan.risk_score = loan.calculate_risk_score()
-            loan.save(update_fields=["risk_score"])
+        if loan.priority_score == 0:
+            loan.priority_score = loan.calculate_priority_score()
+            loan.save(update_fields=["priority_score"])
 
     context = {
         "dashboard_type": "bank_officer",
@@ -611,7 +611,7 @@ def loan_apply(request):
         messages.warning(request, _("Please complete your farmer profile first."))
         return redirect("farmer_profile_create")
 
-    if hasattr(request.user, "loan_application"):
+    if request.user.loan_applications.filter(status__in=['Pending', 'Approved']).exists():
         messages.warning(request, _("You already have a loan application."))
         return redirect("loan_history")
 
@@ -621,30 +621,30 @@ def loan_apply(request):
             application = form.save(commit=False)
             application.farmer = request.user
 
-            application.risk_score = application.calculate_risk_score()
+            application.priority_score = application.calculate_priority_score()
             application.emi = application.calculate_emi()
 
-            if application.risk_score >= 70:
+            if application.priority_score >= 70:
                 application.status = "Approved"
-            elif application.risk_score < 40:
+            elif application.priority_score < 40:
                 application.status = "Rejected"
 
             application.save()
 
-            if application.risk_score >= 70:
+            if application.priority_score >= 70:
                 messages.success(
                     request,
-                    f"Loan application submitted and auto-approved! Risk Score: {application.risk_score}",
+                    f"Loan application submitted and auto-approved! Priority Score: {application.priority_score}",
                 )
-            elif application.risk_score < 40:
+            elif application.priority_score < 40:
                 messages.warning(
                     request,
-                    f"Loan application auto-rejected due to low priority score. Risk Score: {application.risk_score}",
+                    f"Loan application auto-rejected due to low priority score. Priority Score: {application.priority_score}",
                 )
             else:
                 messages.success(
                     request,
-                    f"Loan application submitted successfully! Risk Score: {application.risk_score}",
+                    f"Loan application submitted successfully! Priority Score: {application.priority_score}",
                 )
 
             return redirect("loan_history")
@@ -668,9 +668,9 @@ def loan_history(request):
         "-created_at"
     )
     for app in applications:
-        if app.risk_score == 0:
-            app.risk_score = app.calculate_risk_score()
-            app.save(update_fields=["risk_score"])
+        if app.priority_score == 0:
+            app.priority_score = app.calculate_priority_score()
+            app.save(update_fields=["priority_score"])
     paginator = Paginator(applications, 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
@@ -680,9 +680,9 @@ def loan_history(request):
 @login_required
 def loan_detail(request, pk):
     application = get_object_or_404(LoanApplication, pk=pk, farmer=request.user)
-    if application.risk_score == 0:
-        application.risk_score = application.calculate_risk_score()
-        application.save(update_fields=["risk_score"])
+    if application.priority_score == 0:
+        application.priority_score = application.calculate_priority_score()
+        application.save(update_fields=["priority_score"])
     return render(request, "loan/detail.html", {"application": application})
 
 
@@ -750,7 +750,7 @@ def approve_loan(request, pk):
         return redirect("home")
 
     application = get_object_or_404(LoanApplication, pk=pk)
-    application.risk_score = application.calculate_risk_score()
+    application.priority_score = application.calculate_priority_score()
     application.status = "Approved"
     application.save()
     messages.success(request, _("Loan application #%s approved!") % pk)
@@ -764,7 +764,7 @@ def reject_loan(request, pk):
         return redirect("home")
 
     application = get_object_or_404(LoanApplication, pk=pk)
-    application.risk_score = application.calculate_risk_score()
+    application.priority_score = application.calculate_priority_score()
     application.status = "Rejected"
     application.save()
     messages.success(request, _("Loan application #%s rejected!") % pk)

@@ -13,9 +13,9 @@ admin.site.index_title = "Dashboard"
 class LoanApplicationInline(admin.TabularInline):
     model = LoanApplication
     extra = 0
-    readonly_fields = ['loan_type', 'amount', 'duration_months', 'risk_score', 'status', 'emi', 'created_at']
+    readonly_fields = ['loan_type', 'amount', 'duration_months', 'priority_score', 'status', 'emi', 'created_at']
     can_delete = False
-    fields = ['id', 'loan_type', 'amount', 'duration_months', 'risk_score', 'status', 'emi', 'created_at']
+    fields = ['id', 'loan_type', 'amount', 'duration_months', 'priority_score', 'status', 'emi', 'created_at']
     verbose_name = 'Loan Application'
     verbose_name_plural = 'Loan Applications'
 
@@ -67,11 +67,11 @@ class LoanTypeAdmin(admin.ModelAdmin):
 
 @admin.register(LoanApplication)
 class LoanApplicationAdmin(admin.ModelAdmin):
-    list_display = ['id', 'farmer_link', 'loan_type', 'amount', 'duration_months', 'risk_score', 'status', 'status_badge', 'emi', 'created_at']
-    list_filter = ['status', 'loan_type', 'created_at', 'risk_score']
+    list_display = ['id', 'farmer_link', 'loan_type', 'amount', 'duration_months', 'priority_score', 'status', 'status_badge', 'emi', 'created_at']
+    list_filter = ['status', 'loan_type', 'created_at', 'priority_score']
     search_fields = ['farmer__username', 'farmer__email', 'id', 'farmer__first_name', 'farmer__last_name']
-    readonly_fields = ['risk_score', 'emi', 'created_at', 'updated_at']
-    fields = ['farmer', 'loan_type', 'amount', 'duration_months', 'risk_score', 'status', 'emi', 'created_at', 'updated_at']
+    readonly_fields = ['priority_score', 'emi', 'created_at', 'updated_at']
+    fields = ['farmer', 'loan_type', 'amount', 'duration_months', 'priority_score', 'status', 'emi', 'created_at', 'updated_at']
     ordering = ['-created_at']
     date_hierarchy = 'created_at'
     list_editable = ['status']

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-01 22:49+0000\n"
+"POT-Creation-Date: 2026-05-02 13:57+0000\n"
 "PO-Revision-Date: 2026-05-01 18:00+0600\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -180,7 +180,7 @@ msgstr "ইংরেজি"
 msgid "Bengali"
 msgstr "বাংলা"
 
-#: templates/bank_officer/farmer_list.html:9 templates/base.html:445
+#: templates/bank_officer/farmer_list.html:9 templates/base.html:499
 #: templates_backup/base.html:431
 msgid "Farmers"
 msgstr "কৃষকগণ"
@@ -246,7 +246,7 @@ msgstr "পরবর্তী"
 
 #: templates/bank_officer/nid_verification_list.html:9
 #: templates/bank_officer/verify_nid.html:12
-#: templates/bank_officer/verify_nid.html:23 templates/base.html:457
+#: templates/bank_officer/verify_nid.html:23 templates/base.html:511
 #: templates/dashboard/bank_officer.html:142 templates_backup/base.html:443
 msgid "NID Verification"
 msgstr "এনআইডি যাচাই"
@@ -284,7 +284,7 @@ msgstr "এনআইডি অবস্থা"
 msgid "Verified By"
 msgstr "যাচাইকারী"
 
-#: templates/bank_officer/verify_nid.html:11 templates/base.html:393
+#: templates/bank_officer/verify_nid.html:11 templates/base.html:447
 #: templates_backup/base.html:379
 msgid "Dashboard"
 msgstr "ড্যাশবোর্ড"
@@ -378,59 +378,59 @@ msgstr "এনআইডি কার্ডের সামনের দিক"
 msgid "NID Card Back Side"
 msgstr "এনআইডি কার্ডের পিছনের দিক"
 
-#: templates/base.html:11 templates_backup/base.html:11
+#: templates/base.html:17 templates_backup/base.html:11
 msgid "Smart Agricultural Loan System"
 msgstr "স্মার্ট কৃষি ঋণ ব্যবস্থা"
 
-#: templates/base.html:317 templates/landing_base.html:258
+#: templates/base.html:370 templates/landing_base.html:258
 #: templates/landing_base.html:308 templates_backup/base.html:316
 msgid "SmartAgri Loan"
 msgstr "স্মার্টএগ্রি ঋণ"
 
-#: templates/base.html:362 templates_backup/base.html:350
+#: templates/base.html:416 templates_backup/base.html:350
 msgid "Profile"
 msgstr "প্রোফাইল"
 
-#: templates/base.html:372 templates/dashboard/pending_approval.html:128
+#: templates/base.html:426 templates/dashboard/pending_approval.html:128
 #: templates_backup/base.html:358
 msgid "Logout"
 msgstr "লগআউট"
 
-#: templates/base.html:401 templates_backup/base.html:387
+#: templates/base.html:455 templates_backup/base.html:387
 msgid "Loans"
 msgstr "ঋণসমূহ"
 
-#: templates/base.html:407 templates/loan/apply.html:173
+#: templates/base.html:461 templates/loan/apply.html:173
 #: templates_backup/base.html:393
 msgid "Apply for Loan"
 msgstr "ঋণের জন্য আবেদন করুন"
 
-#: templates/base.html:413 templates/dashboard/farmer.html:202
+#: templates/base.html:467 templates/dashboard/farmer.html:202
 #: templates_backup/base.html:399
 msgid "My Loans"
 msgstr "আমার ঋণসমূহ"
 
-#: templates/base.html:419 templates/base.html:451
+#: templates/base.html:473 templates/base.html:505
 #: templates_backup/base.html:405 templates_backup/base.html:437
 msgid "Repayments"
 msgstr "কিস্তি পরিশোধ"
 
-#: templates/base.html:425 templates/registration/profile.html:126
+#: templates/base.html:479 templates/registration/profile.html:126
 #: templates_backup/base.html:411
 msgid "My Profile"
 msgstr "আমার প্রোফাইল"
 
-#: templates/base.html:431 templates/farmer/upload_nid.html:397
+#: templates/base.html:485 templates/farmer/upload_nid.html:397
 #: templates_backup/base.html:417
 msgid "Upload NID"
 msgstr "এনআইডি আপলোড করুন"
 
-#: templates/base.html:439 templates/loan/list.html:11
+#: templates/base.html:493 templates/loan/list.html:11
 #: templates_backup/base.html:425
 msgid "Loan Applications"
 msgstr "ঋণের আবেদনসমূহ"
 
-#: templates/base.html:478 templates_backup/base.html:464
+#: templates/base.html:532 templates_backup/base.html:464
 msgid "Smart Agricultural Loan System. All Rights Reserved."
 msgstr "স্মার্ট কৃষি ঋণ ব্যবস্থা। সর্বস্বত্ব সংরক্ষিত।"
 
@@ -570,9 +570,9 @@ msgid "Duration"
 msgstr "মেয়াদ"
 
 #: templates/dashboard/bank_officer.html:165 templates/loan/detail.html:47
-#: templates/loan/history.html:35 templates/loan/list.html:38
-msgid "Risk Score"
-msgstr "ঝুঁকির স্কোর"
+#: templates/loan/list.html:38
+msgid "Priority Score"
+msgstr "অগ্রাধিকার স্কোর"
 
 #: templates/dashboard/farmer.html:175
 msgid "Farmer Dashboard"
@@ -1159,6 +1159,10 @@ msgstr "সর্বশেষ আপডেট"
 #: templates/loan/history.html:11
 msgid "My Loan Applications"
 msgstr "আমার ঋণের আবেদনসমূহ"
+
+#: templates/loan/history.html:35
+msgid "Score"
+msgstr "স্কোর"
 
 #: templates/loan/history.html:122
 msgid "No loan applications yet."

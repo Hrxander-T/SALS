@@ -143,16 +143,16 @@ class LoanApplication(models.Model):
         ("Rejected", "Rejected"),
     ]
 
-    farmer = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="loan_application"
+    farmer = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="loan_applications"
     )
     loan_type = models.ForeignKey(
         LoanType, on_delete=models.CASCADE, related_name="applications"
     )
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     duration_months = models.IntegerField(help_text="Loan duration in months")
-    risk_score = models.IntegerField(
-        default=0, help_text="Auto-calculated risk score (0-100)"
+    priority_score = models.IntegerField(
+        default=0, help_text="Auto-calculated priority score (0-100)"
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Pending")
     emi = models.DecimalField(
@@ -187,11 +187,11 @@ class LoanApplication(models.Model):
         return round(emi, 2)
 
     def save(self, *args, **kwargs):
-        self.risk_score = self.calculate_risk_score()
+        self.priority_score = self.calculate_priority_score()
         self.emi = self.calculate_emi()
         super().save(*args, **kwargs)
 
-    def calculate_risk_score(self):
+    def calculate_priority_score(self):
         try:
             farmer_profile = self.farmer.farmer_profile
             income = float(farmer_profile.annual_income)
@@ -199,11 +199,11 @@ class LoanApplication(models.Model):
 
             score = 0
 
-            if income < 15000:
+            if income < 50000:
                 score += 35
-            elif income < 30000:
+            elif income < 100000:
                 score += 25
-            elif income < 50000:
+            elif income < 200000:
                 score += 15
             else:
                 score += 5

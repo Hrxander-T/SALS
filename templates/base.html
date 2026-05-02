@@ -1,15 +1,21 @@
+<!-- Django Template Loads -->
 {% load i18n %}
 {% load static %}
 
+<!-- HTML Document Structure -->
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Head Section -->
+
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Smart Agricultural Loan System - Dashboard">
+    <!-- Page Title -->
     <title>{% block title %}{% trans "Smart Agricultural Loan System" %}{% endblock %}</title>
-    <!-- FaviIcon-->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,14 +23,16 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    <!-- Google Fonts - Poppins -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Custom Styles -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
+    <!-- Inline Styles -->
     <style>
+        /* CSS Variables */
         :root {
             --primary: #2e7d32;
             --primary-light: #4caf50;
@@ -38,10 +46,12 @@
             --deep-forest: #1a3a1a;
         }
 
+        /* Global Font */
         * {
             font-family: 'Poppins', sans-serif;
         }
 
+        /* Body Styles */
         body {
             background: linear-gradient(135deg, var(--warm-cream) 0%, #f0f4f0 50%, var(--secondary-light) 100%);
             min-height: 100vh;
@@ -49,7 +59,7 @@
             flex-direction: column;
         }
 
-        /* Navbar */
+        /* Navbar Styles */
         .navbar-custom {
             background: linear-gradient(135deg, var(--deep-forest), var(--primary-dark)) !important;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -85,7 +95,7 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Swtich Language  */
+        /* Language Switcher Styles */
 
         .lang-switcher {
             display: flex;
@@ -124,7 +134,7 @@
             font-size: 0.75rem;
         }
 
-        /* Sidebar */
+        /* Sidebar Styles */
         .sidebar-custom {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -167,13 +177,13 @@
             background: var(--secondary-light);
         }
 
-        /* Content */
+        /* Content Wrapper Styles */
         .content-wrapper {
             flex: 1;
             padding: 28px;
         }
 
-        /* Cards */
+        /* Card Styles */
         .card-custom {
             background: white;
             border: none;
@@ -201,7 +211,7 @@
             padding: 24px;
         }
 
-        /* Buttons */
+        /* Button Styles */
         .btn-primary-custom {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border: none;
@@ -217,7 +227,7 @@
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         }
 
-        /* Table */
+        /* Table Styles */
         .table-custom {
             border-radius: 16px;
             overflow: hidden;
@@ -246,7 +256,7 @@
             vertical-align: middle;
         }
 
-        /* Form Controls */
+        /* Form Control Styles */
         .form-control-custom {
             border-radius: 12px;
             padding: 14px 18px;
@@ -259,7 +269,7 @@
             box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.15);
         }
 
-        /* Badge */
+        /* Badge Styles */
         .badge-custom {
             padding: 8px 14px;
             border-radius: 10px;
@@ -267,7 +277,7 @@
             font-size: 0.85rem;
         }
 
-        /* Footer */
+        /* Footer Styles */
         .footer-custom {
             background: linear-gradient(135deg, var(--deep-forest), var(--primary-dark));
             color: white;
@@ -275,7 +285,7 @@
             margin-top: auto;
         }
 
-        /* Dropdown */
+        /* Dropdown Styles */
         .dropdown-menu-custom {
             border: none;
             border-radius: 14px;
@@ -295,7 +305,7 @@
             color: var(--primary-dark);
         }
 
-        /* Stat Cards */
+        /* Stat Card Styles */
         .stat-card {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             border-radius: 20px;
@@ -344,11 +354,15 @@
             margin-bottom: 0;
         }
     </style>
+    <!-- Extra CSS Block -->
     {% block extra_css %}{% endblock %}
+    <!-- End Head Section -->
 </head>
 
+<!-- Body Section -->
+
 <body>
-    <!-- Navbar -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
@@ -365,6 +379,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
 
+                    <!-- // Language Switcher  -->
                     <li>
                         <div class="lang-switcher">
                             <a href="/en/" class="lang-btn {% if LANGUAGE_CODE != 'bn' %}active{% endif %}">EN</a>
@@ -419,11 +434,11 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Main Content Container -->
     <div class="container-fluid">
         <div class="row">
 
-            <!-- Sidebar -->
+            <!-- Sidebar Navigation -->
             <div class="col-md-2 sidebar-custom">
                 <ul class="nav flex-column">
 
@@ -502,7 +517,7 @@
                 </ul>
             </div>
 
-            <!-- Main Content Area -->
+            <!-- Page Content Area -->
             <div class="col-md-10 content-wrapper">
                 {% block content %}{% endblock %}
             </div>
@@ -510,7 +525,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer class="footer-custom text-center">
         <div class="container">
             <p class="mb-0">
@@ -519,13 +534,17 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom JS -->
+    <!-- Custom JavaScript -->
     <script src="{% static 'js/custom.js' %}"></script>
 
+    <!-- Extra JavaScript Block -->
     {% block extra_js %}{% endblock %}
+    <!-- End Body Section -->
 </body>
+
+<!-- End HTML Document -->
 
 </html>
