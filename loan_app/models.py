@@ -38,6 +38,7 @@ class User(AbstractUser):
         resource_type='image',
         blank=True,
         null=True,
+        upload_to= 'profile_pictures/',
     )
     is_verified = models.BooleanField(default=False)
 
@@ -47,6 +48,7 @@ class User(AbstractUser):
         resource_type='auto',
         blank=True,
         null=True,
+        upload_to= 'nid_cards/',
         help_text="Upload NID card front side",
     )
     nid_card_back = CloudinaryField(
@@ -54,6 +56,7 @@ class User(AbstractUser):
         resource_type='auto',
         blank=True,
         null=True,
+        upload_to= 'nid_cards/',
         help_text="Upload NID card back side",
     )
 
@@ -111,6 +114,7 @@ class FarmerProfile(models.Model):
         resource_type='auto',
         blank=True,
         null=True,
+        upload_to='land_documents/',
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
