@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='farmerprofile',
             name='land_documents',
-            field=loan_app.models.CloudinaryField(blank=True, null=True, upload_to='', verbose_name='land_documents'),
+            field=loan_app.models.CloudinaryField(blank=True, null=True,  verbose_name='land_documents'),
         ),
         migrations.AlterField(
             model_name='loanapplication',
@@ -26,16 +26,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='user',
             name='nid_card_back',
-            field=loan_app.models.CloudinaryField(blank=True, help_text='Upload NID card back side', null=True, upload_to='', verbose_name='nid_card_back'),
+            field=loan_app.models.CloudinaryField(blank=True, help_text='Upload NID card back side', null=True,  verbose_name='nid_card_back'),
         ),
         migrations.AlterField(
             model_name='user',
             name='nid_card_front',
-            field=loan_app.models.CloudinaryField(blank=True, help_text='Upload NID card front side', null=True, upload_to='', verbose_name='nid_card_front'),
+            field=loan_app.models.CloudinaryField(blank=True, help_text='Upload NID card front side', null=True,  verbose_name='nid_card_front'),
         ),
         migrations.AlterField(
             model_name='user',
             name='profile_picture',
-            field=loan_app.models.CloudinaryField(blank=True, null=True, upload_to='', verbose_name='profile_picture'),
+            field=loan_app.models.CloudinaryField(blank=True, null=True,  verbose_name='profile_picture'),
         ),
     ]
