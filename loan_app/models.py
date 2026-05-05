@@ -195,6 +195,8 @@ class LoanApplication(models.Model):
         self.emi = self.calculate_emi()
         super().save(*args, **kwargs)
 
+## Calculating priority score 
+
     def calculate_priority_score(self):
         try:
             farmer_profile = self.farmer.farmer_profile

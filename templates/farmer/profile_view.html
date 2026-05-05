@@ -104,8 +104,7 @@
                                 {% if profile.user.nid_verified %}Verified{% else %}Pending Verification{% endif %}
                             </span>
                             {% if profile.user.nid_verified %}
-                            <span class="text-muted small">Verified on {{ profile.user.nid_verified_at|date:"F d, Y"
-                                }}</span>
+                            <span class="text-muted small">Verified on {{ profile.user.nid_verified_at|date:"F d, Y"}}</span>
                             {% else %}
                             <span class="text-muted small">{% trans "Awaiting bank officer verification" %}</span>
                             {% endif %}
