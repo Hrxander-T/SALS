@@ -16,6 +16,15 @@ else:
     class CloudinaryField(models.FileField):
         def __init__(self, *args, **kwargs):
             kwargs.pop('resource_type', None)
+            # Map field name to local folder
+            folder_map = {
+                'profile_picture': 'profile_pictures/',
+                'nid_card_front': 'nid_cards/',
+                'nid_card_back': 'nid_cards/',
+                'land_documents': 'land_documents/',
+            }
+            field_name = args[0] if args else ''
+            kwargs.setdefault('upload_to', folder_map.get(field_name, 'uploads/'))
             super().__init__(*args, **kwargs)
 
 
@@ -38,7 +47,6 @@ class User(AbstractUser):
         resource_type='image',
         blank=True,
         null=True,
-        upload_to= 'profile_pictures/',
     )
     is_verified = models.BooleanField(default=False)
 
@@ -48,7 +56,6 @@ class User(AbstractUser):
         resource_type='auto',
         blank=True,
         null=True,
-        upload_to= 'nid_cards/',
         help_text="Upload NID card front side",
     )
     nid_card_back = CloudinaryField(
@@ -56,7 +63,6 @@ class User(AbstractUser):
         resource_type='auto',
         blank=True,
         null=True,
-        upload_to= 'nid_cards/',
         help_text="Upload NID card back side",
     )
 
@@ -114,7 +120,6 @@ class FarmerProfile(models.Model):
         resource_type='auto',
         blank=True,
         null=True,
-        upload_to='land_documents/',
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
